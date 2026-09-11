@@ -82,6 +82,16 @@ def etapa_recolectar(fecha, ctx):
             "eventos": brief["n_eventos"], "banderas": len(brief["banderas_rojas"])}
 
 
+def _num(v):
+    """El valor numerico de una componente del desglose, venga como dict o como numero suelto."""
+    if isinstance(v, dict):
+        for k in ("valor", "aporta", "score"):
+            if isinstance(v.get(k), (int, float)):
+                return float(v[k])
+        return None
+    return float(v) if isinstance(v, (int, float)) else None
+
+
 def _puntuar_todo(al):
     from radar import puntajes
     fuentes = {f["id"]: f for f in al.fuentes(solo_activas=False)}
@@ -94,8 +104,12 @@ def _puntuar_todo(al):
         imp, desglose = puntajes.importancia(full, arts, fuentes)
         bandera, motivo = puntajes.banderas(full, full.get("statements", []))
         # puntajes devuelve 'fuentes_indep'; la tabla las guarda como 's_fuentes_indep'.
-        cols = {"s_" + k: v for k, v in desglose.items()
-                if k in ("fuentes_indep", "cross_bloc", "velocidad", "actores", "dominio")}
+        # Y cada componente NO es un numero: es un dict {valor, peso, aporta, detalle}. La columna
+        # es `real`, asi que se guarda `valor` (la componente normalizada 0..1 de RADAR.md 6).
+        # SQLite aceptaba el dict entero sin chistar; Postgres lo rechaza, y hace bien.
+        cols = {"s_" + k: _num(desglose.get(k))
+                for k in ("fuentes_indep", "cross_bloc", "velocidad", "actores", "dominio")
+                if k in desglose}
         al.actualizar_evento(ev["id"], importancia=imp, requiere_agustin=bandera,
                              motivo_bandera=motivo, **cols)
         n += 1
@@ -447,6 +461,29 @@ def _autotest():
     for n in os.listdir(frames):
         os.remove(os.path.join(frames, n))
     os.rmdir(frames)
+
+    print("--- el desglose que va a la base tiene que ser NUMERICO ---")
+    from radar import puntajes as _p
+    from datetime import datetime as _dt, timezone as _tz
+    _ahora = _dt.now(_tz.utc)
+    _ev = {"id": 1, "paises": ["AR"], "topics": ["finance"], "first_detected": _ahora,
+           "last_updated": _ahora}
+    _arts = [{"id": 1, "source_id": "infobae", "wire_origin": None, "title": "x",
+              "published_at": _ahora, "detected_at": _ahora}]
+    _fs = {"infobae": {"nombre": "Infobae", "source_type": "latam", "tier": 3}}
+    _imp, _des = _p.importancia(_ev, _arts, _fs)
+    _cols = {"s_" + k: _num(_des.get(k))
+             for k in ("fuentes_indep", "cross_bloc", "velocidad", "actores", "dominio")
+             if k in _des}
+    chequeo("las 5 componentes llegan a la base", len(_cols) == 5, str(sorted(_cols)))
+    chequeo("y TODAS son numeros, no diccionarios",
+            all(isinstance(v, float) for v in _cols.values()),
+            str({k: type(v).__name__ for k, v in _cols.items()}))
+    chequeo("en el rango 0..1 que espera la columna",
+            all(0.0 <= v <= 1.0 for v in _cols.values()),
+            str({k: round(v, 3) for k, v in _cols.items()}))
+    chequeo("_num aguanta un numero suelto por si puntajes cambia", _num(0.5) == 0.5)
+    chequeo("_num devuelve None si no hay nada numerico", _num({"detalle": {}}) is None)
 
     print("--- descripcion de YouTube ---")
     g = {"fecha": "2026-09-11", "bloques": [

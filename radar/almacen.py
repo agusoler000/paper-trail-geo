@@ -478,10 +478,19 @@ class Almacen:
             c.execute(text('UPDATE event SET centroide=%s, last_updated=:lu WHERE id=:ev' % self.V),
                       {'vec': self._vp(nuevo), 'lu': self._t(ahora()), 'ev': evento_id})
 
+    _NUMERICAS_EV = ('importancia', 'video_score', 's_fuentes_indep', 's_cross_bloc',
+                     's_velocidad', 's_actores', 's_dominio')
+
     def actualizar_evento(self, evento_id, **campos):
         """Escribe los campos del EVENTO (solo los de CAMPOS_EV). Toca last_updated sola si no vino.
            Si viene `importancia`, deja ademas una fila en score_history: es de donde sale despues la
            diferencia entre un evento que crece (developing) y uno que se apago."""
+        for _k in self._NUMERICAS_EV:
+            if _k in campos and isinstance(campos[_k], dict):
+                raise TypeError(
+                    "actualizar_evento(%s=...) recibio un dict y la columna es numerica. "
+                    "El desglose de puntajes viene como {valor, peso, aporta, detalle}: "
+                    "guardá campos[%r]['valor'], no el dict entero." % (_k, _k))
         evento_id = int(evento_id)
         raras = [k for k in campos if k not in CAMPOS_EV]
         if raras:

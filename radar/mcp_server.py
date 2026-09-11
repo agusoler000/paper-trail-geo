@@ -20,6 +20,9 @@ from datetime import datetime, timedelta, timezone
 BASE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(BASE))
 
+from radar import entorno as _entorno       # noqa: E402
+_entorno.cargar()
+
 _ALMACEN = None
 
 

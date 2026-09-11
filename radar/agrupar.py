@@ -58,6 +58,14 @@ def agrupar(almacen, ventana=VENTANA_HORAS, limite=4000, consultar_llm=True, max
 
     # El IDF de entidades se calcula sobre el corpus reciente, no sobre el lote: es lo que hace que
     # "Belgorod" pese y "Russia" no. Con un lote chico, todo parece raro y el ancla miente.
+    # AVISO RUIDOSO. Con SQLite, vecinos() compara los vectores de a uno en Python: con 3.300
+    # articulos eso no falla, simplemente no termina. Paso de verdad el 2026-09-11 porque una
+    # corrida a mano no veia RADAR_DSN. Que se vea en el log en vez de quedarse colgado callado.
+    if not getattr(almacen, "pg", False) and len(pendientes) > 400:
+        print("AVISO: %d articulos por agrupar contra SQLite (sin indice vectorial). Esto va a "
+              "tardar MUCHISIMO. Falta RADAR_DSN: revisa el .env o corre "
+              "'python radar/entorno.py' para ver que hay cargado." % len(pendientes), flush=True)
+
     recientes = almacen.articulos(desde=desde, limite=CORPUS_IDF)
     idf = sem.IdfEntidades([a.get("title") or "" for a in recientes] +
                            [a.get("title") or "" for a in pendientes])

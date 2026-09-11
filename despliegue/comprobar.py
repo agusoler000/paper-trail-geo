@@ -44,15 +44,10 @@ def titulo(t):
 
 
 def cargar_env():
-    p = os.path.join(RAIZ, ".env")
-    if not os.path.exists(p):
-        return
-    with open(p, encoding="utf-8") as fh:
-        for ln in fh:
-            ln = ln.strip()
-            if ln and not ln.startswith("#") and "=" in ln:
-                k, v = ln.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+    """Delega en radar/entorno.py: un solo lugar que lee el .env, para que comprobar.py y
+    daily.py vean EXACTAMENTE lo mismo. Tenerlo por duplicado fue lo que escondio el bug del DSN."""
+    from radar import entorno
+    entorno.cargar()
 
 
 def main(rapido=False):
@@ -151,6 +146,12 @@ def main(rapido=False):
         n = len(al.fuentes(solo_activas=False))
         if n == 0:
             n = al.cargar_fuentes(os.path.join(RAIZ, "radar", "fuentes.json"))
+        if al.pg:
+            ok("motor de la base", "Postgres con pgvector (indice HNSW)")
+        else:
+            falla("motor de la base",
+                  "esta usando SQLite: agrupar 3.000 articulos NO va a terminar. "
+                  "Falta RADAR_DSN en .env")
         ok("base accesible", "%d fuentes cargadas" % n)
         activas = len([f for f in al.fuentes(solo_activas=True)])
         (ok if activas > 60 else aviso)("fuentes activas", "%d de %d" % (activas, n))

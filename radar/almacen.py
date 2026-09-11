@@ -199,13 +199,23 @@ CREATE INDEX IF NOT EXISTS run_log_idx ON run_log (etapa, id DESC);
 """
 
 
+def es_postgres(dsn):
+    """¿Este DSN apunta a Postgres? Separado de conectar() para poder probarlo sin el driver.
+
+    No es cosmetico: de esto depende que vecinos() use el indice HNSW de pgvector o se ponga a
+    comparar vectores de a uno en Python. Con 3.300 articulos, la diferencia es entre segundos y
+    no terminar nunca.
+    """
+    return bool(dsn) and str(dsn).startswith(('postgresql://', 'postgres://', 'postgresql+'))
+
+
 def conectar(dsn=None, dim=DIM):
     """dsn None -> SQLite en radar/_radar.db (test local). postgresql://... -> Postgres.
 
     Tambien acepta una ruta de archivo o un sqlite:/// para apuntar a otra base (lo usa el autotest,
     que no toca la base de desarrollo). `dim` es la dimension del vector: esquema.sql la trae en 384 y
     se reemplaza al vuelo si el vectorizador devuelve otra cosa."""
-    pg = bool(dsn) and dsn.startswith(('postgresql://', 'postgres://', 'postgresql+'))
+    pg = es_postgres(dsn)
     if pg:
         url = dsn.replace('postgres://', 'postgresql://', 1)
     elif dsn and dsn.startswith('sqlite'):

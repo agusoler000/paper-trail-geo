@@ -29,6 +29,11 @@ for p in (RAIZ, BASE, os.path.join(BASE, "presentador")):
     if p not in sys.path:
         sys.path.insert(0, p)
 
+# El .env se carga SIEMPRE, corra esto un timer de systemd o una persona desde el shell.
+# Sin esto, una corrida a mano no veia RADAR_DSN y caia a SQLite sin avisar (ver radar/entorno.py).
+from radar import entorno as _entorno        # noqa: E402
+_entorno.cargar()
+
 W, H, FPS = 1920, 1080, 24
 PUBLICA_UTC = "12:00"
 ETAPAS = ["recolectar", "guion", "voz", "alinear", "coreo", "render", "mezcla", "miniatura", "subir"]

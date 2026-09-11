@@ -91,18 +91,53 @@ print("   OK   modelo de embeddings en cache")
 PY
 
 # ---------------------------------------------------------------- 5. base
-azul "5/6  base de datos"
-CONT=$(docker ps --format '{{.Names}}' 2>/dev/null | grep -m1 '^supabase-db-' || true)
-if [ -n "$CONT" ]; then
-  ok "uso el Postgres de Supabase que ya corre: $CONT"
-  docker exec -i "$CONT" psql -U postgres <<'SQL' >/dev/null 2>&1 || true
-SELECT 'CREATE DATABASE radar' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname='radar')\gexec
-SQL
-  docker exec -i "$CONT" psql -U postgres -d radar -c 'CREATE EXTENSION IF NOT EXISTS vector;' >/dev/null
-  ok "base 'radar' con pgvector"
-  aviso "poné en $APP/.env:  RADAR_DSN=postgresql+psycopg://postgres:<clave>@127.0.0.1:5432/radar"
+azul "5/6  base de datos propia"
+# Contenedor APARTE, no dentro del Postgres de Supabase. Dos motivos:
+#  1. Aislamiento: si Coolify recrea Supabase, la base del Radar no se va con el.
+#  2. No compite por conexiones con lo que ya esta en produccion.
+# Se ata a 127.0.0.1: el VPS esta en internet y esta base NO tiene por que verse desde afuera.
+DB_NOMBRE="${DB_NOMBRE:-papertrail-db}"
+DB_BASE="${DB_BASE:-radar}"
+DB_USUARIO="${DB_USUARIO:-radar}"
+
+if ! command -v docker >/dev/null; then
+  aviso "no hay docker: la app va a usar SQLite. Anda, pero agrupar tarda ~4 veces mas."
+elif docker ps -a --format '{{.Names}}' | grep -qx "$DB_NOMBRE"; then
+  DB_PUERTO=$(docker port "$DB_NOMBRE" 5432/tcp 2>/dev/null | head -1 | sed 's/.*://')
+  docker start "$DB_NOMBRE" >/dev/null 2>&1 || true
+  ok "la base ya existia: $DB_NOMBRE en el puerto ${DB_PUERTO:-?}"
 else
-  aviso "no encontré el Postgres de Supabase. Sin RADAR_DSN la app usa SQLite (anda, pero mas lento)."
+  # Puerto libre, lejos del 5432 estandar para no chocar con nada.
+  DB_PUERTO=""
+  for p in 5442 5443 5444 5445 54329; do
+    if ! ss -ltn 2>/dev/null | grep -q ":$p " && ! docker ps --format '{{.Ports}}' | grep -q ":$p->"; then
+      DB_PUERTO=$p; break
+    fi
+  done
+  [ -n "$DB_PUERTO" ] || { malo "no encontre un puerto libre entre 5442 y 54329"; exit 1; }
+  DB_CLAVE=$(head -c 24 /dev/urandom | base64 | tr -d '/+=' | head -c 28)
+  docker run -d --name "$DB_NOMBRE" --restart unless-stopped     -e POSTGRES_PASSWORD="$DB_CLAVE" -e POSTGRES_USER="$DB_USUARIO" -e POSTGRES_DB="$DB_BASE"     -p 127.0.0.1:"$DB_PUERTO":5432     -v papertrail_db:/var/lib/postgresql/data     pgvector/pgvector:pg16 >/dev/null
+  ok "contenedor $DB_NOMBRE creado en 127.0.0.1:$DB_PUERTO (solo local)"
+
+  printf "   esperando a que la base levante"
+  for _ in $(seq 1 40); do
+    docker exec "$DB_NOMBRE" pg_isready -U "$DB_USUARIO" -q 2>/dev/null && break
+    printf "."; sleep 1
+  done
+  echo
+  docker exec "$DB_NOMBRE" psql -U "$DB_USUARIO" -d "$DB_BASE"     -c 'CREATE EXTENSION IF NOT EXISTS vector;' >/dev/null
+  ok "pgvector activo en la base '$DB_BASE'"
+
+  # Se escribe el DSN solo: una cosa menos que completar a mano y sin riesgo de erratas.
+  DSN="postgresql+psycopg://$DB_USUARIO:$DB_CLAVE@127.0.0.1:$DB_PUERTO/$DB_BASE"
+  [ -f "$APP/.env" ] || cp "$APP/despliegue/env.ejemplo" "$APP/.env"
+  if grep -q '^RADAR_DSN=' "$APP/.env"; then
+    sed -i "s#^RADAR_DSN=.*#RADAR_DSN=$DSN#" "$APP/.env"
+  else
+    echo "RADAR_DSN=$DSN" >> "$APP/.env"
+  fi
+  chown "$USUARIO":"$USUARIO" "$APP/.env"; chmod 600 "$APP/.env"
+  ok "RADAR_DSN escrito en $APP/.env (no hay que completarlo a mano)"
 fi
 
 # ---------------------------------------------------------------- 6. systemd
@@ -120,7 +155,10 @@ azul "listo"
 cat <<FIN
    Falta SOLO esto, y no es codigo:
 
-   1. Completar $APP/.env  (OPENCODE_API_KEY, ANTHROPIC_API_KEY, RADAR_DSN)
+   1. Poner tu clave de OpenCode en $APP/.env  (es la UNICA imprescindible):
+        nano $APP/.env
+      RADAR_DSN ya quedo escrito. ANTHROPIC_API_KEY es opcional: solo es la red
+      si OpenCode se agota, y la suscripcion de Claude Code NO sirve ahi.
    2. Autorizar YouTube una vez:
         cd $APP && .venv/bin/python videos/DAILY/subir.py --autorizar
    3. Comprobar que todo esta:

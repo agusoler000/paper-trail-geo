@@ -7,6 +7,9 @@ Sistema de producción del canal **Paper Trail** (geopolítica, en inglés). Dos
 2. **THE LEDGER** — un informativo diario de ~20 min que se produce y se publica solo, todos los días
    a las 12:00 UTC.
 
+> **¿Retomando en otra máquina o en otra sesión? Leé [`ESTADO.md`](ESTADO.md) primero.** Dice dónde
+> está todo, qué funciona, cuál es el próximo paso y qué trampas ya se encontraron.
+
 > Este repo es **sólo la estructura**: el código y lo necesario para levantar el sistema en otra
 > máquina. No hay videos, ni guiones, ni audio, ni bases, ni claves.
 

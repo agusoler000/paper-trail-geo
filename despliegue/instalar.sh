@@ -19,7 +19,7 @@ set -euo pipefail
 APP="${APP:-/opt/papertrail}"
 USUARIO="${SUDO_USER:-$(whoami)}"
 SWAP_GB="${SWAP_GB:-8}"
-REPO_ORIGEN="${REPO_ORIGEN:-}"
+REPO_ORIGEN="${REPO_ORIGEN:-https://github.com/agusoler000/paper-trail-geo.git}"
 
 azul()  { printf "\n\033[1;34m== %s\033[0m\n" "$*"; }
 ok()    { printf "   \033[0;32mOK\033[0m   %s\n" "$*"; }

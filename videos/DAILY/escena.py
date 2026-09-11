@@ -51,12 +51,13 @@ POSES = {
 # Reparto con una logica: A la mesa de las potencias, B los teatros donde estan pasando cosas,
 # C los numeros y el calendario. Definido en escaleta.py, espejado aca para no importar de mas.
 PRESENTADOR_DE_BLOQUE = {
-    "COLD OPEN": "A", "THE POWERS": "A",
+    "INTRO": "A", "COLD OPEN": "A", "OUTRO": "A", "THE POWERS": "A",
     "THE MIDDLE EAST": "B", "THE SOUTH": "B", "THE PACIFIC": "B",
     "THE MONEY": "C", "TECH & ENERGY": "C", "WHAT TO WATCH": "C",
 }
+# El presentador fijo tiene nombre: IROLA (Agustin, 2026-09-11). Abre y cierra todos los dias.
 ROTULO = {
-    "A": ("THE CORRESPONDENT", "washington · brussels · moscow desk"),
+    "A": ("IROLA", "the correspondent · washington · brussels · moscow"),
     "B": ("THE ANALYST", "jerusalem · buenos aires · sydney desk"),
     "C": ("THE ARCHIVIST", "money · energy · what to watch"),
 }

@@ -30,8 +30,73 @@ if _RAIZ not in sys.path:
 
 OBJETIVO_MIN = 20.0
 
-# Lo que no se mueve nunca.
-FIJOS = {"COLD OPEN": 0.75, "INTRO": 0.25, "OUTRO": 0.33}
+# EL PRESENTADOR FIJO (decision de Agustin, 2026-09-11). Abre y cierra todos los dias.
+IROLA = "A"
+NOMBRE_IROLA = "IROLA"
+
+# Lo que no se mueve nunca. El INTRO va PRIMERO: Agustin pidio que "todos los inicios de los
+# videos tienen que empezar con un mini intro de 5 segundos". Despues viene el gancho.
+FIJOS = {"INTRO": 0.132, "COLD OPEN": 0.75, "OUTRO": 0.08}
+
+# El saludo NOMBRA LA FECHA, asi que no puede ser un clip pregrabado: se sintetiza cada manana.
+# Con Piper eso cuesta cero, y tarda menos de un segundo.
+#
+# Dura 7,9 s y Agustin habia dicho "5 segundos". Va el texto COMPLETO igual, por su regla:
+# "si te digo algo que dura 5 segundos y termina durando 7, no pasa nada; no me tomes tan
+# literal. Si hago enfasis en que tiene que durar EXACTAMENTE ese tiempo, ahi si" (2026-09-11).
+# Medido con la voz de Irola (ryan-high): 20 caracteres por segundo.
+TEXTO_INTRO = ("Good morning, and welcome to the news of the day. It is {fecha}, "
+               "twenty twenty-six. Don't forget to subscribe and like the video.")
+TEXTO_OUTRO = ("Thank you. It has been a pleasure to be with you today. "
+               "Don't forget to subscribe and like the video.")
+
+_MES = ["January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"]
+_ORD = {1: "first", 2: "second", 3: "third", 21: "twenty-first", 22: "twenty-second",
+        23: "twenty-third", 31: "thirty-first"}
+
+
+def fecha_hablada(fecha_iso):
+    """'2026-09-11' -> 'Friday, September eleventh'. Se lee, no se deletrea."""
+    from datetime import date
+    d = date.fromisoformat(str(fecha_iso)[:10])
+    dia = _ORD.get(d.day)
+    if not dia:
+        base = ["", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
+                "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth",
+                "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"]
+        if d.day <= 20:
+            dia = base[d.day]
+        else:
+            dia = "twenty-" + base[d.day - 20]
+    return "%s, the %s of %s" % (d.strftime("%A"), dia, _MES[d.month - 1])
+
+
+def texto_intro(fecha_iso):
+    return TEXTO_INTRO.format(fecha=fecha_hablada(fecha_iso))
+
+
+def texto_outro():
+    return TEXTO_OUTRO
+
+
+def beats_fijos(fecha_iso):
+    """El bloque de apertura y el de cierre, ya escritos. No los redacta el LLM: son siempre iguales.
+
+    La ficha del intro es el sello del programa; la del outro, el calendario de manana.
+    """
+    return (
+        {"nombre": "INTRO", "presentador": IROLA, "beats": [
+            {"t": 0.0, "dur": FIJOS["INTRO"] * 60, "pose": "reposo", "ficha": "titular",
+             "texto": texto_intro(fecha_iso),
+             "datos": {"medio": "THE LEDGER", "fecha": str(fecha_iso),
+                       "titular": "THE LEDGER", "bajada": "Daily geopolitics"}}]},
+        {"nombre": "OUTRO", "presentador": IROLA, "beats": [
+            {"t": 0.0, "dur": FIJOS["OUTRO"] * 60, "pose": "reposo", "ficha": "titular",
+             "texto": texto_outro(),
+             "datos": {"medio": "THE LEDGER", "fecha": str(fecha_iso),
+                       "titular": "SAME TIME TOMORROW", "bajada": "12:00 UTC"}}]},
+    )
 
 # nombre: (minimo, maximo, presentador, topics que lo alimentan, paises que lo alimentan)
 # El reparto de presentadores sigue una logica: A la mesa de las potencias, B los teatros donde
@@ -61,13 +126,13 @@ BLOQUES = {
                      "KP", "FJ"}),
     "WHAT TO WATCH": (1.5, 2.5, "C", set(), set()),
 }
-ORDEN = ["COLD OPEN", "INTRO", "THE POWERS", "THE MIDDLE EAST", "THE MONEY", "TECH & ENERGY",
+ORDEN = ["INTRO", "COLD OPEN", "THE POWERS", "THE MIDDLE EAST", "THE MONEY", "TECH & ENERGY",
          "THE SOUTH", "THE PACIFIC", "WHAT TO WATCH", "OUTRO"]
 ORDEN_VARIABLE = [b for b in ORDEN if b in BLOQUES]
 
 TOPE_POR_EVENTO = 85      # un solo acontecimiento no puede pesar mas que esto
 PRESENTADOR = {b: v[2] for b, v in BLOQUES.items()}
-PRESENTADOR.update({"COLD OPEN": "A", "INTRO": None, "OUTRO": None})
+PRESENTADOR.update({"COLD OPEN": IROLA, "INTRO": IROLA, "OUTRO": IROLA})
 
 
 def bloque_de(evento):
@@ -215,8 +280,10 @@ def _autotest():
     caliente = [_ev(["IL", "IR"], ["military"], 92)] * 5 + [_ev(["US"], ["diplomacy"], 45)]
     a = repartir(calmo)["bloques"]["THE MIDDLE EAST"]["minutos"]
     b = repartir(caliente)["bloques"]["THE MIDDLE EAST"]["minutos"]
-    chequeo("un dia de guerra le da MUCHO mas aire a Oriente Medio", b > a * 2,
-            "tranquilo=%.2f min · guerra=%.2f min" % (a, b))
+    # Lo que importa no es un ratio arbitrario, sino que el dia de guerra llegue al tope y le
+    # gane al tranquilo por un margen que se NOTA en pantalla (mas de minuto y medio).
+    chequeo("un dia de guerra le da mucho mas aire a Oriente Medio", b - a >= 1.5 and b >= 5.5,
+            "tranquilo=%.2f min · guerra=%.2f min · diferencia=%.2f" % (a, b, b - a))
     p_a = repartir(calmo)["bloques"]["THE POWERS"]["minutos"]
     p_b = repartir(caliente)["bloques"]["THE POWERS"]["minutos"]
     chequeo("y se lo saca a las potencias", p_b < p_a, "%.2f -> %.2f" % (p_a, p_b))

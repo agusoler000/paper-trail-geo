@@ -94,12 +94,20 @@ def main(rapido=False):
             falla(mod, arreglo)
 
     titulo("claves")
-    for k, para in (("OPENCODE_API_KEY", "el guion y la extraccion"),
-                    ("ANTHROPIC_API_KEY", "la red cuando OpenCode se agota")):
-        if os.environ.get(k):
-            ok(k, "presente (%d chars)" % len(os.environ[k]))
-        else:
-            falla(k, "ponela en %s/.env — sin esto no hay %s" % (RAIZ, para))
+    # La UNICA imprescindible. Sin esta no hay guion ni extraccion, y no hay video.
+    if os.environ.get("OPENCODE_API_KEY"):
+        ok("OPENCODE_API_KEY", "presente (%d chars)" % len(os.environ["OPENCODE_API_KEY"]))
+    else:
+        falla("OPENCODE_API_KEY", "ponela en %s/.env — sin esta no hay video" % RAIZ)
+    # OPCIONAL: es solo la red de la cascada. Y OJO: la suscripcion de Claude Code NO es una
+    # clave de API — son productos distintos y la API se paga por token aparte. Sin esta clave
+    # el sistema funciona igual; si OpenCode se agota, la etapa falla y avisa el vigilante,
+    # que es mejor que gastar plata sin que nadie se entere.
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        ok("ANTHROPIC_API_KEY", "presente — la cascada tiene red")
+    else:
+        aviso("ANTHROPIC_API_KEY", "sin definir: OPCIONAL. Es la red si OpenCode se agota. "
+                                   "Sin ella el sistema anda igual, pero ese dia no hay video.")
     if os.environ.get("RADAR_DSN"):
         ok("RADAR_DSN", os.environ["RADAR_DSN"].split("@")[-1])
     else:

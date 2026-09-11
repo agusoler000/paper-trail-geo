@@ -145,23 +145,54 @@ Formato que emite el guion:
 `versus` es la ficha insignia: es la separación HECHO / AFIRMACIÓN hecha imagen, y es lo que distingue este
 formato de un repaso de titulares.
 
-## 4. Estructura del episodio (~20 min)
+## 4. Estructura del episodio — los minutos VARIAN
 
-| Bloque | Min | Contenido |
+> Decision de Agustin (2026-09-11): *"los tiempos... lo ideal seria que eso varie de acuerdo al dia"*
+> y *"faltaria un bloque importante que incluya a Medio Oriente"*. Las dos van. La escaleta la calcula
+> `videos/DAILY/escaleta.py`; el dibujo con dos dias de ejemplo, `estructura.py` -> `_estructura.jpg`.
+
+Ocho bloques. **THE MIDDLE EAST es propio**, no un rincon de THE POWERS: Israel, Iran, el Golfo y el
+Levante son su propio teatro y no se reparten parejo con el resto del mundo.
+
+| Bloque | Minimo | Maximo | Presentador | Que cubre |
+|---|---|---|---|---|
+| COLD OPEN | \- | fijo 0:45 | A | El hecho del dia + "stay to the end" |
+| INTRO | \- | fijo 0:15 | \- | Sello de papel, THE LEDGER, la fecha |
+| **THE POWERS** | 3:00 | 9:00 | A | EEUU · Europa · China · Rusia |
+| **THE MIDDLE EAST** | 1:30 | 6:00 | B | Israel · Iran · Golfo · Levante |
+| **THE MONEY** | 2:00 | 6:00 | C | Mercados, comercio, bancos centrales |
+| **TECH & ENERGY** | 1:00 | 4:00 | C | Chips, IA, tierras raras, ductos |
+| **THE SOUTH** | 1:30 | 5:00 | B | Latinoamerica, Argentina primero |
+| **THE PACIFIC** | 1:00 | 4:00 | B | Australia, NZ, Indo-Pacifico, Taiwan |
+| **WHAT TO WATCH** | 1:30 | 2:30 | C | El calendario de lo que viene |
+| OUTRO | \- | fijo 0:20 | \- | Like, suscripcion, el video de manana |
+
+### Como se reparten los minutos
+
+1. **Lo fijo primero** (cold open, intro, outro): 1:20 que no se mueven.
+2. **Cada bloque se lleva su MINIMO.** Asi ninguno desaparece: Latinoamerica conserva su minuto y
+   medio aunque no haya pasado nada, porque la audiencia que viene por eso vuelve manana.
+3. **Lo que sobra se reparte segun el peso del dia**: la suma de importancia de los acontecimientos
+   de cada bloque, con tope por acontecimiento para que uno solo no se lleve el programa.
+4. **Se recorta contra el maximo** y lo que rebalsa vuelve a repartirse.
+
+Medido con los dos dias de ejemplo de `estructura.py`:
+
+| | dia tranquilo | dia de guerra |
 |---|---|---|
-| Cold open | 0:45 | El hecho del día + "stay to the end" |
-| Intro | 0:14 | Propia del formato, no la del canal |
-| **THE POWERS** | 7:00 | EEUU · Europa · China · Rusia — política y seguridad |
-| **THE MONEY** | 4:00 | Economía, mercados, energía, comercio |
-| **TECH & ENERGY** | 2:30 | Chips, IA, tierras raras, ductos |
-| **THE SOUTH** | 3:00 | Latinoamérica, Argentina primero |
-| **THE PACIFIC** | 2:00 | Australia, NZ, Indo-Pacífico |
-| **WHAT TO WATCH** | 2:00 | El calendario de lo que viene |
-| Outro | 0:20 | Propia del formato |
+| THE POWERS | 5:35 | **3:37** |
+| THE MIDDLE EAST | 1:58 | **5:14** |
+| THE SOUTH | 2:20 | 1:30 (su minimo) |
+| **total** | 20:00 | 20:00 |
 
-**WHAT TO WATCH es la firma.** Un repaso de noticias lo hace cualquiera; un calendario de lo que viene
-(elecciones, cumbres, vencimientos, reuniones de bancos centrales, fallos) es lo que hace que alguien
-vuelva mañana. Y se arma solo: sale de fuentes con fecha futura, no de predicción.
+### El reparto de presentadores tiene una logica
+
+**A la mesa de las potencias, B los teatros donde estan pasando cosas, C los numeros y el calendario.**
+Por eso Oriente Medio va con B junto a Latinoamerica y el Pacifico: son los frentes, no la mesa.
+Ningun presentador se lleva mas de la mitad del programa.
+
+**WHAT TO WATCH cierra siempre y no depende del peso del dia.** Un repaso de noticias lo hace
+cualquiera; el calendario de lo que viene es lo que hace volver manana.
 
 ## 5. La cadena diaria
 

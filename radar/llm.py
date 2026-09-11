@@ -124,6 +124,25 @@ SIN_RED_CLAUDE = {"masivas"}
 
 CLAVE = {"opencode": "OPENCODE_API_KEY", "claude": "ANTHROPIC_API_KEY"}
 
+# CORTACIRCUITO. Un proveedor sin cuota la va a seguir sin tener durante toda la corrida. Sin esto,
+# las 130 llamadas del dia golpean 130 veces al que ya devolvio 429, con su espera creciente cada
+# vez: el batch de 30 minutos se convierte en horas. La primera vez que un proveedor dice "no hay
+# cuota", queda anotado y las llamadas siguientes lo saltean directo.
+# Solo cuenta la cuota (429 / 402 / credencial rechazada), NO un 5xx pasajero ni un JSON invalido.
+_AGOTADOS = {}
+CORTES_PARA_AGOTAR = 2
+
+
+def reiniciar_cascada():
+    """Olvida que proveedores estaban agotados. El dia siguiente arranca limpio."""
+    _AGOTADOS.clear()
+
+
+def _es_de_cuota(motivo):
+    m = str(motivo).lower()
+    return ("429" in m or "402" in m or "cuota" in m or "credencial rechazada" in m
+            or "rate" in m or "quota" in m)
+
 
 def clave_de(proveedor):
     """Que variable de entorno necesita cada proveedor. None = ninguna (el modelo local)."""
@@ -480,6 +499,9 @@ def llm(tarea, prompt, esquema=None, sistema=None, max_reintentos=2, timeout=TIM
         if proveedor == "claude" and tarea in SIN_RED_CLAUDE:
             caidas.append((etiqueta, "saltado: '%s' no escala a Claude a proposito" % tarea))
             continue
+        if _AGOTADOS.get(proveedor, 0) >= CORTES_PARA_AGOTAR:
+            caidas.append((etiqueta, "saltado: %s ya se quedo sin cuota en esta corrida" % proveedor))
+            continue
         error_previo = None
         for reintento in range(max_reintentos + 1):
             intentos += 1
@@ -490,6 +512,8 @@ def llm(tarea, prompt, esquema=None, sistema=None, max_reintentos=2, timeout=TIM
                 salida = _pedir(proveedor, modelo, sistema, texto_prompt, esquema, timeout)
             except _Bajar as e:
                 caidas.append((etiqueta, str(e)))
+                if _es_de_cuota(e):
+                    _AGOTADOS[proveedor] = _AGOTADOS.get(proveedor, 0) + 1
                 break                      # transporte o cuota: no se reintenta, se baja de modelo
             if esquema is None:
                 _anotar(etiqueta, tarea, intentos, caidas, t0, True)
@@ -639,6 +663,7 @@ def _autotest():
         # (a) los tres formatos: cada modelo arma SU request
         t = _Transporte({"gpt-5.6-luna": [(200, "texto del guion")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         salida = llm("guion", "escribi el cold open", sistema="sos el editor")
         p = t.ultimo("gpt-5.6-luna")
         _ok(salida == "texto del guion" and p["url"] == BASE_OPENCODE + "/responses"
@@ -648,6 +673,7 @@ def _autotest():
 
         t = _Transporte({"glm-5.3-flash": [(200, "clasificado")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         llm("masivas", "clasifica esto", sistema="sos el extractor")
         p = t.ultimo("glm-5.3-flash")
         msgs = p["cuerpo"].get("messages") or []
@@ -658,6 +684,7 @@ def _autotest():
 
         t = _Transporte({"qwen3.8-flash": [(200, "en bloques")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         RUTAS["_prueba"] = [("opencode", "qwen3.8-flash")]
         try:
             llm("_prueba", "hola", sistema="sistema aparte")
@@ -674,6 +701,7 @@ def _autotest():
         t = _Transporte({"glm-5.3-flash": [(429, {"error": {"message": "rate limit"}})],
                          "deepseek-v4-flash": [(200, "lo hizo el segundo")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         salida = llm("masivas", "clasifica esto")
         _ok(salida == "lo hizo el segundo" and ultimo_modelo() == "opencode/deepseek-v4-flash"
             and t.cuantos("glm-5.3-flash") == 1,
@@ -681,6 +709,7 @@ def _autotest():
 
         t = _Transporte({"kimi-k3": [(503, {"error": "boom"})], "glm-5.3": [(200, "segundo ok")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         llm("analisis", "narrativas")
         _ok(ultimo_modelo() == "opencode/glm-5.3", "un 5xx tambien baja de modelo")
 
@@ -689,6 +718,7 @@ def _autotest():
         t = _Transporte({"kimi-k3": [(200, "esto no es json, perdon")],
                          "glm-5.3": [(200, BUEN_JSON)]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         dato = llm("analisis", "extrae el statement", esquema=ESQUEMA_PRUEBA, max_reintentos=2)
         pedidos_kimi = [x for x in t.pedidos if x["modelo"] == "kimi-k3"]
         primer_prompt = pedidos_kimi[0]["cuerpo"]["messages"][-1]["content"]
@@ -707,12 +737,14 @@ def _autotest():
         t = _Transporte({"kimi-k3": [(200, '{"tipo": "rumor", "texto": "x"}')],
                          "glm-5.3": [(200, BUEN_JSON)]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         llm("analisis", "extrae", esquema=ESQUEMA_PRUEBA, max_reintentos=1)
         _ok(t.cuantos("kimi-k3") == 2 and ultimo_modelo() == "opencode/glm-5.3",
             "JSON bien formado pero que viola el esquema tambien reintenta y baja")
 
         t = _Transporte({"kimi-k3": [(200, "prosa " + BUEN_JSON + " gracias")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         _ok(llm("analisis", "extrae", esquema=ESQUEMA_PRUEBA) == json.loads(BUEN_JSON),
             "el JSON se rescata aunque venga con texto alrededor")
 
@@ -721,6 +753,7 @@ def _autotest():
         t = _Transporte({"glm-5.3-flash": [(429, {"error": "sin cuota"})],
                          "deepseek-v4-flash": [(429, {"error": "sin cuota"})]})
         _parchar(_post=t.post, _llamar_claude=claude)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         try:
             llm("masivas", "clasifica esto")
             _ok(False, "con los dos Flash agotados deberia levantar CuotaAgotada")
@@ -748,6 +781,7 @@ def _autotest():
         claude = _ClaudeFalso("lo escribio claude")
         t = _Transporte({"kimi-k3": [(429, {"error": "x"})], "glm-5.3": [(429, {"error": "x"})]})
         _parchar(_post=t.post, _llamar_claude=claude)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         salida = llm("analisis", "narrativas")
         _ok(salida == "lo escribio claude" and claude.n == 1
             and ultimo_modelo() == "claude/" + MODELO_CLAUDE,
@@ -756,6 +790,7 @@ def _autotest():
         # (e) ultimo_modelo()/ultimo_detalle() reportan bien, tambien cuando falla todo
         t = _Transporte({"grok-4.6": [(200, "investigado")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         llm("investigacion", "cubri el hueco asiatico")
         d = ultimo_detalle()
         _ok(ultimo_modelo() == "opencode/grok-4.6" and d["tarea"] == "investigacion"
@@ -764,6 +799,7 @@ def _autotest():
         claude = _ClaudeFalso(explota="429 tope de Claude")
         t = _Transporte({"grok-4.6": [(429, {"error": "x"})]})
         _parchar(_post=t.post, _llamar_claude=claude)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         try:
             llm("investigacion", "x")
         except CuotaAgotada:
@@ -780,6 +816,7 @@ def _autotest():
         # (f) prosa DESPUES del JSON: el caso que mas repiten los modelos al cerrar
         t = _Transporte({"kimi-k3": [(200, BUEN_JSON + " Espero que te sirva.")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         _ok(llm("analisis", "extrae", esquema=ESQUEMA_PRUEBA) == json.loads(BUEN_JSON)
             and t.cuantos("kimi-k3") == 1,
             "una cortesia DESPUES del JSON no cuesta ni un reintento ni una bajada de modelo")
@@ -787,6 +824,7 @@ def _autotest():
         # (g) un esquema mal escrito se corta antes de gastar un solo request
         t = _Transporte({"kimi-k3": [(200, BUEN_JSON)]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         try:
             llm("analisis", "extrae", esquema={"type": "objetc"})
             _ok(False, "un esquema mal escrito deberia levantar ValueError")
@@ -801,6 +839,7 @@ def _autotest():
         t = _Transporte({"kimi-k3": [(200, {"choices": [{"message": {"content": "   "}}]})],
                          "glm-5.3": [(200, "el segundo si contesto")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         _ok(llm("analisis", "x") == "el segundo si contesto"
             and ultimo_modelo() == "opencode/glm-5.3",
             "una respuesta vacia baja de modelo (no se devuelve el vacio como si fuera salida)")
@@ -808,6 +847,7 @@ def _autotest():
         # (i) trazabilidad sin restos: un error temprano no puede dejar el modelo de la anterior
         t = _Transporte({"kimi-k3": [(200, "sirvio")]})
         _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         llm("analisis", "x")
         _ok(ultimo_modelo() == "opencode/kimi-k3", "ultimo_modelo() tiene el de la llamada buena")
         try:
@@ -852,6 +892,7 @@ def _autotest():
                 ("groq", "llama-3.3-70b-versatile", "GROQ_API_KEY")):
             t = _TFalso()
             _prev2 = _parchar(_post=t.post)
+            reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
             os.environ[clave_env] = "clave-de-prueba"
             try:
                 txt = _pedir(prov, modelo, "sos util", "hola", None, 10)
@@ -868,6 +909,7 @@ def _autotest():
 
         # sin clave, el proveedor se SALTEA y la cascada sigue; no explota
         _prev2 = _parchar(_post=_TFalso().post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         try:
             os.environ.pop("OPENROUTER_API_KEY", None)
             try:
@@ -882,6 +924,7 @@ def _autotest():
         # el proveedor local no pide clave: tiene que poder llamarse sin ninguna variable
         t = _TFalso()
         _prev2 = _parchar(_post=t.post)
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
         try:
             _pedir("local", "qwen2.5:3b", "s", "p", None, 10)
             _ok("Authorization" not in t.visto[0][1], "el proveedor 'local' no exige credencial")
@@ -891,6 +934,36 @@ def _autotest():
         _ok(all(v["formato"] in ADAPTADORES for v in PROVEEDORES.values()),
             "todo proveedor de la tabla declara un formato que existe")
         print()
+
+        # ---- cortacircuito: un proveedor sin cuota no se vuelve a golpear ----
+        print()
+        print("-- cortacircuito de cuota (va ultimo: ensucia el estado a proposito) --")
+        reiniciar_cascada()
+        golpes = {"n": 0}
+
+        def _siempre_429(url, cabeceras, cuerpo, timeout):
+            golpes["n"] += 1
+            return 429, {"error": "sin cuota"}
+
+        _prev3 = _parchar(_post=_siempre_429, _llamar_claude=_ClaudeFalso(explota="sin red"))
+        reiniciar_cascada()   # escenario nuevo: el cortacircuito no se arrastra
+        try:
+            for _ in range(6):
+                try:
+                    llm("masivas", "clasifica")
+                except CuotaAgotada:
+                    pass
+            # Sin cortacircuito serian 6 corridas x 2 modelos de opencode = 12 golpes.
+            _ok(golpes["n"] <= 4,
+                "tras 2 caidas por cuota, deja de golpear al proveedor agotado (%d pedidos en 6 llamadas)"
+                % golpes["n"])
+            _ok(any("ya se quedo sin cuota" in str(c) for c in ultimo_detalle()["caidas"]),
+                "y lo dice en las caidas, para que se vea en run_log")
+            reiniciar_cascada()
+            _ok(not _AGOTADOS, "reiniciar_cascada() lo olvida: el dia siguiente arranca limpio")
+        finally:
+            globals().update(_prev3)
+            reiniciar_cascada()
 
         print("SALTEA: llamada real a OpenCode y a Claude (gasta plata y pide claves); "
               "se probaron los tres armados de request contra un transporte falso")

@@ -815,6 +815,64 @@ por la red de emergencia.
 El otro beneficio de la función única: si algún día conviene salir de la suscripción, DeepSeek, GLM y Kimi
 tienen APIs directas y baratas. Cambiarlo es una línea, no una refactorización.
 
+## 11ter. Qué hay gratis de verdad (investigado 2026-09-11)
+
+> Agustín se quedó sin cuota semanal de OpenCode y al límite de su suscripción de Claude, y preguntó
+> por OpenRouter. Investigado contra la documentación oficial de cada proveedor.
+
+### El ganador no es OpenRouter
+
+| Proveedor | ¿Gratis permanente? | Alcanza para las 100 masivas | Alcanza para el guion |
+|---|---|---|---|
+| **Mistral La Plateforme** | **sí — USD 10/mes de crédito recurrente, sin tarjeta** | sí | **sí, y es el único con buen escritor** |
+| **Google Gemini (AI Studio)** | sí | sí, con muchísimo margen | sí, pero sólo Flash (los Pro salieron del gratuito en abril) |
+| Groq | sí | **no**: el tope es 200.000 tokens/día por modelo y la etapa masiva pide 250.000 | no |
+| OpenRouter | sí | **no**: 50 requests/día, y la etapa masiva son 100 | entra (1 llamada), pero ningún modelo `:free` escribe bien |
+| Cerebras | **no** — mataron el tier gratuito el 17-ago-2026 | — | — |
+| SambaNova | sí, pero 20 req/**día** | no | no |
+| GitHub Models | **muerto**, retirado el 30-jul-2026 | — | — |
+| Together · Fireworks · DeepSeek · Hyperbolic · Alibaba · Scaleway | no: sólo crédito de prueba | — | — |
+
+**Mistral gana por una razón sencilla:** el plan Free da **USD 10 por mes de crédito de API,
+recurrentes y sin tarjeta**, y la carga completa cuesta **~USD 5,27/mes** (masivas y análisis en
+Small 4, el guion en Medium 3.5). Es el único que cubre las dos etapas incluyendo un escritor
+decente sin poner plata.
+
+### Dos trampas de OpenRouter que conviene saber
+
+1. **Son 50 requests por día, no 200.** Los blogs que dicen 200 están desactualizados; la
+   documentación oficial dice 50. Sube a 1.000/día si alguna vez compraste USD 10 en créditos —
+   compra **acumulada histórica**, no saldo: se compra una vez y el escalón queda para siempre.
+2. **Sólo 5 de sus 19 modelos gratuitos soportan salida estructurada**, y un modelo que no la
+   soporta **no degrada: la llamada falla**. Por eso las peticiones a OpenRouter van con
+   `provider: {require_parameters: true}` (ya implementado en `EXTRA_CUERPO`), o el router te manda
+   a un endpoint incapaz y el pipeline aborta de forma intermitente.
+
+### La privacidad decide el orden de la cascada
+
+**El tier gratis de Gemini y el free mode de Mistral entrenan con lo que les mandás.** Los términos
+de Google son explícitos: *"human reviewers may read, annotate, and process your API input and
+output"*. Mistral deja desactivarlo a mano (Admin Console → Privacy); el tier gratuito de Google no.
+
+Esto importa porque **la etapa `guion` es la única que manda `ESTILO.md` e `IDEOLOGIA.md`** — tu
+postura política y tus reglas editoriales. Las otras etapas sólo mandan titulares que ya son
+públicos. Por eso:
+
+```
+guion     OpenCode → Mistral Medium → Gemini Flash → Claude
+masivas   OpenCode ×2 → Gemini Flash → Mistral Small → OpenRouter    (sin red a Claude)
+analisis  OpenCode ×2 → Gemini Flash → Mistral Small → Claude
+```
+
+Mistral va antes que Gemini en `guion` a propósito. **Antes de la primera llamada a Mistral hay que
+hacer el opt-out de entrenamiento.**
+
+### Cómo se agrega un proveedor
+
+`radar/llm.py` tiene una tabla `PROVEEDORES`: agregar uno es **una fila**, no código. Los siete
+compatibles con OpenAI ya están precargados y probados. Y si falta la clave de uno, **la cascada lo
+saltea y sigue** — se pueden tener tres configurados y usar el que tenga cuota ese día.
+
 ## 12. Legal y técnico
 
 **Lo que sí se puede, sin dudas:**

@@ -49,11 +49,62 @@ import jsonschema
 
 BASE_OPENCODE = "https://opencode.ai/zen/go/v1"
 
+# Cualquier proveedor compatible con OpenAI entra como UNA FILA de esta tabla. No hace falta
+# tocar codigo: el adaptador "chat" ya sabe hablar ese dialecto.
+# `clave_env` es la variable de entorno donde vive la credencial; si falta, ese proveedor se
+# saltea y la cascada sigue al siguiente. Asi se puede tener tres configurados y usar el que haya.
+PROVEEDORES = {
+    "openrouter": {"base": "https://openrouter.ai/api/v1", "clave_env": "OPENROUTER_API_KEY",
+                   "formato": "chat",
+                   "cabeceras": {"HTTP-Referer": "https://github.com/agusoler000/paper-trail-geo",
+                                 "X-Title": "Paper Trail"}},
+    "gemini":     {"base": "https://generativelanguage.googleapis.com/v1beta/openai",
+                   "clave_env": "GEMINI_API_KEY", "formato": "chat", "cabeceras": {}},
+    "groq":       {"base": "https://api.groq.com/openai/v1", "clave_env": "GROQ_API_KEY",
+                   "formato": "chat", "cabeceras": {}},
+    "cerebras":   {"base": "https://api.cerebras.ai/v1", "clave_env": "CEREBRAS_API_KEY",
+                   "formato": "chat", "cabeceras": {}},
+    "together":   {"base": "https://api.together.xyz/v1", "clave_env": "TOGETHER_API_KEY",
+                   "formato": "chat", "cabeceras": {}},
+    "mistral":    {"base": "https://api.mistral.ai/v1", "clave_env": "MISTRAL_API_KEY",
+                   "formato": "chat", "cabeceras": {}},
+    "local":      {"base": os.environ.get("LOCAL_BASE_URL", "http://127.0.0.1:11434/v1"),
+                   "clave_env": None, "formato": "chat", "cabeceras": {}},
+}
+
 RUTAS = {
-    "masivas":       [("opencode", "glm-5.3-flash"), ("opencode", "deepseek-v4-flash")],  # SIN red a Claude
-    "analisis":      [("opencode", "kimi-k3"), ("opencode", "glm-5.3"), ("claude", None)],
-    "guion":         [("opencode", "gpt-5.6-luna"), ("opencode", "kimi-k3"), ("claude", None)],
-    "investigacion": [("opencode", "grok-4.6"), ("claude", None)],
+    # Investigado y verificado el 2026-09-11 (RADAR.md 11ter). El orden NO es por calidad: es por
+    # que se agota primero. OpenCode va primero porque ya esta pago; despues lo gratis de verdad.
+    #
+    # PRIVACIDAD, que decide el orden de "guion": tanto el tier gratis de Gemini como el free mode
+    # de Mistral ENTRENAN con lo que les mandas. Mistral deja desactivarlo (Admin Console >
+    # Privacy); el tier gratis de Google NO, y sus terminos dicen que revisores humanos pueden leer
+    # la entrada y la salida. La etapa "guion" es la unica que manda ESTILO.md e IDEOLOGIA.md, asi
+    # que ahi va Mistral primero. Las otras etapas solo mandan titulares publicos: da igual.
+    "masivas":       [("opencode", "glm-5.3-flash"),
+                      ("opencode", "deepseek-v4-flash"),
+                      ("gemini", "gemini-3.8-flash"),
+                      ("mistral", "mistral-small-2603"),
+                      ("openrouter", "nex-agi/nex-n2.5-mini:free")],          # SIN red a Claude
+    "analisis":      [("opencode", "kimi-k3"),
+                      ("opencode", "glm-5.3"),
+                      ("gemini", "gemini-3.8-flash"),
+                      ("mistral", "mistral-small-2603"),
+                      ("claude", None)],
+    "guion":         [("opencode", "gpt-5.6-luna"),
+                      ("opencode", "kimi-k3"),
+                      ("mistral", "mistral-medium"),
+                      ("gemini", "gemini-3.8-flash"),
+                      ("claude", None)],
+    "investigacion": [("opencode", "grok-4.6"),
+                      ("gemini", "gemini-3.8-flash"),
+                      ("claude", None)],
+}
+
+# OpenRouter necesita esto o el router te manda a un endpoint que no soporta el esquema y la
+# llamada FALLA (no degrada). Solo 5 de sus 19 modelos gratis soportan structured_outputs.
+EXTRA_CUERPO = {
+    "openrouter": {"provider": {"require_parameters": True}},
 }
 
 FORMATO = {  # tres formas de API distintas, verificado en opencode.ai/docs/go
@@ -61,12 +112,24 @@ FORMATO = {  # tres formas de API distintas, verificado en opencode.ai/docs/go
     "glm-5.3-flash": "chat", "glm-5.3": "chat", "kimi-k3": "chat",
     "deepseek-v4-flash": "chat", "deepseek-v4-pro": "chat",
     "qwen3.8-flash": "messages", "minimax-m2": "messages",
+    # proveedores compatibles con OpenAI: todos hablan "chat"
+    "gemini-3.8-flash": "chat", "gemini-3.5-flash": "chat", "gemini-3.5-flash-lite": "chat",
+    "mistral-small-2603": "chat", "mistral-medium": "chat", "mistral-large-2425-12": "chat",
+    "nex-agi/nex-n2.5-mini:free": "chat", "nex-agi/nex-n2.5-pro:free": "chat",
+    "nvidia/nemotron-3-super-120b-a12b:free": "chat",
 }
 
 # Tareas que NUNCA escalan a Claude, pase lo que pase con RUTAS (ver docstring).
 SIN_RED_CLAUDE = {"masivas"}
 
 CLAVE = {"opencode": "OPENCODE_API_KEY", "claude": "ANTHROPIC_API_KEY"}
+
+
+def clave_de(proveedor):
+    """Que variable de entorno necesita cada proveedor. None = ninguna (el modelo local)."""
+    if proveedor in CLAVE:
+        return CLAVE[proveedor]
+    return (PROVEEDORES.get(proveedor) or {}).get("clave_env")
 
 MODELO_CLAUDE = "claude-opus-5"   # el fallback del VPS; ('claude', None) en RUTAS usa este
 MAX_TOKENS = 16000
@@ -248,11 +311,45 @@ def _clasificar_anthropic(e):
     return "%s: %s" % (nombre, _corto(e))
 
 
+def _pedir_compatible(proveedor, modelo, sistema, prompt, esquema, timeout):
+    """Cualquier proveedor de PROVEEDORES. Todos hablan el dialecto de OpenAI."""
+    cfg = PROVEEDORES[proveedor]
+    ad = ADAPTADORES[cfg["formato"]]
+    cabeceras = {"Content-Type": "application/json"}
+    cabeceras.update(ad["cabeceras"])
+    cabeceras.update(cfg.get("cabeceras") or {})
+    if cfg["clave_env"]:
+        clave = os.environ.get(cfg["clave_env"], "").strip()
+        if not clave:
+            # No es un error: es "este proveedor no esta configurado". La cascada sigue.
+            raise _Bajar("falta %s" % cfg["clave_env"])
+        cabeceras["Authorization"] = "Bearer " + clave
+    cuerpo = ad["armar"](modelo, sistema, prompt, esquema)
+    cuerpo.update(EXTRA_CUERPO.get(proveedor, {}))
+    estado, datos = _post(cfg["base"] + ad["ruta"], cabeceras, cuerpo, timeout)
+    if estado == 429:
+        raise _Bajar("429 tope de cuota o de ritmo")
+    if estado in (401, 403):
+        raise _Bajar("%d credencial rechazada" % estado)
+    if estado == 402:
+        raise _Bajar("402 cuota agotada")
+    if estado >= 500:
+        raise _Bajar("%d error del proveedor" % estado)
+    if estado >= 400:
+        raise _Bajar("%d %s" % (estado, _mensaje_error(datos)))
+    texto = ad["leer"](datos) or ""
+    if not texto.strip():
+        raise _Bajar("respuesta vacia")
+    return texto
+
+
 def _pedir(proveedor, modelo, sistema, prompt, esquema, timeout):
     if proveedor == "claude":
         return _llamar_claude(sistema, prompt, timeout)
     if proveedor == "opencode":
         return _pedir_opencode(modelo, sistema, prompt, esquema, timeout)
+    if proveedor in PROVEEDORES:
+        return _pedir_compatible(proveedor, modelo, sistema, prompt, esquema, timeout)
     raise _Bajar("proveedor desconocido: %r" % (proveedor,))
 
 
@@ -368,9 +465,12 @@ def llm(tarea, prompt, esquema=None, sistema=None, max_reintentos=2, timeout=TIM
             jsonschema.validators.validator_for(esquema).check_schema(esquema)
         except jsonschema.SchemaError as e:
             raise ValueError("esquema mal escrito, ninguna respuesta lo iba a cumplir: %s" % _corto(e))
-    utiles = [p for p, _m in ruta if os.environ.get(CLAVE[p], "").strip()]
+    # Un proveedor sin clave no es un error: es "no esta configurado", y la cascada lo saltea.
+    # Asi se pueden tener tres puestos y usar el que tenga cuota ese dia, sin tocar codigo.
+    utiles = [p for p, _m in ruta
+              if clave_de(p) is None or os.environ.get(clave_de(p), "").strip()]
     if not utiles:
-        faltan = sorted({CLAVE[p] for p, _m in ruta})
+        faltan = sorted({clave_de(p) for p, _m in ruta if clave_de(p)})
         raise FaltaClave("tarea '%s': no hay ninguna clave en el entorno (falta %s)"
                          % (tarea, " y ".join(faltan)))
 
@@ -668,9 +768,14 @@ def _autotest():
             llm("investigacion", "x")
         except CuotaAgotada:
             pass
+        # Contra el largo REAL de la ruta, no contra un numero fijo: agregar un proveedor a la
+        # cascada no tiene por que romper este test.
         _ok(ultimo_modelo() == "" and ultimo_detalle()["ok"] is False
-            and len(ultimo_detalle()["caidas"]) == 2,
-            "si fracasa la cascada entera, ultimo_modelo() queda vacio y las caidas quedan anotadas")
+            and len(ultimo_detalle()["caidas"]) == len(RUTAS["investigacion"]),
+            "si fracasa la cascada entera, ultimo_modelo() queda vacio y quedan anotadas las %d caidas"
+            % len(RUTAS["investigacion"]))
+        _ok(any("GEMINI_API_KEY" in str(c) for c in ultimo_detalle()["caidas"]),
+            "un proveedor sin clave figura en las caidas diciendo que le falta, no en silencio")
 
         # (f) prosa DESPUES del JSON: el caso que mas repiten los modelos al cerrar
         t = _Transporte({"kimi-k3": [(200, BUEN_JSON + " Espero que te sirva.")]})
@@ -726,6 +831,66 @@ def _autotest():
         faltan = sorted({m for r in RUTAS.values() for p, m in r if p == "opencode"} - set(FORMATO))
         _ok(not faltan, "todos los modelos de RUTAS tienen formato en FORMATO (faltan: %s)" % faltan)
         _ok(set(FORMATO.values()) <= set(ADAPTADORES), "todo formato de FORMATO tiene adaptador")
+
+        # ---- proveedores compatibles con OpenAI (la tabla PROVEEDORES) ----
+        print()
+        print("-- proveedores compatibles: openrouter, gemini, groq, cerebras, local --")
+
+        class _TFalso:
+            """Transporte falso: anota a que URL y con que cabeceras se pidio."""
+
+            def __init__(self):
+                self.visto = []
+
+            def post(self, url, cabeceras, cuerpo, timeout):
+                self.visto.append((url, dict(cabeceras), cuerpo))
+                return 200, {"choices": [{"message": {"content": '{"ok": true}'}}]}
+
+        for prov, modelo, clave_env in (
+                ("openrouter", "meta-llama/llama-3.3-70b-instruct:free", "OPENROUTER_API_KEY"),
+                ("gemini", "gemini-2.5-flash", "GEMINI_API_KEY"),
+                ("groq", "llama-3.3-70b-versatile", "GROQ_API_KEY")):
+            t = _TFalso()
+            _prev2 = _parchar(_post=t.post)
+            os.environ[clave_env] = "clave-de-prueba"
+            try:
+                txt = _pedir(prov, modelo, "sos util", "hola", None, 10)
+                url, cab, cuerpo = t.visto[0]
+                _ok(url.startswith(PROVEEDORES[prov]["base"]),
+                    "%s pega a su propia base" % prov)
+                _ok(cab.get("Authorization") == "Bearer clave-de-prueba",
+                    "%s manda la credencial de %s" % (prov, clave_env))
+                _ok(cuerpo.get("model") == modelo, "%s manda el modelo pedido" % prov)
+                _ok("{" in txt, "%s devuelve el texto del modelo" % prov)
+            finally:
+                globals().update(_prev2)
+                os.environ.pop(clave_env, None)
+
+        # sin clave, el proveedor se SALTEA y la cascada sigue; no explota
+        _prev2 = _parchar(_post=_TFalso().post)
+        try:
+            os.environ.pop("OPENROUTER_API_KEY", None)
+            try:
+                _pedir("openrouter", "x:free", "s", "p", None, 10)
+                _ok(False, "sin clave, el proveedor se saltea en vez de explotar")
+            except _Bajar as e:
+                _ok("OPENROUTER_API_KEY" in str(e),
+                    "sin clave configurada, se saltea y la cascada sigue")
+        finally:
+            globals().update(_prev2)
+
+        # el proveedor local no pide clave: tiene que poder llamarse sin ninguna variable
+        t = _TFalso()
+        _prev2 = _parchar(_post=t.post)
+        try:
+            _pedir("local", "qwen2.5:3b", "s", "p", None, 10)
+            _ok("Authorization" not in t.visto[0][1], "el proveedor 'local' no exige credencial")
+        finally:
+            globals().update(_prev2)
+
+        _ok(all(v["formato"] in ADAPTADORES for v in PROVEEDORES.values()),
+            "todo proveedor de la tabla declara un formato que existe")
+        print()
 
         print("SALTEA: llamada real a OpenCode y a Claude (gasta plata y pide claves); "
               "se probaron los tres armados de request contra un transporte falso")

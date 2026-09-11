@@ -1,0 +1,4649 @@
+{
+ "generado": "2026-09-11",
+ "creditos_acumulados": 55,
+ "familias": {
+  "rigs": {
+   "que_es": "Personajes de papel recortados en piezas (cabeza, torso, 2 brazos x 2 segmentos). REUSABLES SIEMPRE: el ep. 5 usa los del 1 al 4.",
+   "items": [
+    {
+     "clave": "01_burocrata",
+     "ruta": "pruebas/elenco/rig/01_burocrata",
+     "piezas": 6,
+     "origen": "pruebas/elenco/01_burocrata.png",
+     "preview": "pruebas/elenco/rig/preview_01_burocrata.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Burocrata",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "02_militar",
+     "ruta": "pruebas/elenco/rig/02_militar",
+     "piezas": 6,
+     "origen": "pruebas/elenco/02_militar.png",
+     "preview": "pruebas/elenco/rig/preview_02_militar.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Militar",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "03_ejecutivo",
+     "ruta": "pruebas/elenco/rig/03_ejecutivo",
+     "piezas": 6,
+     "origen": "pruebas/elenco/03_ejecutivo.png",
+     "preview": "pruebas/elenco/rig/preview_03_ejecutivo.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Ejecutivo (aerolinea, negocios)",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "04_trabajador",
+     "ruta": "pruebas/elenco/rig/04_trabajador",
+     "piezas": 6,
+     "origen": "pruebas/elenco/04_trabajador.png",
+     "preview": "pruebas/elenco/rig/preview_04_trabajador.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Trabajador / mecanico (overol azul, casco naranja)",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": "es la referencia del plano hero 'hangar'"
+    },
+    {
+     "clave": "05_jurista",
+     "ruta": "pruebas/elenco/rig/05_jurista",
+     "piezas": 6,
+     "origen": "pruebas/elenco/05_jurista.png",
+     "preview": "pruebas/elenco/rig/preview_05_jurista.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Jurista",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "06_vecino",
+     "ruta": "pruebas/elenco/rig/06_vecino",
+     "piezas": 6,
+     "origen": "pruebas/elenco/06_vecino.png",
+     "preview": "pruebas/elenco/rig/preview_06_vecino.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "El Vecino / ciudadano de a pie",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "09_lider_a",
+     "ruta": "pruebas/elenco/rig/09_lider_a",
+     "piezas": 6,
+     "origen": "pruebas/elenco/09_lider_a.png",
+     "preview": "pruebas/elenco/rig/preview_09_lider_a.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Trump",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "10_lider_b_v2",
+     "ruta": "pruebas/elenco/rig/10_lider_b_v2",
+     "piezas": 6,
+     "origen": "pruebas/elenco/10_lider_b_v2.png",
+     "preview": "pruebas/elenco/rig/preview_10_lider_b_v2.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Putin (v2)",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": "hay una v1 descartada"
+    },
+    {
+     "clave": "11_zelensky",
+     "ruta": "pruebas/elenco/rig/11_zelensky",
+     "piezas": 6,
+     "origen": "pruebas/elenco/11_zelensky.png",
+     "preview": "pruebas/elenco/rig/preview_11_zelensky.jpg",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Zelensky",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "12_weidel",
+     "ruta": "pruebas/elenco/rig/12_weidel",
+     "piezas": 6,
+     "origen": "pruebas/elenco/12_weidel.png",
+     "preview": "pruebas/elenco/rig/preview_12_weidel.jpg",
+     "modelo": "flux-2-pro",
+     "creditos": 1,
+     "quien": "Alice Weidel (AfD)",
+     "usado_en": [
+      "02_afd_alemania"
+     ],
+     "notas": "tambien en la miniatura del ep. 2"
+    },
+    {
+     "clave": "13_lukashenko",
+     "ruta": "pruebas/elenco/rig/13_lukashenko",
+     "piezas": 6,
+     "origen": "pruebas/elenco/13_lukashenko.png",
+     "preview": "pruebas/elenco/rig/preview_13_lukashenko.jpg",
+     "modelo": "flux-2-pro",
+     "creditos": 1,
+     "quien": "Lukashenko",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "14_milei",
+     "ruta": "pruebas/elenco/rig/14_milei",
+     "piezas": 6,
+     "origen": "pruebas/elenco/14_milei.png",
+     "preview": "pruebas/elenco/rig/preview_14_milei.jpg",
+     "modelo": "flux (sin ficha)",
+     "creditos": 1,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "15_islander",
+     "ruta": "pruebas/elenco/rig/15_islander",
+     "piezas": 6,
+     "origen": "pruebas/elenco/15_islander.png",
+     "preview": "pruebas/elenco/rig/preview_15_islander.jpg",
+     "modelo": "flux (sin ficha)",
+     "creditos": 1,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "16_vdl",
+     "ruta": "pruebas/elenco/rig/16_vdl",
+     "piezas": 6,
+     "origen": "pruebas/elenco/16_vdl.png",
+     "preview": "pruebas/elenco/rig/preview_16_vdl.jpg",
+     "modelo": "flux (sin ficha)",
+     "creditos": 1,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "17_xi",
+     "ruta": "pruebas/elenco/rig/17_xi",
+     "piezas": 6,
+     "origen": "pruebas/elenco/17_xi.png",
+     "preview": "pruebas/elenco/rig/preview_17_xi.jpg",
+     "modelo": "flux (sin ficha)",
+     "creditos": 1,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "18_rama",
+     "ruta": "pruebas/elenco/rig/18_rama",
+     "piezas": 6,
+     "origen": "pruebas/elenco/18_rama.png",
+     "preview": "pruebas/elenco/rig/preview_18_rama.jpg",
+     "modelo": "flux (sin ficha)",
+     "creditos": 1,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    }
+   ]
+  },
+  "recortes": {
+   "que_es": "PNG sin fondo de cada personaje. Para los que ya tienen rig es el paso previo al mismo asset (0 cr aparte); los que no lo tienen (manos, multitud) se usan enteros con cutout().",
+   "items": [
+    {
+     "clave": "01_burocrata",
+     "ruta": "pruebas/elenco/cut/01_burocrata.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Burocrata — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "02_militar",
+     "ruta": "pruebas/elenco/cut/02_militar.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Militar — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "03_ejecutivo",
+     "ruta": "pruebas/elenco/cut/03_ejecutivo.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Ejecutivo (aerolinea, negocios) — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "04_trabajador",
+     "ruta": "pruebas/elenco/cut/04_trabajador.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Trabajador / mecanico (overol azul, casco naranja) — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": "es la referencia del plano hero 'hangar'"
+    },
+    {
+     "clave": "05_jurista",
+     "ruta": "pruebas/elenco/cut/05_jurista.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Jurista — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "06_vecino",
+     "ruta": "pruebas/elenco/cut/06_vecino.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "El Vecino / ciudadano de a pie — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "07_manos",
+     "ruta": "pruebas/elenco/cut/07_manos.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Par de manos (sostienen tarjetas y fotos)",
+     "usado_en": [
+      "01_aviacion_rusa",
+      "03_kiev_belarus"
+     ],
+     "notas": "helper foto_manos() en ep03.py"
+    },
+    {
+     "clave": "08_multitud",
+     "ruta": "pruebas/elenco/cut/08_multitud.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Multitud de papel",
+     "usado_en": [
+      "02_afd_alemania"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "09_lider_a",
+     "ruta": "pruebas/elenco/cut/09_lider_a.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "Trump — fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "10_lider_b_v2",
+     "ruta": "pruebas/elenco/cut/10_lider_b_v2.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "Putin (v2) — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": "hay una v1 descartada"
+    },
+    {
+     "clave": "11_zelensky",
+     "ruta": "pruebas/elenco/cut/11_zelensky.png",
+     "modelo": "flux",
+     "creditos": 0,
+     "quien": "Zelensky — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "12_weidel",
+     "ruta": "pruebas/elenco/cut/12_weidel.png",
+     "modelo": "flux-2-pro",
+     "creditos": 0,
+     "quien": "Alice Weidel (AfD) — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "02_afd_alemania"
+     ],
+     "notas": "tambien en la miniatura del ep. 2"
+    },
+    {
+     "clave": "13_lukashenko",
+     "ruta": "pruebas/elenco/cut/13_lukashenko.png",
+     "modelo": "flux-2-pro",
+     "creditos": 0,
+     "quien": "Lukashenko — fuente del rig, no cuesta aparte",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "14_milei",
+     "ruta": "pruebas/elenco/cut/14_milei.png",
+     "modelo": "flux (sin ficha)",
+     "creditos": 0,
+     "quien": "fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "15_islander",
+     "ruta": "pruebas/elenco/cut/15_islander.png",
+     "modelo": "flux (sin ficha)",
+     "creditos": 0,
+     "quien": "fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "16_vdl",
+     "ruta": "pruebas/elenco/cut/16_vdl.png",
+     "modelo": "flux (sin ficha)",
+     "creditos": 0,
+     "quien": "fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "17_xi",
+     "ruta": "pruebas/elenco/cut/17_xi.png",
+     "modelo": "flux (sin ficha)",
+     "creditos": 0,
+     "quien": "fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "18_rama",
+     "ruta": "pruebas/elenco/cut/18_rama.png",
+     "modelo": "flux (sin ficha)",
+     "creditos": 0,
+     "quien": "fuente del rig, no cuesta aparte",
+     "usado_en": [],
+     "notas": ""
+    }
+   ]
+  },
+  "expresiones": {
+   "que_es": "Hojas de caras por personaje. Se cortan una vez y sirven para todos los episodios.",
+   "items": [
+    {
+     "clave": "01_burocrata_hoja_v1",
+     "ruta": "pruebas/elenco/expresiones/01_burocrata_hoja_v1.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Hoja de 6 expresiones del Burocrata",
+     "usado_en": [],
+     "notas": "PENDIENTE: cortar las 6 caras. Hasta que se corten no se usa en ningun episodio"
+    }
+   ]
+  },
+  "hero": {
+   "que_es": "Planos generativos (still + image-to-video). Lo MAS caro que generamos: 10-20 cr por clip. Cada uno con su ficha .json (modelo, prompt, creditos, que se descarto y por que).",
+   "items": [
+    {
+     "clave": "hangar",
+     "ruta": "produccion/hero/hangar.json",
+     "clips": [
+      "produccion/hero/hangar_clip_v1.mp4"
+     ],
+     "modelo": "flux-2-pro",
+     "creditos": 11,
+     "quien": "Act II · Cannibals: el Boeing desarmado",
+     "usado_en": [],
+     "notas": "TEST validado (still Flux 1 cr + clip Kling V2.6 10 cr). Estilo conservado; el ala no llego a separarse. El i2v debe pedir UNA sola accion. Descartado hangar_still_v1 (salio diorama 3D)"
+    }
+   ]
+  },
+  "sets": {
+   "que_es": "Fondos de pared generados. Reusables como telon en cualquier episodio.",
+   "items": [
+    {
+     "clave": "set_hangar_v1",
+     "ruta": "produccion/assets/sets/set_hangar_v1.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Fondo de hangar",
+     "usado_en": [],
+     "notas": "salio diorama 3D: sirve de fondo de pared con post, no como plano"
+    },
+    {
+     "clave": "set_negociacion_v1",
+     "ruta": "produccion/assets/sets/set_negociacion_v1.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Fondo de sala de negociacion",
+     "usado_en": [],
+     "notas": "idem: fondo de pared, no plano"
+    },
+    {
+     "clave": "set_torre_v1",
+     "ruta": "produccion/assets/sets/set_torre_v1.png",
+     "modelo": "flux",
+     "creditos": 1,
+     "quien": "Fondo de torre de control",
+     "usado_en": [],
+     "notas": "idem: fondo de pared, no plano"
+    }
+   ]
+  },
+  "musica": {
+   "que_es": "Cues propias (Lyria, 3 cr) y pistas de biblioteca. Las cues se REUSAN entre episodios: antes de generar una nueva, escuchar estas.",
+   "items": [
+    {
+     "clave": "Anguish",
+     "ruta": "produccion/musica/Anguish.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Chase_Pulse",
+     "ruta": "produccion/musica/Chase_Pulse.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Cold_Sober",
+     "ruta": "produccion/musica/Cold_Sober.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Controlled_Chaos",
+     "ruta": "produccion/musica/Controlled_Chaos.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Crypto",
+     "ruta": "produccion/musica/Crypto.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Dark_Times",
+     "ruta": "produccion/musica/Dark_Times.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Dark_Walk",
+     "ruta": "produccion/musica/Dark_Walk.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Darkest_Child",
+     "ruta": "produccion/musica/Darkest_Child.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Deliberate_Thought",
+     "ruta": "produccion/musica/Deliberate_Thought.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Echoes_of_Time",
+     "ruta": "produccion/musica/Echoes_of_Time.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Gathering_Darkness",
+     "ruta": "produccion/musica/Gathering_Darkness.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Heavy_Interlude",
+     "ruta": "produccion/musica/Heavy_Interlude.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Intrepid",
+     "ruta": "produccion/musica/Intrepid.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Killers",
+     "ruta": "produccion/musica/Killers.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Long_Note_Two",
+     "ruta": "produccion/musica/Long_Note_Two.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Lost_Frontier",
+     "ruta": "produccion/musica/Lost_Frontier.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Ossuary_6_-_Air",
+     "ruta": "produccion/musica/Ossuary_6_-_Air.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Redletter",
+     "ruta": "produccion/musica/Redletter.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Tempting_Secrets",
+     "ruta": "produccion/musica/Tempting_Secrets.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "The_Complex",
+     "ruta": "produccion/musica/The_Complex.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Unseen_Horrors",
+     "ruta": "produccion/musica/Unseen_Horrors.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "Volatile_Reaction",
+     "ruta": "produccion/musica/Volatile_Reaction.mp3",
+     "modelo": "biblioteca libre",
+     "creditos": 0,
+     "quien": "de terceros, ver CREDITOS_MUSICA.md",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cue_01_intro",
+     "ruta": "produccion/musica/cue_01_intro.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue de apertura",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "cue_02_flota",
+     "ruta": "produccion/musica/cue_02_flota.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue de la flota",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "cue_03_partes",
+     "ruta": "produccion/musica/cue_03_partes.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue de repuestos / canibalismo",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "cue_04_dron",
+     "ruta": "produccion/musica/cue_04_dron.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue de tension / drones",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "cue_05_pais",
+     "ruta": "produccion/musica/cue_05_pais.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue amplia / pais",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "cue_06_siberia",
+     "ruta": "produccion/musica/cue_06_siberia.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cue fria / Siberia",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "tema_canal",
+     "ruta": "produccion/musica/tema_canal.mp3",
+     "modelo": "lyria-3-pro",
+     "creditos": 3,
+     "quien": "Cortina del canal (Paper Trail)",
+     "usado_en": [
+      "01_aviacion_rusa",
+      "02_afd_alemania",
+      "03_kiev_belarus"
+     ],
+     "notas": "regla de Agustin: la cortina es esta, propia"
+    }
+   ]
+  },
+  "mapas": {
+   "que_es": "Hojas de mapa por region. 0 creditos pero HORAS de trabajo: si el tema cae en una region que ya tenemos, se reusa la hoja y solo se agregan puntos a su pts.json.",
+   "items": [
+    {
+     "clave": "mapa",
+     "ruta": "produccion/assets",
+     "piezas": 9,
+     "capas": [
+      "mapa_base.png",
+      "mapa_ciudades.png",
+      "mapa_frost_este.png",
+      "mapa_frost_norte.png",
+      "mapa_husos.png",
+      "mapa_mundo.png",
+      "mapa_pts.json",
+      "mapa_rusia.png",
+      "mapa_yakutia.png"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "Rusia / Asia norte (Mercator, LON 18-200, LAT 38-78)",
+     "usado_en": [
+      "01_aviacion_rusa"
+     ],
+     "notas": "capas: base, rusia, husos, ciudades (36 sitios), yakutia, frost norte/este"
+    },
+    {
+     "clave": "mapa02",
+     "ruta": "produccion/assets",
+     "piezas": 8,
+     "capas": [
+      "mapa02_alemania.png",
+      "mapa02_base.png",
+      "mapa02_ciudades.png",
+      "mapa02_este_azul.png",
+      "mapa02_pts.json",
+      "mapa02_rda.png",
+      "mapa02_sa.png",
+      "mapa02_sa_borde.png"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "Alemania",
+     "usado_en": [
+      "02_afd_alemania"
+     ],
+     "notas": "capas: base, alemania, ciudades, ex RDA, Sajonia-Anhalt, borde este; puntos de borde para lugares fuera de la hoja"
+    },
+    {
+     "clave": "mapa03",
+     "ruta": "produccion/assets",
+     "piezas": 7,
+     "capas": [
+      "mapa03_base.png",
+      "mapa03_belarus.png",
+      "mapa03_ciudades.png",
+      "mapa03_donbas.png",
+      "mapa03_ejes.png",
+      "mapa03_muerte.png",
+      "mapa03_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "Ucrania / Bielorrusia",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": "26 puntos; capas: belarus, donbas, ejes, franja de drones"
+    },
+    {
+     "clave": "mapa04",
+     "ruta": "produccion/assets",
+     "piezas": 6,
+     "capas": [
+      "mapa04_base.png",
+      "mapa04_ciudades.png",
+      "mapa04_islas.png",
+      "mapa04_plataforma.png",
+      "mapa04_pts.json",
+      "mapa04_zonaexcl.png"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "Malvinas / Atlantico sur",
+     "usado_en": [
+      "04_malvinas"
+     ],
+     "notas": "capas: base, ciudades, islas, plataforma, zona de exclusion"
+    },
+    {
+     "clave": "mapa05",
+     "ruta": "videos/05_11s/arte/assets",
+     "piezas": 3,
+     "capas": [
+      "mapa05_base.png",
+      "mapa05_ciudades.png",
+      "mapa05_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapa06",
+     "ruta": "videos/06_ia_economia_politica/arte/assets",
+     "piezas": 4,
+     "capas": [
+      "mapa06_base.png",
+      "mapa06_ciudades.png",
+      "mapa06_pts.json",
+      "mapa06_ventanas.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapa11",
+     "ruta": "videos/S01_11s/arte/assets",
+     "piezas": 5,
+     "capas": [
+      "mapa11_alerta.png",
+      "mapa11_base.png",
+      "mapa11_ciudades.png",
+      "mapa11_nofly.png",
+      "mapa11_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapame",
+     "ruta": "videos/S01_11s/arte/assets",
+     "piezas": 3,
+     "capas": [
+      "mapame_base.png",
+      "mapame_ciudades.png",
+      "mapame_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    }
+   ]
+  },
+  "props": {
+   "que_es": "Objetos de papel dibujados por codigo (props*.py). 0 creditos. Antes de dibujar uno nuevo, buscar aca: hay 408.",
+   "items": [
+    {
+     "clave": "acorazado",
+     "ruta": "produccion/assets/prop_acorazado.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "alfombra",
+     "ruta": "produccion/assets/prop_alfombra.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "anillo_ue",
+     "ruta": "produccion/assets/prop_anillo_ue.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "antena",
+     "ruta": "produccion/assets/prop_antena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "arbol",
+     "ruta": "produccion/assets/prop_arbol.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "avion",
+     "ruta": "produccion/assets/prop_avion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "avion_chico",
+     "ruta": "produccion/assets/prop_avion_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "avion_gris",
+     "ruta": "produccion/assets/prop_avion_gris.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "avion_papel",
+     "ruta": "produccion/assets/prop_avion_papel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "balanza",
+     "ruta": "produccion/assets/prop_balanza.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "balanza_men_walls",
+     "ruta": "produccion/assets/prop_balanza_men_walls.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ar",
+     "ruta": "produccion/assets/prop_bandera_ar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_es",
+     "ruta": "produccion/assets/prop_bandera_es.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_fr",
+     "ruta": "produccion/assets/prop_bandera_fr.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_rusa",
+     "ruta": "produccion/assets/prop_bandera_rusa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_rusa_doblada",
+     "ruta": "produccion/assets/prop_bandera_rusa_doblada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_uk",
+     "ruta": "produccion/assets/prop_bandera_uk.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_us",
+     "ruta": "produccion/assets/prop_bandera_us.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barco_vela",
+     "ruta": "produccion/assets/prop_barco_vela.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barrera",
+     "ruta": "produccion/assets/prop_barrera.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "produccion/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "base_militar",
+     "ruta": "produccion/assets/prop_base_militar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bateria",
+     "ruta": "produccion/assets/prop_bateria.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "blindado",
+     "ruta": "produccion/assets/prop_blindado.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "blindado_fantasma",
+     "ruta": "produccion/assets/prop_blindado_fantasma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bocadillo_july",
+     "ruta": "produccion/assets/prop_bocadillo_july.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bocadillo_sept",
+     "ruta": "produccion/assets/prop_bocadillo_sept.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "boleta_electoral",
+     "ruta": "produccion/assets/prop_boleta_electoral.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bota",
+     "ruta": "produccion/assets/prop_bota.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "botas",
+     "ruta": "produccion/assets/prop_botas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bundestag",
+     "ruta": "produccion/assets/prop_bundestag.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "buque_guerra",
+     "ruta": "produccion/assets/prop_buque_guerra.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caballero",
+     "ruta": "produccion/assets/prop_caballero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caja",
+     "ruta": "produccion/assets/prop_caja.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caja_arena",
+     "ruta": "produccion/assets/prop_caja_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cajas_municion",
+     "ruta": "produccion/assets/prop_cajas_municion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cajas_municion_fantasma",
+     "ruta": "produccion/assets/prop_cajas_municion_fantasma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cal20",
+     "ruta": "produccion/assets/prop_cal20.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cal3",
+     "ruta": "produccion/assets/prop_cal3.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cal_jul22",
+     "ruta": "produccion/assets/prop_cal_jul22.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cal_sep20",
+     "ruta": "produccion/assets/prop_cal_sep20.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "calamar",
+     "ruta": "produccion/assets/prop_calamar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carbon",
+     "ruta": "produccion/assets/prop_carbon.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpa",
+     "ruta": "produccion/assets/prop_carpa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpa_fantasma",
+     "ruta": "produccion/assets/prop_carpa_fantasma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpeta_atada",
+     "ruta": "produccion/assets/prop_carpeta_atada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carta_reclutamiento",
+     "ruta": "produccion/assets/prop_carta_reclutamiento.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_protesta",
+     "ruta": "produccion/assets/prop_cartel_protesta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_sky",
+     "ruta": "produccion/assets/prop_cartel_sky.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa",
+     "ruta": "produccion/assets/prop_casa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa_colono",
+     "ruta": "produccion/assets/prop_casa_colono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa_pisos_1",
+     "ruta": "produccion/assets/prop_casa_pisos_1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa_pisos_2",
+     "ruta": "produccion/assets/prop_casa_pisos_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cerca",
+     "ruta": "produccion/assets/prop_cerca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cheque",
+     "ruta": "produccion/assets/prop_cheque.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_aero",
+     "ruta": "produccion/assets/prop_chip_aero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_aeroflot",
+     "ruta": "produccion/assets/prop_chip_aeroflot.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_azul",
+     "ruta": "produccion/assets/prop_chip_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_belarus",
+     "ruta": "produccion/assets/prop_chip_belarus.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_cdu",
+     "ruta": "produccion/assets/prop_chip_cdu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_gris",
+     "ruta": "produccion/assets/prop_chip_gris.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_moscu",
+     "ruta": "produccion/assets/prop_chip_moscu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_ocre",
+     "ruta": "produccion/assets/prop_chip_ocre.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_pokrovsk",
+     "ruta": "produccion/assets/prop_chip_pokrovsk.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_rojo_chico",
+     "ruta": "produccion/assets/prop_chip_rojo_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_verde",
+     "ruta": "produccion/assets/prop_chip_verde.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "circulo_rojo",
+     "ruta": "produccion/assets/prop_circulo_rojo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "clavo",
+     "ruta": "produccion/assets/prop_clavo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cohete",
+     "ruta": "produccion/assets/prop_cohete.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "colectivo",
+     "ruta": "produccion/assets/prop_colectivo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "collar",
+     "ruta": "produccion/assets/prop_collar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "columna_azul",
+     "ruta": "produccion/assets/prop_columna_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "columna_cdu",
+     "ruta": "produccion/assets/prop_columna_cdu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "contrato99",
+     "ruta": "produccion/assets/prop_contrato99.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "corazon",
+     "ruta": "produccion/assets/prop_corazon.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "corona",
+     "ruta": "produccion/assets/prop_corona.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cuaderno",
+     "ruta": "produccion/assets/prop_cuaderno.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cuartel",
+     "ruta": "produccion/assets/prop_cuartel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "decreto",
+     "ruta": "produccion/assets/prop_decreto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "deposito_ammo",
+     "ruta": "produccion/assets/prop_deposito_ammo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "deposito_fuel",
+     "ruta": "produccion/assets/prop_deposito_fuel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "deposito_oil",
+     "ruta": "produccion/assets/prop_deposito_oil.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "despertador",
+     "ruta": "produccion/assets/prop_despertador.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diamante",
+     "ruta": "produccion/assets/prop_diamante.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diana",
+     "ruta": "produccion/assets/prop_diana.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_1",
+     "ruta": "produccion/assets/prop_diario_1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_2",
+     "ruta": "produccion/assets/prop_diario_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_3",
+     "ruta": "produccion/assets/prop_diario_3.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_afd",
+     "ruta": "produccion/assets/prop_diario_afd.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_inm",
+     "ruta": "produccion/assets/prop_diario_inm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diario_rec",
+     "ruta": "produccion/assets/prop_diario_rec.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "diccionario",
+     "ruta": "produccion/assets/prop_diccionario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dron",
+     "ruta": "produccion/assets/prop_dron.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dron_fpv",
+     "ruta": "produccion/assets/prop_dron_fpv.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dron_grande",
+     "ruta": "produccion/assets/prop_dron_grande.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ejercito_papel",
+     "ruta": "produccion/assets/prop_ejercito_papel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escanos",
+     "ruta": "produccion/assets/prop_escanos.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escoba",
+     "ruta": "produccion/assets/prop_escoba.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escritorio",
+     "ruta": "produccion/assets/prop_escritorio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escudo",
+     "ruta": "produccion/assets/prop_escudo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "eslabon",
+     "ruta": "produccion/assets/prop_eslabon.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "eslabon_rojo",
+     "ruta": "produccion/assets/prop_eslabon_rojo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "estrella",
+     "ruta": "produccion/assets/prop_estrella.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "etiqueta",
+     "ruta": "produccion/assets/prop_etiqueta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "etiqueta_rublo",
+     "ruta": "produccion/assets/prop_etiqueta_rublo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "expediente",
+     "ruta": "produccion/assets/prop_expediente.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "fabrica",
+     "ruta": "produccion/assets/prop_fabrica.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "factura",
+     "ruta": "produccion/assets/prop_factura.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "flecha_abajo",
+     "ruta": "produccion/assets/prop_flecha_abajo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "flecha_arriba",
+     "ruta": "produccion/assets/prop_flecha_arriba.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "flecha_punteada",
+     "ruta": "produccion/assets/prop_flecha_punteada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "flecha_punteada_gris",
+     "ruta": "produccion/assets/prop_flecha_punteada_gris.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "foca",
+     "ruta": "produccion/assets/prop_foca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "formulario",
+     "ruta": "produccion/assets/prop_formulario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "foto_apreton",
+     "ruta": "produccion/assets/prop_foto_apreton.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "franja_drones",
+     "ruta": "produccion/assets/prop_franja_drones.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "fuego",
+     "ruta": "produccion/assets/prop_fuego.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "fusil",
+     "ruta": "produccion/assets/prop_fusil.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "globo",
+     "ruta": "produccion/assets/prop_globo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "gota",
+     "ruta": "produccion/assets/prop_gota.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "graf_gasto",
+     "ruta": "produccion/assets/prop_graf_gasto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "graf_inm",
+     "ruta": "produccion/assets/prop_graf_inm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "graf_voto",
+     "ruta": "produccion/assets/prop_graf_voto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grafico_caida",
+     "ruta": "produccion/assets/prop_grafico_caida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hielo",
+     "ruta": "produccion/assets/prop_hielo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "humo",
+     "ruta": "produccion/assets/prop_humo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "iman",
+     "ruta": "produccion/assets/prop_iman.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe",
+     "ruta": "produccion/assets/prop_informe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "isla_recorte",
+     "ruta": "produccion/assets/prop_isla_recorte.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "lampara",
+     "ruta": "produccion/assets/prop_lampara.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "lanzacohetes",
+     "ruta": "produccion/assets/prop_lanzacohetes.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "libro_mayor",
+     "ruta": "produccion/assets/prop_libro_mayor.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "linea_piso",
+     "ruta": "produccion/assets/prop_linea_piso.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "lingote",
+     "ruta": "produccion/assets/prop_lingote.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "llave",
+     "ruta": "produccion/assets/prop_llave.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "luna",
+     "ruta": "produccion/assets/prop_luna.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "lupa",
+     "ruta": "produccion/assets/prop_lupa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mano_abierta",
+     "ruta": "produccion/assets/prop_mano_abierta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mano_con_carta",
+     "ruta": "produccion/assets/prop_mano_con_carta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mano_senala",
+     "ruta": "produccion/assets/prop_mano_senala.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "manual",
+     "ruta": "produccion/assets/prop_manual.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapa_ardenas",
+     "ruta": "produccion/assets/prop_mapa_ardenas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "martillo",
+     "ruta": "produccion/assets/prop_martillo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "martillo_juez",
+     "ruta": "produccion/assets/prop_martillo_juez.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mazo",
+     "ruta": "produccion/assets/prop_mazo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medalla",
+     "ruta": "produccion/assets/prop_medalla.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_combustible",
+     "ruta": "produccion/assets/prop_medidor_combustible.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "megafono",
+     "ruta": "produccion/assets/prop_megafono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "memorial",
+     "ruta": "produccion/assets/prop_memorial.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mesa_negociacion",
+     "ruta": "produccion/assets/prop_mesa_negociacion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "microfono",
+     "ruta": "produccion/assets/prop_microfono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "moneda",
+     "ruta": "produccion/assets/prop_moneda.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "moneda_euro",
+     "ruta": "produccion/assets/prop_moneda_euro.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "moneda_rublo",
+     "ruta": "produccion/assets/prop_moneda_rublo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "moto",
+     "ruta": "produccion/assets/prop_moto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "naipe",
+     "ruta": "produccion/assets/prop_naipe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "orden_donbas",
+     "ruta": "produccion/assets/prop_orden_donbas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "orden_kyiv",
+     "ruta": "produccion/assets/prop_orden_kyiv.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "orden_vacia",
+     "ruta": "produccion/assets/prop_orden_vacia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "oveja",
+     "ruta": "produccion/assets/prop_oveja.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pagina_feb22",
+     "ruta": "produccion/assets/prop_pagina_feb22.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palabra_donbas",
+     "ruta": "produccion/assets/prop_palabra_donbas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palabra_kyiv",
+     "ruta": "produccion/assets/prop_palabra_kyiv.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palabra_plan",
+     "ruta": "produccion/assets/prop_palabra_plan.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "papeleta",
+     "ruta": "produccion/assets/prop_papeleta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "papeleta_no",
+     "ruta": "produccion/assets/prop_papeleta_no.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "papeleta_si",
+     "ruta": "produccion/assets/prop_papeleta_si.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "paraguas",
+     "ruta": "produccion/assets/prop_paraguas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pasaporte",
+     "ruta": "produccion/assets/prop_pasaporte.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pergamino",
+     "ruta": "produccion/assets/prop_pergamino.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pergamino_sa",
+     "ruta": "produccion/assets/prop_pergamino_sa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pinguino",
+     "ruta": "produccion/assets/prop_pinguino.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "placa",
+     "ruta": "produccion/assets/prop_placa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "plano",
+     "ruta": "produccion/assets/prop_plano.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "politico_azul",
+     "ruta": "produccion/assets/prop_politico_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "politico_rojo",
+     "ruta": "produccion/assets/prop_politico_rojo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "poliza",
+     "ruta": "produccion/assets/prop_poliza.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "portada_economist",
+     "ruta": "produccion/assets/prop_portada_economist.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "portada_wsj",
+     "ruta": "produccion/assets/prop_portada_wsj.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_con_mano",
+     "ruta": "produccion/assets/prop_puerta_con_mano.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pupitre",
+     "ruta": "produccion/assets/prop_pupitre.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rampa_1",
+     "ruta": "produccion/assets/prop_rampa_1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rampa_2",
+     "ruta": "produccion/assets/prop_rampa_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "recluta",
+     "ruta": "produccion/assets/prop_recluta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "red_pesca",
+     "ruta": "produccion/assets/prop_red_pesca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "regla",
+     "ruta": "produccion/assets/prop_regla.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "regla_40",
+     "ruta": "produccion/assets/prop_regla_40.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "regla_90",
+     "ruta": "produccion/assets/prop_regla_90.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_arena",
+     "ruta": "produccion/assets/prop_reloj_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "resolucion",
+     "ruta": "produccion/assets/prop_resolucion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rueda",
+     "ruta": "produccion/assets/prop_rueda.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rusia_encogida",
+     "ruta": "produccion/assets/prop_rusia_encogida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "saco_arena",
+     "ruta": "produccion/assets/prop_saco_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sacos_fila",
+     "ruta": "produccion/assets/prop_sacos_fila.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_2",
+     "ruta": "produccion/assets/prop_sello_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_again",
+     "ruta": "produccion/assets/prop_sello_again.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_aggressor",
+     "ruta": "produccion/assets/prop_sello_aggressor.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_convicted",
+     "ruta": "produccion/assets/prop_sello_convicted.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_evenso",
+     "ruta": "produccion/assets/prop_sello_evenso.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_extremist",
+     "ruta": "produccion/assets/prop_sello_extremist.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_failed",
+     "ruta": "produccion/assets/prop_sello_failed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_loss",
+     "ruta": "produccion/assets/prop_sello_loss.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_madness",
+     "ruta": "produccion/assets/prop_sello_madness.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_mostly",
+     "ruta": "produccion/assets/prop_sello_mostly.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no",
+     "ruta": "produccion/assets/prop_sello_no.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_nobody",
+     "ruta": "produccion/assets/prop_sello_nobody.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_noprice",
+     "ruta": "produccion/assets/prop_sello_noprice.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notin",
+     "ruta": "produccion/assets/prop_sello_notin.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_rehearsal",
+     "ruta": "produccion/assets/prop_sello_rehearsal.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_settled",
+     "ruta": "produccion/assets/prop_sello_settled.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_x",
+     "ruta": "produccion/assets/prop_sello_x.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "senal_radiacion",
+     "ruta": "produccion/assets/prop_senal_radiacion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "silla",
+     "ruta": "produccion/assets/prop_silla.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sobre",
+     "ruta": "produccion/assets/prop_sobre.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sofa",
+     "ruta": "produccion/assets/prop_sofa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "soga",
+     "ruta": "produccion/assets/prop_soga.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sol",
+     "ruta": "produccion/assets/prop_sol.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "soldado",
+     "ruta": "produccion/assets/prop_soldado.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "soldado_chico",
+     "ruta": "produccion/assets/prop_soldado_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "soldado_grande",
+     "ruta": "produccion/assets/prop_soldado_grande.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_country",
+     "ruta": "produccion/assets/prop_tab_country.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_drone",
+     "ruta": "produccion/assets/prop_tab_drone.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_fleet",
+     "ruta": "produccion/assets/prop_tab_fleet.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_men",
+     "ruta": "produccion/assets/prop_tab_men.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_road",
+     "ruta": "produccion/assets/prop_tab_road.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tab_target",
+     "ruta": "produccion/assets/prop_tab_target.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tablero",
+     "ruta": "produccion/assets/prop_tablero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tablero_c",
+     "ruta": "produccion/assets/prop_tablero_c.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tanque",
+     "ruta": "produccion/assets/prop_tanque.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tanque_arena",
+     "ruta": "produccion/assets/prop_tanque_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tanque_t72",
+     "ruta": "produccion/assets/prop_tanque_t72.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tanque_t72_fantasma",
+     "ruta": "produccion/assets/prop_tanque_t72_fantasma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tarta",
+     "ruta": "produccion/assets/prop_tarta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "telefono",
+     "ruta": "produccion/assets/prop_telefono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "termometro",
+     "ruta": "produccion/assets/prop_termometro.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "terrones_azucar",
+     "ruta": "produccion/assets/prop_terrones_azucar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tijera",
+     "ruta": "produccion/assets/prop_tijera.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tornillo",
+     "ruta": "produccion/assets/prop_tornillo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "torre_petroleo",
+     "ruta": "produccion/assets/prop_torre_petroleo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tratado",
+     "ruta": "produccion/assets/prop_tratado.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tren",
+     "ruta": "produccion/assets/prop_tren.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tren_militar",
+     "ruta": "produccion/assets/prop_tren_militar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tren_militar_fantasma",
+     "ruta": "produccion/assets/prop_tren_militar_fantasma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "trinchera",
+     "ruta": "produccion/assets/prop_trinchera.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tv",
+     "ruta": "produccion/assets/prop_tv.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tv_msg",
+     "ruta": "produccion/assets/prop_tv_msg.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "urna",
+     "ruta": "produccion/assets/prop_urna.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "vaca",
+     "ruta": "produccion/assets/prop_vaca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "valija",
+     "ruta": "produccion/assets/prop_valija.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "via_tren",
+     "ruta": "produccion/assets/prop_via_tren.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "votante",
+     "ruta": "produccion/assets/prop_votante.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "votante_azul",
+     "ruta": "produccion/assets/prop_votante_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "votante_rojo",
+     "ruta": "produccion/assets/prop_votante_rojo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandeja",
+     "ruta": "videos/05_11s/arte/assets/prop_bandeja.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_cn_01",
+     "ruta": "videos/05_11s/arte/assets/prop_barra_cn_01.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_cn_24",
+     "ruta": "videos/05_11s/arte/assets/prop_barra_cn_24.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_us_01",
+     "ruta": "videos/05_11s/arte/assets/prop_barra_us_01.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_us_24",
+     "ruta": "videos/05_11s/arte/assets/prop_barra_us_24.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "billete",
+     "ruta": "videos/05_11s/arte/assets/prop_billete.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "calendario",
+     "ruta": "videos/05_11s/arte/assets/prop_calendario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpa",
+     "ruta": "videos/05_11s/arte/assets/prop_carpa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip",
+     "ruta": "videos/05_11s/arte/assets/prop_chip.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "contenedor",
+     "ruta": "videos/05_11s/arte/assets/prop_contenedor.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "documento",
+     "ruta": "videos/05_11s/arte/assets/prop_documento.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escritorio",
+     "ruta": "videos/05_11s/arte/assets/prop_escritorio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "flecha",
+     "ruta": "videos/05_11s/arte/assets/prop_flecha.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "foco",
+     "ruta": "videos/05_11s/arte/assets/prop_foco.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hoja_cuentas",
+     "ruta": "videos/05_11s/arte/assets/prop_hoja_cuentas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ladrillo",
+     "ruta": "videos/05_11s/arte/assets/prop_ladrillo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "misil",
+     "ruta": "videos/05_11s/arte/assets/prop_misil.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "motas",
+     "ruta": "videos/05_11s/arte/assets/prop_motas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "muro",
+     "ruta": "videos/05_11s/arte/assets/prop_muro.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pasaje",
+     "ruta": "videos/05_11s/arte/assets/prop_pasaje.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pila_memos",
+     "ruta": "videos/05_11s/arte/assets/prop_pila_memos.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta",
+     "ruta": "videos/05_11s/arte/assets/prop_puerta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0759",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0759.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0814",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0814.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0820",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0820.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0842",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0842.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0846",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0846.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0903",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0903.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0924",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0924.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_0937",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_0937.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_1007",
+     "ruta": "videos/05_11s/arte/assets/prop_reloj_1007.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "silla",
+     "ruta": "videos/05_11s/arte/assets/prop_silla.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "trono",
+     "ruta": "videos/05_11s/arte/assets/prop_trono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "auto_t",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_auto_t.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandeja_cog",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandeja_cog.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandeja_otros",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandeja_otros.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_al",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_al.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_cn",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_cn.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_dk",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_dk.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_hu",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_hu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ro",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_ro.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ue",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_bandera_ue.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "berlaymont",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_berlaymont.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "billete_45_55",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_billete_45_55.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "billete_60_40",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_billete_60_40.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "billete_entero",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_billete_entero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "boleta_luz",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_boleta_luz.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caballo",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_caballo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caballo_corbata",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_caballo_corbata.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "calendario_2027",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_calendario_2027.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "canario",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_canario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpeta_licitacion",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_carpeta_licitacion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "chip_h200",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_chip_h200.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cronometro",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_cronometro.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dial_max",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_dial_max.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dial_med",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_dial_med.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dial_min",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_dial_min.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escalera_ok",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_escalera_ok.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escalera_roto",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_escalera_roto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hucha_pension",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_hucha_pension.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "impresora",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_impresora.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_luz",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_medidor_luz.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_luz_alto",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_medidor_luz_alto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "panel_diales",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_panel_diales.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "panel_diales_max",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_panel_diales_max.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "parlamento_hu",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_parlamento_hu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pila_dolares",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_pila_dolares.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pila_euros",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_pila_euros.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rulebook",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_rulebook.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_after_2027",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_after_2027.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_both_true",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_both_true.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_hiring",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_hiring.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_it_lost",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_it_lost.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_licensed",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_licensed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_precedent",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_no_precedent.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_not_forecast",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_not_forecast.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_pick_one",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_pick_one.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_unconst",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sello_unconst.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "silla_pantalla",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_silla_pantalla.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sobre_paga",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_sobre_paga.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "titulo_accion",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_titulo_accion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "torre_refrig",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_torre_refrig.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "vapor",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_vapor.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "alfombra_rezo",
+     "ruta": "videos/S01_11s/arte/assets/prop_alfombra_rezo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_negra",
+     "ruta": "videos/S01_11s/arte/assets/prop_bandera_negra.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_otan",
+     "ruta": "videos/S01_11s/arte/assets/prop_bandera_otan.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_taliban",
+     "ruta": "videos/S01_11s/arte/assets/prop_bandera_taliban.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bl_busto",
+     "ruta": "videos/S01_11s/arte/assets/prop_bl_busto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bl_entero",
+     "ruta": "videos/S01_11s/arte/assets/prop_bl_entero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bolsa_liq",
+     "ruta": "videos/S01_11s/arte/assets/prop_bolsa_liq.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "botella",
+     "ruta": "videos/S01_11s/arte/assets/prop_botella.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caja_wmd",
+     "ruta": "videos/S01_11s/arte/assets/prop_caja_wmd.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "capitolio",
+     "ruta": "videos/S01_11s/arte/assets/prop_capitolio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caza",
+     "ruta": "videos/S01_11s/arte/assets/prop_caza.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caza_chico",
+     "ruta": "videos/S01_11s/arte/assets/prop_caza_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cinta",
+     "ruta": "videos/S01_11s/arte/assets/prop_cinta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escaleras",
+     "ruta": "videos/S01_11s/arte/assets/prop_escaleras.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escaleras_ok",
+     "ruta": "videos/S01_11s/arte/assets/prop_escaleras_ok.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "escuela",
+     "ruta": "videos/S01_11s/arte/assets/prop_escuela.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "estadio",
+     "ruta": "videos/S01_11s/arte/assets/prop_estadio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "estrella_sov",
+     "ruta": "videos/S01_11s/arte/assets/prop_estrella_sov.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_bl",
+     "ruta": "videos/S01_11s/arte/assets/prop_ficha_bl.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_ksm",
+     "ruta": "videos/S01_11s/arte/assets/prop_ficha_ksm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_yousef",
+     "ruta": "videos/S01_11s/arte/assets/prop_ficha_yousef.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "fila_asientos",
+     "ruta": "videos/S01_11s/arte/assets/prop_fila_asientos.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grua",
+     "ruta": "videos/S01_11s/arte/assets/prop_grua.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "iglesia",
+     "ruta": "videos/S01_11s/arte/assets/prop_iglesia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "jet",
+     "ruta": "videos/S01_11s/arte/assets/prop_jet.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "jet_chico",
+     "ruta": "videos/S01_11s/arte/assets/prop_jet_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "jet_gris",
+     "ruta": "videos/S01_11s/arte/assets/prop_jet_gris.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "memo_phoenix",
+     "ruta": "videos/S01_11s/arte/assets/prop_memo_phoenix.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "orden_derribo",
+     "ruta": "videos/S01_11s/arte/assets/prop_orden_derribo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "oreja",
+     "ruta": "videos/S01_11s/arte/assets/prop_oreja.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "panel_int",
+     "ruta": "videos/S01_11s/arte/assets/prop_panel_int.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "patriot",
+     "ruta": "videos/S01_11s/arte/assets/prop_patriot.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pdb",
+     "ruta": "videos/S01_11s/arte/assets/prop_pdb.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pentagono",
+     "ruta": "videos/S01_11s/arte/assets/prop_pentagono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "plan_vuelo",
+     "ruta": "videos/S01_11s/arte/assets/prop_plan_vuelo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "plano_normal",
+     "ruta": "videos/S01_11s/arte/assets/prop_plano_normal.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "plano_wtc",
+     "ruta": "videos/S01_11s/arte/assets/prop_plano_wtc.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_abierta",
+     "ruta": "videos/S01_11s/arte/assets/prop_puerta_abierta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_blindada",
+     "ruta": "videos/S01_11s/arte/assets/prop_puerta_blindada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "radar",
+     "ruta": "videos/S01_11s/arte/assets/prop_radar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "radar_chico",
+     "ruta": "videos/S01_11s/arte/assets/prop_radar_chico.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "receta",
+     "ruta": "videos/S01_11s/arte/assets/prop_receta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_arrested",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_arrested.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_borrowed",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_borrowed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_door_closed",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_door_closed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_door_open",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_door_open.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_due_east",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_due_east.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_failed",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_failed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_filed",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_filed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_first_time",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_first_time.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_fuel",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_fuel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_imagination",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_imagination.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_land_now",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_land_now.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lost",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_lost.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lower_first",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_lower_first.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ml100",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_ml100.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_bomb",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_no_bomb.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_way_down",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_no_way_down.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_nobody_asked",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_nobody_asked.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_one_stopped",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_one_stopped.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_overreaction",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_overreaction.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_same_minute",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_same_minute.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_terrorism",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_terrorism.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_too_late",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_too_late.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_vote",
+     "ruta": "videos/S01_11s/arte/assets/prop_sello_vote.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "torre",
+     "ruta": "videos/S01_11s/arte/assets/prop_torre.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "torre_n",
+     "ruta": "videos/S01_11s/arte/assets/prop_torre_n.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "torre_s",
+     "ruta": "videos/S01_11s/arte/assets/prop_torre_s.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "transponder",
+     "ruta": "videos/S01_11s/arte/assets/prop_transponder.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "transponder_off",
+     "ruta": "videos/S01_11s/arte/assets/prop_transponder_off.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "yate",
+     "ruta": "videos/S01_11s/arte/assets/prop_yate.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "zapato",
+     "ruta": "videos/S01_11s/arte/assets/prop_zapato.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    }
+   ]
+  },
+  "marca": {
+   "que_es": "Piezas fijas del canal ya renderizadas. Se pegan tal cual: NO se vuelven a generar.",
+   "items": [
+    {
+     "clave": "intro_canal",
+     "ruta": "produccion/intro_canal.mp4",
+     "modelo": "render local + voz pagada",
+     "creditos": 0,
+     "quien": "Intro general del canal v2 (2026-09-11), 14 s: pide like y suscripcion",
+     "usado_en": [
+      "01_aviacion_rusa",
+      "02_afd_alemania",
+      "03_kiev_belarus"
+     ],
+     "notas": "se pega tal cual con entregar.py; NO se regenera"
+    },
+    {
+     "clave": "outro_canal",
+     "ruta": "produccion/outro_canal.mp4",
+     "modelo": "render local + voz pagada",
+     "creditos": 0,
+     "quien": "Outro del canal v2 (2026-09-11), 20 s: pide like y suscripcion (pantalla final de YouTube)",
+     "usado_en": [
+      "01_aviacion_rusa",
+      "02_afd_alemania",
+      "03_kiev_belarus"
+     ],
+     "notas": "la mitad derecha queda libre para 'video siguiente'"
+    },
+    {
+     "clave": "intro03_canal",
+     "ruta": "produccion/intro03_canal.mp4",
+     "modelo": "render local + voz pagada",
+     "creditos": 0,
+     "quien": "Intro de preguntas del ep. 3, 33 s",
+     "usado_en": [
+      "03_kiev_belarus"
+     ],
+     "notas": "plantilla para la intro propia de cada video (intro03.py); la VOZ de cada intro si es nueva y se paga"
+    }
+   ]
+  },
+  "produccion": {
+   "que_es": "Assets con costo generados dentro de una produccion (`videos/<dir>/arte/assets/`). Se pueden reusar en otras: buscar aca antes de volver a generar.",
+   "items": [
+    {
+     "clave": "bl_busto",
+     "ruta": "videos/S01_11s/arte/assets/prop_bl_busto.png",
+     "modelo": "flux-pro/v1.1-ultra via fal",
+     "creditos": 1,
+     "quien": "Caricatura de papel de bin Laden (busto y figura entera)",
+     "usado_en": [
+      "S01_11s (miniaturas de las 12 piezas)"
+     ],
+     "notas": ""
+    }
+   ]
+  }
+ }
+}

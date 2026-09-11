@@ -1,0 +1,9 @@
+[Unit]
+Description=Paper Trail · vigilante: hay video subido para hoy?
+
+[Service]
+Type=oneshot
+User=__USUARIO__
+WorkingDirectory=__APP__
+EnvironmentFile=__APP__/.env
+ExecStart=/bin/bash -lc '__APP__/.venv/bin/python videos/DAILY/daily.py --vigilante $(date -u +%%F) > /tmp/pt_vig.json || __APP__/despliegue/avisar.sh "$(cat /tmp/pt_vig.json)"'

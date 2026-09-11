@@ -1,0 +1,263 @@
+# -*- coding: utf-8 -*-
+"""La escaleta del diario: que bloques hay y CUANTO DURA CADA UNO HOY.
+
+    python videos/DAILY/escaleta.py --autotest
+    python videos/DAILY/escaleta.py --demo        # un dia tranquilo y un dia de guerra
+
+LOS TIEMPOS NO SON FIJOS (decision de Agustin, 2026-09-11: "lo ideal seria que eso varie de
+acuerdo al dia"). Y tiene razon: las noticias no se reparten parejo. Hay dias en que Oriente Medio
+es todo el programa y dias en que no pasa nada ahi.
+
+COMO SE REPARTE
+  1. Lo fijo primero: cold open, intro y outro. Eso no se mueve.
+  2. Cada bloque se lleva su MINIMO. Asi ningun bloque desaparece: si Latinoamerica tuvo un dia
+     flojo igual tiene su minuto y medio, porque la audiencia que viene por eso vuelve manana.
+  3. Lo que sobra se reparte segun el PESO DEL DIA: la suma de importancia de los acontecimientos
+     de cada bloque, con tope por acontecimiento para que uno solo no se lleve el programa.
+  4. Se recorta contra el MAXIMO y lo que rebalsa vuelve a repartirse entre los que tienen lugar.
+
+Asi, un bloque puede ir de 1:30 a 6:00 segun el dia, y el programa entero queda siempre cerca del
+objetivo (20 min por defecto; `feedback-limites-no-literales`: pasarse dos o tres minutos esta bien).
+"""
+import json
+import os
+import sys
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+_RAIZ = os.path.dirname(os.path.dirname(BASE))
+if _RAIZ not in sys.path:
+    sys.path.insert(0, _RAIZ)
+
+OBJETIVO_MIN = 20.0
+
+# Lo que no se mueve nunca.
+FIJOS = {"COLD OPEN": 0.75, "INTRO": 0.25, "OUTRO": 0.33}
+
+# nombre: (minimo, maximo, presentador, topics que lo alimentan, paises que lo alimentan)
+# El reparto de presentadores sigue una logica: A la mesa de las potencias, B los teatros donde
+# estan pasando cosas, C los numeros y el calendario.
+BLOQUES = {
+    "THE POWERS": (3.0, 9.0, "A",
+                   {"diplomacy", "military", "elections", "legal", "sanctions"},
+                   {"US", "CN", "RU", "DE", "FR", "GB", "EU", "UA", "PL", "TR", "IT", "ES", "NL",
+                    "BE", "SE", "FI", "NO", "RO", "CZ", "AT", "CA"}),
+    "THE MIDDLE EAST": (1.5, 6.0, "B",
+                        {"military", "diplomacy", "energy"},
+                        {"IL", "IR", "SA", "AE", "QA", "EG", "JO", "LB", "SY", "IQ", "YE", "PS",
+                         "KW", "OM", "BH"}),
+    "THE MONEY": (2.0, 6.0, "C",
+                  {"finance", "trade"},
+                  set()),
+    "TECH & ENERGY": (1.0, 4.0, "C",
+                      {"tech", "energy"},
+                      set()),
+    "THE SOUTH": (1.5, 5.0, "B",
+                  set(),
+                  {"AR", "BR", "CL", "UY", "PY", "BO", "PE", "CO", "VE", "EC", "MX", "CU", "NI",
+                   "GT", "PA", "DO", "HN", "SV", "CR"}),
+    "THE PACIFIC": (1.0, 4.0, "B",
+                    set(),
+                    {"AU", "NZ", "JP", "KR", "TW", "PH", "ID", "VN", "TH", "MY", "SG", "IN", "PG",
+                     "KP", "FJ"}),
+    "WHAT TO WATCH": (1.5, 2.5, "C", set(), set()),
+}
+ORDEN = ["COLD OPEN", "INTRO", "THE POWERS", "THE MIDDLE EAST", "THE MONEY", "TECH & ENERGY",
+         "THE SOUTH", "THE PACIFIC", "WHAT TO WATCH", "OUTRO"]
+ORDEN_VARIABLE = [b for b in ORDEN if b in BLOQUES]
+
+TOPE_POR_EVENTO = 85      # un solo acontecimiento no puede pesar mas que esto
+PRESENTADOR = {b: v[2] for b, v in BLOQUES.items()}
+PRESENTADOR.update({"COLD OPEN": "A", "INTRO": None, "OUTRO": None})
+
+
+def bloque_de(evento):
+    """A que bloque va un acontecimiento. La geografia manda sobre el tema, salvo dinero y tech.
+
+    Oriente Medio va ANTES que las potencias: un ataque en Israel con reaccion de Washington es
+    del bloque de Oriente Medio, no del de las potencias, aunque EEUU aparezca en los actores.
+    """
+    paises = set(evento.get("paises") or [])
+    topics = set(evento.get("topics") or [])
+
+    if topics & {"finance", "trade"} and not (topics & {"military"}):
+        return "THE MONEY"
+    if topics & {"tech", "energy"} and not (topics & {"military"}):
+        return "TECH & ENERGY"
+    for nombre in ("THE MIDDLE EAST", "THE SOUTH", "THE PACIFIC", "THE POWERS"):
+        _, _, _, _, geo = BLOQUES[nombre]
+        if geo and (paises & geo):
+            return nombre
+    if topics & {"finance", "trade"}:
+        return "THE MONEY"
+    if topics & {"tech", "energy"}:
+        return "TECH & ENERGY"
+    return "THE POWERS"
+
+
+def repartir(eventos, objetivo=OBJETIVO_MIN, fijos=None):
+    """{bloque: minutos} segun el peso real del dia. Devuelve tambien el detalle."""
+    fijos = FIJOS if fijos is None else fijos
+    porBloque = {b: [] for b in BLOQUES}
+    for ev in eventos or []:
+        porBloque.setdefault(bloque_de(ev), []).append(ev)
+
+    peso = {}
+    for b in BLOQUES:
+        if b == "WHAT TO WATCH":
+            peso[b] = 0.0          # es el calendario: no depende del peso del dia
+            continue
+        peso[b] = float(sum(min(TOPE_POR_EVENTO, ev.get("importancia") or 0)
+                            for ev in porBloque.get(b, [])))
+
+    disponible = objetivo - sum(fijos.values())
+    minimos = {b: BLOQUES[b][0] for b in BLOQUES}
+    sobra = disponible - sum(minimos.values())
+    reparto = dict(minimos)
+
+    # Si no hay peso en ningun lado (dia sin eventos, o el Radar fallo), el programa no puede
+    # quedar corto: se reparte por el margen que tiene cada bloque, no por el peso.
+    if sum(peso.values()) <= 0:
+        peso = {b: (BLOQUES[b][1] - BLOQUES[b][0]) for b in BLOQUES}
+
+    # Reparto proporcional al peso, con recorte por maximo y redistribucion de lo que rebalsa.
+    for _ in range(8):
+        if sobra <= 0.01:
+            break
+        abiertos = [b for b in BLOQUES if reparto[b] < BLOQUES[b][1] - 0.01 and peso[b] > 0]
+        total = sum(peso[b] for b in abiertos)
+        if not abiertos or total <= 0:
+            # Ultimo recurso: reparto parejo entre los que todavia tienen lugar.
+            abiertos = [b for b in BLOQUES if reparto[b] < BLOQUES[b][1] - 0.01]
+            if not abiertos:
+                break
+            for b in abiertos:
+                reparto[b] = min(BLOQUES[b][1], reparto[b] + sobra / len(abiertos))
+            break
+        rebalse = 0.0
+        for b in abiertos:
+            cuota = sobra * peso[b] / total
+            techo = BLOQUES[b][1] - reparto[b]
+            dado = min(cuota, techo)
+            reparto[b] += dado
+            rebalse += cuota - dado
+        sobra = rebalse
+
+    detalle = {b: {"minutos": round(reparto[b], 2), "eventos": len(porBloque.get(b, [])),
+                   "peso": round(peso[b], 1), "presentador": BLOQUES[b][2],
+                   "min": BLOQUES[b][0], "max": BLOQUES[b][1]}
+               for b in ORDEN_VARIABLE}
+    total_min = sum(reparto.values()) + sum(fijos.values())
+    return {"total_min": round(total_min, 2), "fijos": fijos,
+            "bloques": detalle,
+            "eventos_por_bloque": {b: porBloque.get(b, []) for b in ORDEN_VARIABLE}}
+
+
+def resumen(rep):
+    out = ["ESCALETA DE HOY — %.1f min" % rep["total_min"]]
+    for b in ORDEN_VARIABLE:
+        d = rep["bloques"][b]
+        barra = "#" * int(d["minutos"] * 4)
+        out.append("  %-16s %5.2f min  %-36s %2d ev · peso %5.1f · %s"
+                   % (b, d["minutos"], barra, d["eventos"], d["peso"], d["presentador"]))
+    return "\n".join(out)
+
+
+# --------------------------------------------------------------------------- autotest
+
+def _ev(paises, topics, imp):
+    return {"paises": paises, "topics": topics, "importancia": imp}
+
+
+def _demo():
+    tranquilo = ([_ev(["US", "CN"], ["diplomacy"], 62), _ev(["DE", "EU"], ["elections"], 48)]
+                 + [_ev(["IL"], ["diplomacy"], 33)]
+                 + [_ev([], ["finance"], 55), _ev([], ["trade"], 44)]
+                 + [_ev(["AR"], ["elections"], 58), _ev(["BR"], ["trade"], 40)]
+                 + [_ev(["AU"], ["diplomacy"], 45)])
+    guerra = ([_ev(["US", "CN"], ["diplomacy"], 50)]
+              + [_ev(["IL", "IR"], ["military"], 92), _ev(["IL", "LB"], ["military"], 88),
+                 _ev(["YE", "SA"], ["military"], 81), _ev(["IR"], ["energy"], 74),
+                 _ev(["EG", "PS"], ["diplomacy"], 66)]
+              + [_ev([], ["finance"], 51)]
+              + [_ev(["AR"], ["finance"], 38)]
+              + [_ev(["TW", "CN"], ["military"], 70)])
+    for nombre, evs in (("UN DIA TRANQUILO EN ORIENTE MEDIO", tranquilo),
+                        ("UN DIA DE GUERRA EN ORIENTE MEDIO", guerra)):
+        print("\n=== %s ===" % nombre)
+        print(resumen(repartir(evs)))
+
+
+def _autotest():
+    fallos = []
+
+    def chequeo(n, c, e=""):
+        print(("OK   " if c else "FALLA") + " " + n + ((" | " + e) if e else ""))
+        if not c:
+            fallos.append(n)
+
+    print("--- el bloque nuevo ---")
+    chequeo("existe THE MIDDLE EAST", "THE MIDDLE EAST" in BLOQUES)
+    chequeo("Israel e Iran caen ahi",
+            bloque_de(_ev(["IL", "IR"], ["military"], 90)) == "THE MIDDLE EAST")
+    chequeo("Yemen y Arabia tambien",
+            bloque_de(_ev(["YE", "SA"], ["military"], 70)) == "THE MIDDLE EAST")
+    chequeo("Oriente Medio gana sobre las potencias aunque aparezca EEUU",
+            bloque_de(_ev(["US", "IL"], ["military"], 80)) == "THE MIDDLE EAST",
+            bloque_de(_ev(["US", "IL"], ["military"], 80)))
+    chequeo("Argentina sigue en THE SOUTH", bloque_de(_ev(["AR"], ["elections"], 60)) == "THE SOUTH")
+    chequeo("Taiwan en THE PACIFIC", bloque_de(_ev(["TW", "CN"], ["military"], 70)) == "THE PACIFIC")
+    chequeo("Rusia y EEUU en THE POWERS", bloque_de(_ev(["US", "RU"], ["diplomacy"], 70)) == "THE POWERS")
+    chequeo("mercados sin geografia van a THE MONEY",
+            bloque_de(_ev([], ["finance"], 50)) == "THE MONEY")
+
+    print("--- los tiempos VARIAN con el dia ---")
+    calmo = [_ev(["IL"], ["diplomacy"], 30)] + [_ev(["US", "CN"], ["diplomacy"], 70)] * 4
+    caliente = [_ev(["IL", "IR"], ["military"], 92)] * 5 + [_ev(["US"], ["diplomacy"], 45)]
+    a = repartir(calmo)["bloques"]["THE MIDDLE EAST"]["minutos"]
+    b = repartir(caliente)["bloques"]["THE MIDDLE EAST"]["minutos"]
+    chequeo("un dia de guerra le da MUCHO mas aire a Oriente Medio", b > a * 2,
+            "tranquilo=%.2f min · guerra=%.2f min" % (a, b))
+    p_a = repartir(calmo)["bloques"]["THE POWERS"]["minutos"]
+    p_b = repartir(caliente)["bloques"]["THE POWERS"]["minutos"]
+    chequeo("y se lo saca a las potencias", p_b < p_a, "%.2f -> %.2f" % (p_a, p_b))
+
+    print("--- las garantias ---")
+    for nombre, evs in (("sin nada", []), ("todo en un bloque", caliente)):
+        rep = repartir(evs)
+        chequeo("con %s, ningun bloque baja de su minimo" % nombre,
+                all(rep["bloques"][x]["minutos"] >= BLOQUES[x][0] - 0.01 for x in ORDEN_VARIABLE))
+        chequeo("con %s, ninguno pasa su maximo" % nombre,
+                all(rep["bloques"][x]["minutos"] <= BLOQUES[x][1] + 0.01 for x in ORDEN_VARIABLE))
+        chequeo("con %s, el total queda cerca del objetivo" % nombre,
+                abs(rep["total_min"] - OBJETIVO_MIN) <= 2.6,
+                "%.1f min (objetivo %.0f)" % (rep["total_min"], OBJETIVO_MIN))
+    rep = repartir(caliente)
+    chequeo("Latinoamerica conserva su lugar en un dia que no le toca",
+            rep["bloques"]["THE SOUTH"]["minutos"] >= 1.5,
+            "%.2f min" % rep["bloques"]["THE SOUTH"]["minutos"])
+    chequeo("WHAT TO WATCH no depende del peso del dia",
+            abs(repartir(calmo)["bloques"]["WHAT TO WATCH"]["minutos"]
+                - repartir(caliente)["bloques"]["WHAT TO WATCH"]["minutos"]) < 0.01)
+
+    print("--- reparto de presentadores ---")
+    carga = {}
+    for b in ORDEN_VARIABLE:
+        carga[BLOQUES[b][2]] = carga.get(BLOQUES[b][2], 0) + repartir(calmo)["bloques"][b]["minutos"]
+    print("      minutos por presentador en un dia normal: %s"
+          % {k: round(v, 1) for k, v in sorted(carga.items())})
+    chequeo("ningun presentador se lleva mas de la mitad del programa",
+            max(carga.values()) < OBJETIVO_MIN * 0.55,
+            "max=%.1f min" % max(carga.values()))
+
+    print()
+    print("FALLOS: %d" % len(fallos) + (" -> " + ", ".join(fallos) if fallos else ""))
+    return 1 if fallos else 0
+
+
+if __name__ == "__main__":
+    if "--autotest" in sys.argv:
+        sys.exit(_autotest())
+    if "--demo" in sys.argv:
+        _demo()
+        sys.exit(0)
+    print(__doc__)

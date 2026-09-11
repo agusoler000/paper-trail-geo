@@ -1,0 +1,135 @@
+{
+ "nombre": "EL ARCHIVISTA",
+ "archivo": "C_archivista_alpha.png",
+ "size": [
+  768,
+  1024
+ ],
+ "pivotes": {
+  "cuello": [
+   390,
+   400
+  ],
+  "hombro_i": [
+   212,
+   478
+  ],
+  "codo_i": [
+   65,
+   607
+  ],
+  "hombro_d": [
+   555,
+   470
+  ],
+  "codo_d": [
+   690,
+   605
+  ]
+ },
+ "boca": [
+  395,
+  332
+ ],
+ "z": [
+  "torso",
+  "brazo_i",
+  "antebrazo_i",
+  "brazo_d",
+  "antebrazo_d",
+  "cabeza"
+ ],
+ "piezas": {
+  "cabeza": {
+   "caja": [
+    198,
+    25,
+    566,
+    411
+   ],
+   "pivote_local": [
+    192,
+    375
+   ],
+   "pivote_global": [
+    390,
+    400
+   ]
+  },
+  "brazo_i": {
+   "caja": [
+    37,
+    441,
+    238,
+    630
+   ],
+   "pivote_local": [
+    175,
+    37
+   ],
+   "pivote_global": [
+    212,
+    478
+   ]
+  },
+  "antebrazo_i": {
+   "caja": [
+    37,
+    597,
+    252,
+    901
+   ],
+   "pivote_local": [
+    28,
+    10
+   ],
+   "pivote_global": [
+    65,
+    607
+   ]
+  },
+  "brazo_d": {
+   "caja": [
+    531,
+    441,
+    726,
+    616
+   ],
+   "pivote_local": [
+    24,
+    29
+   ],
+   "pivote_global": [
+    555,
+    470
+   ]
+  },
+  "antebrazo_d": {
+   "caja": [
+    510,
+    598,
+    726,
+    900
+   ],
+   "pivote_local": [
+    180,
+    7
+   ],
+   "pivote_global": [
+    690,
+    605
+   ]
+  },
+  "torso": {
+   "caja": [
+    95,
+    403,
+    722,
+    992
+   ],
+   "pivote_local": null,
+   "pivote_global": null
+  }
+ },
+ "parche_px": 11029
+}

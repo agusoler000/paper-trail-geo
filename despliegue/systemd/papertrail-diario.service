@@ -1,0 +1,16 @@
+[Unit]
+Description=Paper Trail · produce el video diario
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__USUARIO__
+WorkingDirectory=__APP__
+EnvironmentFile=__APP__/.env
+Nice=19
+IOSchedulingClass=idle
+# Las 9 etapas son idempotentes: si esto se corta, la proxima corrida retoma donde quedo.
+# El render NO borra los cuadros ya escritos (esa es la diferencia con produccion/motor.py).
+ExecStart=/bin/bash -lc '__APP__/.venv/bin/python videos/DAILY/daily.py --correr $(date -u +%%F)'
+TimeoutStartSec=25200

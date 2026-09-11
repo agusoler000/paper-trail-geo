@@ -1,0 +1,15 @@
+[Unit]
+Description=Paper Trail · ingesta del Radar
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__USUARIO__
+WorkingDirectory=__APP__
+EnvironmentFile=__APP__/.env
+# Prioridad baja: nunca compite con Supabase, n8n ni Evolution API.
+Nice=10
+IOSchedulingClass=idle
+ExecStart=/bin/bash -lc '__APP__/.venv/bin/python videos/DAILY/daily.py --correr $(date -u +%%F) --solo recolectar'
+TimeoutStartSec=1800

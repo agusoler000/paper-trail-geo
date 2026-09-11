@@ -1,0 +1,135 @@
+{
+ "nombre": "EL ANALISTA",
+ "archivo": "B_analista_alpha.png",
+ "size": [
+  768,
+  1024
+ ],
+ "pivotes": {
+  "cuello": [
+   388,
+   378
+  ],
+  "hombro_i": [
+   243,
+   424
+  ],
+  "codo_i": [
+   160,
+   597
+  ],
+  "hombro_d": [
+   516,
+   425
+  ],
+  "codo_d": [
+   602,
+   597
+  ]
+ },
+ "boca": [
+  390,
+  290
+ ],
+ "z": [
+  "torso",
+  "brazo_i",
+  "antebrazo_i",
+  "brazo_d",
+  "antebrazo_d",
+  "cabeza"
+ ],
+ "piezas": {
+  "cabeza": {
+   "caja": [
+    245,
+    29,
+    528,
+    385
+   ],
+   "pivote_local": [
+    143,
+    349
+   ],
+   "pivote_global": [
+    388,
+    378
+   ]
+  },
+  "brazo_i": {
+   "caja": [
+    117,
+    404,
+    257,
+    617
+   ],
+   "pivote_local": [
+    126,
+    20
+   ],
+   "pivote_global": [
+    243,
+    424
+   ]
+  },
+  "antebrazo_i": {
+   "caja": [
+    21,
+    577,
+    200,
+    946
+   ],
+   "pivote_local": [
+    139,
+    20
+   ],
+   "pivote_global": [
+    160,
+    597
+   ]
+  },
+  "brazo_d": {
+   "caja": [
+    513,
+    403,
+    646,
+    617
+   ],
+   "pivote_local": [
+    3,
+    22
+   ],
+   "pivote_global": [
+    516,
+    425
+   ]
+  },
+  "antebrazo_d": {
+   "caja": [
+    564,
+    575,
+    744,
+    943
+   ],
+   "pivote_local": [
+    38,
+    22
+   ],
+   "pivote_global": [
+    602,
+    597
+   ]
+  },
+  "torso": {
+   "caja": [
+    255,
+    361,
+    513,
+    1024
+   ],
+   "pivote_local": null,
+   "pivote_global": null
+  }
+ },
+ "parche_px": 0
+}

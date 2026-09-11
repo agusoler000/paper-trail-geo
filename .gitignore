@@ -1,0 +1,129 @@
+# Paper Trail — solo se sube la ESTRUCTURA.
+# Lo necesario para levantar el sistema en otra maquina. NO videos, NO guiones, NO audio,
+# NO bases, NO claves.
+#
+# OJO: en .gitignore el "#" solo comenta cuando ABRE la linea. Un comentario al final de una
+# regla pasa a ser parte del patron y la regla deja de funcionar. Por eso van todos arriba.
+
+# ---------------------------------------------------------------- secretos
+.env
+.env.*
+!.env.ejemplo
+*_token.json
+*.key
+*.pem
+
+# ---------------------------------------------------------------- video y audio
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.aac
+*.m4a
+
+# ---------------------------------------------------------------- material de cada dia/episodio
+# guiones, briefs, estado, cuadros: todo lo que produce una corrida
+videos/DAILY/_frames_*/
+videos/DAILY/_clip/
+videos/DAILY/_dias/
+videos/DAILY/_voz_cache/
+videos/0*/
+videos/S0*/
+guiones/
+fuentes/yt/
+canal/hilos/
+canal/sourcesheets/
+canal/out/
+_sub/
+pruebas/
+
+# ---------------------------------------------------------------- motor del formato largo
+# El engine (motor.py, mapa_*.py, mezcla, entregar) SI va: es la base compartida.
+# Lo que no va es la coreografia a mano de cada episodio pasado y su biblioteca de imagenes.
+produccion/assets/
+produccion/_frames*/
+produccion/audio/
+produccion/musica/
+produccion/hero/
+produccion/shorts/
+produccion/_shorts_tmp/
+produccion/_qc_canal/
+produccion/_efr/
+produccion/_ifr/
+produccion/_ufr/
+produccion/_vfr/
+produccion/_v1_carteles/
+produccion/ep0*.py
+produccion/intro0*.py
+produccion/props0*.py
+produccion/piloto*.py
+produccion/eventos*.json
+produccion/smoke.py
+canal/miniatura_0*.py
+canal/nombres_preview.py
+canal/assets_catalogo.json
+canal/capitulos_02.txt
+
+# ---------------------------------------------------------------- operativo y privado
+# fichas de subida de cada episodio, metricas propias del canal, bitacora personal
+canal/SUBIR_*.md
+canal/TITULOS_04.md
+canal/ANALISIS_*.md
+canal/CALENDARIO.md
+canal/HIGGSFIELD_CPP.md
+RETOMAR.md
+voz/_*.ps1
+
+# ---------------------------------------------------------------- decidir antes de subir
+# daily.py LEE estos dos en tiempo de ejecucion para armar el prompt del guion, asi que el
+# sistema los necesita. Pero son la postura politica personal y el criterio de monetizacion:
+# en un repo PUBLICO quedan indexados para siempre, aunque despues se borren.
+# Si el repo es PRIVADO -> borrar estas dos lineas y volver a commitear.
+# Si es PUBLICO -> van al VPS a mano, fuera de git.
+canal/IDEOLOGIA.md
+canal/MONETIZACION.md
+
+# ---------------------------------------------------------------- modelos
+# se bajan solos con despliegue/instalar.sh
+voz/piper/*.onnx
+voz/piper/*.onnx.json
+*.gguf
+*.safetensors
+
+# ---------------------------------------------------------------- bases y caches
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.bak
+
+# ---------------------------------------------------------------- salidas de trabajo
+# convencion del repo: un archivo que arranca con "_" es material de trabajo, no fuente
+_*.jpg
+_*.png
+_*.log
+_*.err
+_*.sh
+_*.txt
+_*.json
+produccion/_*
+canal/_*
+videos/DAILY/_*
+
+# ---------------------------------------------------------------- lo que SI va
+!.gitignore
+!despliegue/**
+!videos/DAILY/presentador/*_alpha.png
+!videos/DAILY/presentador/rig_*.json
+!videos/DAILY/presentador/piezas_*/**
+!radar/fuentes.json
+
+# ---------------------------------------------------------------- sistema
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,135 @@
+{
+ "nombre": "EL CORRESPONSAL",
+ "archivo": "A_corresponsal_alpha.png",
+ "size": [
+  768,
+  1024
+ ],
+ "pivotes": {
+  "cuello": [
+   390,
+   352
+  ],
+  "hombro_i": [
+   222,
+   422
+  ],
+  "codo_i": [
+   155,
+   545
+  ],
+  "hombro_d": [
+   546,
+   425
+  ],
+  "codo_d": [
+   613,
+   545
+  ]
+ },
+ "boca": [
+  390,
+  296
+ ],
+ "z": [
+  "torso",
+  "brazo_i",
+  "antebrazo_i",
+  "brazo_d",
+  "antebrazo_d",
+  "cabeza"
+ ],
+ "piezas": {
+  "cabeza": {
+   "caja": [
+    259,
+    29,
+    514,
+    375
+   ],
+   "pivote_local": [
+    131,
+    323
+   ],
+   "pivote_global": [
+    390,
+    352
+   ]
+  },
+  "brazo_i": {
+   "caja": [
+    138,
+    395,
+    250,
+    571
+   ],
+   "pivote_local": [
+    84,
+    27
+   ],
+   "pivote_global": [
+    222,
+    422
+   ]
+  },
+  "antebrazo_i": {
+   "caja": [
+    21,
+    530,
+    197,
+    769
+   ],
+   "pivote_local": [
+    134,
+    15
+   ],
+   "pivote_global": [
+    155,
+    545
+   ]
+  },
+  "brazo_d": {
+   "caja": [
+    519,
+    395,
+    631,
+    579
+   ],
+   "pivote_local": [
+    27,
+    30
+   ],
+   "pivote_global": [
+    546,
+    425
+   ]
+  },
+  "antebrazo_d": {
+   "caja": [
+    566,
+    533,
+    744,
+    773
+   ],
+   "pivote_local": [
+    47,
+    12
+   ],
+   "pivote_global": [
+    613,
+    545
+   ]
+  },
+  "torso": {
+   "caja": [
+    137,
+    368,
+    565,
+    1024
+   ],
+   "pivote_local": null,
+   "pivote_global": null
+  }
+ },
+ "parche_px": 0
+}

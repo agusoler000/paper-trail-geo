@@ -44,7 +44,7 @@ FICHAS = {"THE POWERS": "versus · mapa · cronologia", "THE MIDDLE EAST": "mapa
           "THE SOUTH": "dato · titular · mapa", "THE PACIFIC": "mapa · titular",
           "WHAT TO WATCH": "calendario", "COLD OPEN": "titular", "INTRO": "", "OUTRO": ""}
 CARAS = {"A": "A_corresponsal_alpha.png", "B": "B_analista_alpha.png", "C": "C_archivista_alpha.png"}
-NOMBRE = {"A": "EL CORRESPONSAL", "B": "EL ANALISTA", "C": "EL ARCHIVISTA"}
+NOMBRE = {"A": "EL CORRESPONSAL", "B": "EL ENVIADO", "C": "EL ARCHIVISTA"}  # B era "EL ANALISTA": ESTILO.md §5.1 / regla 14 (2026-09-13)
 RECORTE = {"A": (250, 20, 560, 380), "B": (240, 20, 540, 400), "C": (190, 20, 590, 420)}
 
 

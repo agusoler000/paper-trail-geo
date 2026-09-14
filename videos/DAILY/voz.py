@@ -39,6 +39,12 @@ FPS = 24
 # Una voz por presentador (aprobado por Agustin el 2026-09-11).
 VOCES = {"A": "A_ryan", "B": "B_joe", "C": "C_alan"}
 
+# Cadencia. `length_scale` de Piper: >1 lee mas lento. Sin esto, los tres leen a ~190 palabras por
+# minuto, que es velocidad de podcast, no de informativo. Medido el 2026-09-13 con el guion del
+# 14: 12.632 caracteres en 739 s = 17,1 car/s. Un lector de noticias va a 150-160 ppm; con 1,20
+# el guion queda en ~155 y ademas se le entiende cada cifra, que es lo que este formato vende.
+VELOCIDAD = {"A": 1.22, "B": 1.18, "C": 1.20}
+
 PAUSA_BEAT = 0.35       # aire entre beats, para que no suene pegado
 PAUSA_BLOQUE = 0.9      # aire mayor en el pase de un presentador a otro
 
@@ -77,11 +83,24 @@ def sintetizar(texto, presentador="A", forzar=False):
     y un guion que cambia una sola frase solo paga esa frase (en CPU, que es lo unico que cuesta).
     """
     os.makedirs(CACHE, exist_ok=True)
-    h = hashlib.sha1((presentador + "|" + texto).encode("utf-8")).hexdigest()[:16]
+    vel = VELOCIDAD.get(presentador, 1.0)
+    # la velocidad entra en la clave: si se cambia la cadencia, el cache NO puede devolver el
+    # audio viejo (si no, un cambio de ritmo no se oye hasta borrar el cache a mano)
+    h = hashlib.sha1(("%s|%.3f|%s" % (presentador, vel, texto)).encode("utf-8")).hexdigest()[:16]
     dest = os.path.join(CACHE, h + ".wav")
     if forzar or not os.path.exists(dest):
+        cfg = None
+        if abs(vel - 1.0) > 1e-6:
+            try:
+                from piper import SynthesisConfig
+                cfg = SynthesisConfig(length_scale=vel)
+            except Exception:
+                cfg = None
         with wave.open(dest, "wb") as w:
-            _voz(presentador).synthesize_wav(texto, w)
+            if cfg is not None:
+                _voz(presentador).synthesize_wav(texto, w, syn_config=cfg)
+            else:
+                _voz(presentador).synthesize_wav(texto, w)
     with wave.open(dest) as w:
         dur = w.getnframes() / float(w.getframerate())
     return dest, dur

@@ -42,7 +42,8 @@ GRIS = (140, 130, 114)
 # en el izquierdo al reves.
 POSES = {
     "reposo":   {},
-    "senala":   {"brazo_d": 36, "antebrazo_d": 14, "cabeza": -3},
+    # 26 y no 36: a 36 el brazo de C queda horizontal y lee a maniqui, no a persona senalando
+    "senala":   {"brazo_d": 26, "antebrazo_d": 12, "cabeza": -3},
     "abre":     {"brazo_i": -20, "brazo_d": 20, "antebrazo_i": -10, "antebrazo_d": 10},
     "enfatiza": {"brazo_i": 24, "antebrazo_i": 18, "cabeza": 2},
     "escucha":  {"cabeza": 4},
@@ -50,6 +51,9 @@ POSES = {
 
 # Reparto con una logica: A la mesa de las potencias, B los teatros donde estan pasando cosas,
 # C los numeros y el calendario. Definido en escaleta.py, espejado aca para no importar de mas.
+# Encuadre por presentador, compartido por todas las Escenas del proceso (ver Escena._encuadre).
+_ENCUADRES = {}
+
 PRESENTADOR_DE_BLOQUE = {
     "INTRO": "A", "COLD OPEN": "A", "OUTRO": "A", "THE POWERS": "A",
     "THE MIDDLE EAST": "B", "THE SOUTH": "B", "THE PACIFIC": "B",
@@ -58,7 +62,7 @@ PRESENTADOR_DE_BLOQUE = {
 # El presentador fijo tiene nombre: IROLA (Agustin, 2026-09-11). Abre y cierra todos los dias.
 ROTULO = {
     "A": ("IROLA", "the correspondent · washington · brussels · moscow"),
-    "B": ("THE ANALYST", "jerusalem · buenos aires · sydney desk"),
+    "B": ("THE ENVOY", "jerusalem · buenos aires · sydney desk"),
     "C": ("THE ARCHIVIST", "money · energy · what to watch"),
 }
 
@@ -136,6 +140,7 @@ class Escena:
         self.fecha = fecha or guion.get("fecha") or str(datetime.now(timezone.utc).date())
         self.visemas = pista_visemas or []
         self._cache_pose = {}
+        self._encuadres = {}
         self._cache_ficha = {}
         self._docs = {}
         self._rig = None
@@ -186,6 +191,43 @@ class Escena:
                 self._docs[clave] = {}
         return self._docs[clave]
 
+    def _encuadre(self, clave):
+        """(margen, caja) comun a TODAS las poses de este presentador.
+
+        El bug que arregla: escena.py llamaba a rig.componer() con margen=0, que es justo lo que
+        el propio rig.py documenta como recorte -- el brazo de C en `senala` perdia la mano contra
+        el borde del PNG. Con margen la mano aparece, pero si cada pose se recortara a su propia
+        caja el presentador cambiaria de tamano y de sitio en cada beat. Por eso la caja es la
+        UNION de las cajas de las cinco poses: el cuerpo se queda quieto y ninguna pose se corta.
+        """
+        # El cache es de MODULO y no de instancia a proposito. El render parte el trabajo en
+        # tramos de 48 cuadros y cada tramo construye una Escena nueva; con el cache por instancia,
+        # las quince composiciones del encuadre (a 1280x1536 por el margen) se rehacian cada 48
+        # cuadros y el render caia de 77 a 15 cuadros/s. Medido el 2026-09-14.
+        if clave in _ENCUADRES:
+            return _ENCUADRES[clave]
+        if clave in self._encuadres:
+            return self._encuadres[clave]
+        rig = self._mod_rig()
+        m = getattr(rig, "MARGEN_POSES", 256)
+        caja = None
+        for ang in POSES.values():
+            try:
+                a = rig.componer(clave, ang, fondo=None, brads=True, margen=m).split()[3]
+                b = a.point(lambda v: 255 if v > 40 else 0).getbbox()
+            except Exception:
+                b = None
+            if b:
+                caja = b if caja is None else (min(caja[0], b[0]), min(caja[1], b[1]),
+                                               max(caja[2], b[2]), max(caja[3], b[3]))
+        if caja is None:
+            doc_w, doc_h = 768, 1024
+            caja = (m, m, m + doc_w, m + doc_h)
+        pad = 8
+        caja = (max(0, caja[0] - pad), max(0, caja[1] - pad), caja[2] + pad, caja[3] + pad)
+        _ENCUADRES[clave] = self._encuadres[clave] = (m, caja)
+        return self._encuadres[clave]
+
     def _panel_presentador(self, clave, pose, letra_boca):
         """Panel izquierdo. La pose se cachea; la boca se pega encima, que es lo barato.
 
@@ -197,18 +239,26 @@ class Escena:
         guardado = self._cache_pose.get(ck)
         if guardado is None:
             rig = self._mod_rig()
+            m, (cx0, cy0, cx1, cy1) = self._encuadre(clave)
             try:
-                cuerpo = rig.componer(clave, POSES.get(pose, {}), fondo=PAPEL_IZQ, brads=True)
+                cuerpo = rig.componer(clave, POSES.get(pose, {}), fondo=None, brads=True, margen=m)
+                cuerpo = cuerpo.crop((cx0, cy0, cx1, cy1))
             except Exception:
-                cuerpo = Image.new("RGB", (768, 1024), PAPEL_IZQ)
+                cuerpo = Image.new("RGBA", (768, 1024), (0, 0, 0, 0))
+                cx0 = cy0 = m = 0
             w0, h0 = cuerpo.size
             alto = H - HDR - 42
-            esc = alto / float(h0)
-            cuerpo = cuerpo.resize((int(w0 * esc), alto), Image.LANCZOS)
-            ox, oy = (CREASE - cuerpo.width) // 2, (H - HDR) - alto
+            # se ajusta por alto Y por ancho: con margen la pose que abre el brazo ya no se
+            # recorta, pero el cuadro es mas ancho y podia meterse en el panel de la ficha
+            esc = min(alto / float(h0), (CREASE - 24) / float(w0))
+            cuerpo = cuerpo.resize((max(1, int(w0 * esc)), max(1, int(h0 * esc))), Image.LANCZOS)
+            ox = (CREASE - cuerpo.width) // 2
+            oy = (H - HDR) - cuerpo.height
             base = Image.new("RGB", (CREASE, H - HDR), PAPEL_IZQ)
-            base.paste(cuerpo, (ox, oy))
-            guardado = (base, ox, oy, esc)
+            base.paste(cuerpo, (ox, oy), cuerpo)
+            # la boca se ubica en coordenadas del PNG original: hay que descontar el margen y el
+            # recorte del encuadre, si no queda desplazada tanto como (margen - recorte)
+            guardado = (base, ox + (m - cx0) * esc, oy + (m - cy0) * esc, esc)
             self._cache_pose[ck] = guardado
 
         base, ox, oy, esc = guardado
@@ -271,10 +321,16 @@ class Escena:
         # cabecera
         d.rectangle([0, 0, W, HDR], fill=PAPEL)
         d.line([(0, HDR), (W, HDR)], fill=(196, 184, 162), width=3)
+        # Marca del canal + nombre del programa (decision de Agustin, 2026-09-13: "usamos THE
+        # LEDGER pero que haya marca del canal tambien"). PAPER TRAIL manda arriba en azul; el
+        # nombre del programa, en el cuerpo grande.
         x = 54
-        d.text((x, 30), "THE LEDGER", font=_f(40, True), fill=TINTA)
-        x += d.textlength("THE LEDGER", font=_f(40, True)) + 22
-        d.text((x, 41), "· daily", font=_f(27), fill=GRIS)
+        d.text((x, 22), "PAPER TRAIL", font=_f(24, True), fill=AZUL)
+        d.text((x, 48), "THE LEDGER", font=_f(38, True), fill=TINTA)
+        x += max(d.textlength("PAPER TRAIL", font=_f(24, True)),
+                 d.textlength("THE LEDGER", font=_f(38, True))) + 22
+        d.line([(x, 22), (x, 76)], fill=(196, 184, 162), width=3)
+        d.text((x + 20, 44), "· daily", font=_f(26), fill=GRIS)
         fecha = self.fecha.upper()
         d.text((W - 54 - d.textlength(fecha, font=_f(27)), 42), fecha, font=_f(27), fill=GRIS)
 

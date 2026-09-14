@@ -40,7 +40,7 @@ falta caer en la red de emergencia). Ninguna dependencia nueva.
 Autotest: `python radar/llm.py --autotest` (o `python -m radar.llm --autotest`). No gasta un centavo
 ni pide claves: reemplaza el transporte HTTP y la llamada a Claude por dobles de prueba.
 """
-import json, os, re, sys, time
+import json, os, re, sys, time, uuid
 
 import httpx
 import jsonschema
@@ -48,6 +48,10 @@ import jsonschema
 # ---------------------------------------------------------------- tablas (todo es dato, no codigo)
 
 BASE_OPENCODE = "https://opencode.ai/zen/go/v1"
+
+# opencode.ai/zen/go/v1 exige una sesion estable (x-opencode-session) para enrutar y cachear.
+# Sin ella responde 400 "Request is missing x-opencode-session". Uno por proceso alcanza.
+SESION_OPENCODE = uuid.uuid4().hex
 
 # Cualquier proveedor compatible con OpenAI entra como UNA FILA de esta tabla. No hace falta
 # tocar codigo: el adaptador "chat" ya sabe hablar ese dialecto.
@@ -266,7 +270,8 @@ def _pedir_opencode(modelo, sistema, prompt, esquema, timeout):
     clave = os.environ.get(CLAVE["opencode"], "").strip()
     if not clave:
         raise _Bajar("falta OPENCODE_API_KEY")
-    cabeceras = {"Authorization": "Bearer " + clave, "Content-Type": "application/json"}
+    cabeceras = {"Authorization": "Bearer " + clave, "Content-Type": "application/json",
+                 "x-opencode-session": SESION_OPENCODE}
     cabeceras.update(ad["cabeceras"])
     estado, datos = _post(BASE_OPENCODE + ad["ruta"], cabeceras,
                           ad["armar"](modelo, sistema, prompt, esquema), timeout)

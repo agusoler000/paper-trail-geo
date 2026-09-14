@@ -1,0 +1,49 @@
+{
+ "lineas": [
+  {
+   "i": 0,
+   "texto": "In 2023, an Iraqi refugee named Salwan Momika burned copies of the Quran in public squares in Stockholm. Sweden let him. That is what Sweden was — a country where you could do the most offensive thing imaginable, and the state would stand between you and the consequences.",
+   "inicio": 0.0,
+   "fin": 16.41
+  },
+  {
+   "i": 1,
+   "texto": "It didn't.",
+   "inicio": 16.41,
+   "fin": 26.43
+  },
+  {
+   "i": 2,
+   "texto": "On the twenty-ninth of January, 2025, Momika was live-streaming from his apartment in Södertälje when men came through the door and shot him dead. On camera. Swedish court documents later named a suspect: a twenty-four-year-old Syrian man, living in Sweden.",
+   "inicio": 26.43,
+   "fin": 40.08
+  },
+  {
+   "i": 3,
+   "texto": "And Sweden had already paid for those burnings once. Turkey spent months blocking Swedish entry into NATO over them, demanding extraditions. A country's entire defence policy, held up over a book.",
+   "inicio": 40.08,
+   "fin": 54.72
+  },
+  {
+   "i": 4,
+   "texto": "This is not a story about one dead man. It is the day Sweden stopped being able to guarantee the one thing it was famous for.",
+   "inicio": 54.72,
+   "fin": 64.92
+  },
+  {
+   "i": 5,
+   "texto": "You can still say anything in Sweden. You just might not survive saying it.",
+   "inicio": 64.92,
+   "fin": 70.88
+  },
+  {
+   "i": 6,
+   "texto": "Should he have been allowed to burn it? Yes or no — comments.",
+   "inicio": 70.88,
+   "fin": 74.5
+  }
+ ],
+ "dur": 76.375,
+ "pre": 0.55,
+ "post": 0.45
+}

@@ -49,7 +49,8 @@ Reglas de serie (propuesta del asistente, §3 de `SHORTS.md` tiene el detalle):
 - **Numeración en pantalla**: sello de papel `PART 2 OF 5` en la esquina, misma posición en las cinco.
 - **Cada pieza se entiende sola** (alguien va a entrar por la 4) **y cierra abriendo la siguiente**.
 - **Playlist propia** en YouTube con el nombre de la serie; las cinco entran ahí y el enlace va en las cinco descripciones.
-- **Una por día**, en orden, misma hora. Publicadas en desorden la serie no existe.
+- **Una por día**, en orden, misma hora. Publicadas en desorden la serie no existe. Excepción de Agustín (2026-09-11): si es
+  noticia, todas el mismo día (`SHORTS.md` §3.6).
 - El "video relacionado" de cada short apunta a la pieza anterior de la serie; si la serie desemboca en un episodio
   largo del mismo tema, todas apuntan al episodio y ese es el mejor uso de una serie.
 

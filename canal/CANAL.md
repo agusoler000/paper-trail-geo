@@ -11,7 +11,7 @@
 | Qué | Valor |
 |---|---|
 | Nombre | **Paper Trail** |
-| Handle | **`@papertrail`** (libre, verificado por HTTP y yt-dlp el 2026-09-07). Reserva: `@papertrailgeo`. |
+| Handle | **`@papertrailgeo`** — es el que quedó creado (comprobado en la página pública el 2026-09-13). `@papertrail` era el previsto el 7-sep y no fue el que se registró. |
 | Tagline | **`Follow the paper.`** (banner y primera línea de la descripción) |
 | Dominio | papertrail.tv libre; papertrail.com es de SolarWinds (no comprar nada hasta facturar) |
 | Marcas | Sin marca viva para video o contenido editorial. La única viva en clase 41 es de Newfangled Games (videojuego) y cubre solo juegos en línea. Detalle en `NOMBRE.md` §5. |
@@ -87,13 +87,15 @@ Subscribe if you want the next one on the table.
 (Decisión de Agustín 2026-09-07: **nada de cadencia en textos públicos**. Ni en la descripción, ni en la outro,
 ni en la plantilla de video. La cadencia es interna, `CALENDARIO.md`.)
 
+> **Comprobado el 2026-09-13 en la página pública: la descripción que está en YouTube es la v1 rechazada** ("There is no
+> host and no pundit: the narration is a voice, not a person, and the channel makes no predictions with dates on them").
+> La v2 de arriba nunca se pegó. Está en `canal/STUDIO_ARREGLOS_2026-09-13.md` §1 para copiar.
+
 (Versión 2, 2026-09-07: Agustín rechazó la primera por "horrible". Cambios: la primera línea es la que YouTube
 muestra en búsqueda, así que va el gancho y la palabra *geopolitics*; se sacó "editorial channel", "told on
 paper", "no host and no pundit" y "no predictions with dates", que sonaban a manifiesto; se agregó el pedido
 de suscripción al final. La frase "the narration is a voice, not a person" se fue de la descripción; si querés
 declarar la voz sintética, va en la hoja de fuentes, no acá.)
-
-(La última línea tiene que coincidir con la cadencia de `CALENDARIO.md` §1: quincenal, decisión de Agustín 2026-09-07.)
 
 Notas:
 - "No host and no pundit / a voice, not a person" es la mitigación de mayor retorno frente al bucket de
@@ -107,7 +109,9 @@ video 1 (un Google Doc o página estática) y, cuando exista, el correo de conta
 **Correo de contacto**: creá uno del canal (no el personal); es lo que ven los sponsors.
 
 **Palabras clave del canal** (*Configuración → Canal → Información básica*):
-`geopolitics, explained, animation, paper cutout, maps, Latin America, Venezuela, Guyana, Essequibo, Panama Canal, lithium, Russia, sanctions, aviation`
+`geopolitics, explained, animation, paper cutout, maps, history, Russia, Ukraine, Germany, Falklands, 9/11, artificial intelligence, Iran, United States`
+
+(Corregido el 2026-09-13: la lista anterior llevaba `Latin America, Venezuela, Guyana, Essequibo, Panama Canal, lithium`, que era la cola de temas propuesta por el asistente y contradice la decisión de Agustín del 8-sep en `IDEOLOGIA.md` §1: público anglófono internacional, no LatAm. Las palabras nuevas son los temas ya publicados; se cambian cuando cambien los temas.)
 
 ---
 
@@ -139,8 +143,13 @@ Map data: Natural Earth (public domain).
 Music: original cues produced for this channel.
 [Si se usa Kevin MacLeod: pegar el bloque de crédito de produccion/CREDITOS_MUSICA.md]
 
-Paper Trail is an editorial channel. No host, no pundit, no predictions with dates.
+[tres hashtags del tema, los mismos del título — regla de Agustín 2026-09-11]
 ```
+
+(La línea "Paper Trail is an editorial channel. No host, no pundit, no predictions with dates." salió de la plantilla el
+2026-09-13: era la frase de manifiesto que Agustín rechazó para la descripción del canal el 7-sep, y en los eps. 1-3
+quedó publicada al pie. Y los hashtags de la descripción son **tres**, los mismos del título: los eps. 05 y 06 salieron
+con 8 y 12.)
 
 **Descripción del video 1, lista para pegar** (capítulos medidos sobre `produccion/01_aviacion_rusa.mp4`,
 16:14, a partir de `audio/01_aviacion_rusa_eleven_george_dram.tiempos.json`):
@@ -195,7 +204,7 @@ va el canal. Un post de comunidad por dispatch, el miércoles anterior, con la m
 ## 5. Orden de tareas en YouTube Studio (una tarde)
 
 1. Crear el canal como **cuenta de marca** (no con tu nombre): `youtube.com/create_channel`.
-2. Nombre: `Paper Trail`. Handle: `@papertrail` (si al crearlo aparece ocupado, `@papertrailgeo`, también verificado libre).
+2. Nombre: `Paper Trail`. Handle: `@papertrailgeo` (hecho).
 3. Personalización → Marca: subir `avatar_A.png`, `banner_2560x1440.png`, `marca_agua_150.png`.
 4. Personalización → Información básica: descripción (§3), enlaces, correo de contacto.
 5. Configuración → Canal: país, palabras clave (§3), valores de subida (§4).
@@ -209,24 +218,66 @@ va el canal. Un post de comunidad por dispatch, el miércoles anterior, con la m
 
 ---
 
-## 7. Títulos
+## 7. Títulos — UNA sola fuente (reconciliado el 2026-09-13)
 
-Agustín rechazó `Russia Has 673 Airliners. One in Five Cannot Fly.` (2026-09-07). Lo que fallaba: es un dato,
-no una historia; no dice quién lo hizo ni cómo; y "cannot fly" suena a nota de agencia. Los títulos que
-funcionan en este nicho (RealLifeLore, Wendover, Johnny Harris) tienen **actor + acción imposible + giro**,
-y prometen una explicación, no una cifra.
+> Hasta el 13-sep esta sección acumulaba tres fórmulas (7-sep, 8-sep y 11-sep) y las fichas usaban cualquiera de las
+> tres (`ANALISIS_ITERACION_2026-09-13.md` §3.1). Acá queda **lo que decidió Agustín, en orden, y vale la última**. Lo
+> que era propuesta del asistente está marcado como tal y **no es regla**. `SHORTS.md` §8, `FORMATOS.md` y la skill
+> §2.2 remiten a esta sección y no repiten la fórmula.
 
-**Fórmula del canal (v3, decisión de Agustín 2026-09-08):** `PALABRA-EMOCIÓN: [Quién] [verbo fuerte] [a quién/qué] [giro o promesa]`.
-La primera palabra es una emoción en mayúsculas con dos puntos, **en todos los videos, y cada video lleva la suya según
-lo que relata** (no siempre la misma): `FEAR` · `BOMBSHELL` · `PANIC` · `SHOCK` · `WARNING` · `COLLAPSE` · `EXPOSED` ·
-`BETRAYAL` · `SECRET` · `ALERT` · `HUMILIATION` · `REVENGE`.
-Límites: la palabra tiene que cumplirse en el video; no "BREAKING" (promete noticia en vivo) ni fechas; sin "Nazi".
-Unos 70 caracteres como máximo (la palabra come 6-10); la cifra va al título o a la miniatura, no a los dos.
-Si a las 48 h el CTR está bajo el 4 %, probar el mismo título sin la palabra y comparar.
+### 7.1 Decisiones de Agustín, en orden
 
+| Fecha | Decisión | Estado |
+|---|---|---|
+| 7-sep | Rechazó `Russia Has 673 Airliners. One in Five Cannot Fly.`: es un dato, no una historia; no dice quién lo hizo ni cómo. | Vigente como criterio: el título cuenta **quién hizo qué**. |
+| 8-sep | *"Los títulos tienen que ser más sensacionalistas. Parece que YouTube da más visitas por eso. Ajustalo."* Su propuesta literal: `MIEDO: Alemania vota…`, `BOMBA: Gana la extrema…` → **palabra-emoción en mayúsculas + dos puntos, en todos los videos, distinta según lo que relata** (`FEAR` · `BOMBSHELL` · `PANIC` · `SHOCK` · `WARNING` · `COLLAPSE` · `EXPOSED` · `BETRAYAL` · `SECRET` · `ALERT` · `HUMILIATION` · `REVENGE`), y la palabra tiene que cumplirse en el video. | Vigente. |
+| 9-sep | En la intro de preguntas y en el cold open los mandatarios van **sin nombre**; en el cuerpo, con nombre y apellido. (Es regla de guion; se anota acá porque afecta al gancho.) | Vigente. Ver "Nombres propios en el gancho", más abajo. |
+| **13-sep** | Al ver la evidencia externa (`_anexo_evidencia_titulos_2026-09-13.md` §1: el prefijo en mayúsculas rinde peor en canales de explicación y ningún grande del nicho lo usa), Agustín decidió: *"Los prefijos, si considerás que son contraproducentes, quitalos"*, y acto seguido: *"para los videos futuros. Los que ya están subidos dejalos como están. Lo mismo con las miniaturas."* → **Desde el próximo video, los títulos van SIN `PALABRA-EMOCIÓN:` adelante; la emoción va dentro de la frase** (*"Nobody Saw the Real Reason"*, *"The Real Winner Never Fired a Shot"*). Lo publicado hasta el 13-sep se queda como está. | **Vigente.** Reemplaza la forma del 8-sep; lo demás del 11-sep (cifra o fecha adelante, aterrizar en el que mira, hashtags, ≤ 100) sigue. |
+| **14-sep** | Al leer los títulos del ep. 08 (`3 Leaders Signed One Page Today…`, `73 Seats Now Want Out…`): *"para mi los titulos que pones no llaman la atencion. Tendrian que ser mas ¿Es el fin del Reino Unido? o cosas asi y una breve oracion. PERO HAZLO ASI BRO. IGUAL QUE LAS MINIATURAS"*. → **El gancho es una PREGUNTA**, seguida de **una oración corta** que la aterriza. Y lo mismo en la miniatura. | **Vigente.** Reemplaza a la cifra o fecha adelante del 11-sep. |
+| 11-sep | (ep. 06, literal) *"Los títulos no me gustan… `AI Will Pay the Electrician and Break the Office Worker` es horrible… Los mejores son el 3 y el 4."* Aprobó `SHOCK: 11.5% Pay Cut for Desks, 33.6% Raise for Trades by 2030 #AI #Jobs #Trades`. Criterio que fijó: **arrancan con una cifra dura o una fecha** y aterrizan en el espectador; nada abstracto ni que necesite haber visto el video; **dos o tres hashtags del tema al final del propio título**; **≤ 100 caracteres**; los mismos tres hashtags en la descripción (*"una lista de seis parece muestrario y no tema"*). | Vigente. **Reemplaza** al "sin fechas" del 8-sep. |
 
-**Regla de Agustín (2026-09-08): los títulos tienen que ser más sensacionalistas** ("parece que YouTube da más visitas
-por eso"). Mismo límite: cada título se apoya en algo que el video dice; el drama va en el verbo y en la promesa.
+**Regla vigente desde el 14-sep, que es la suma de las cinco:**
+
+`[PREGUNTA que es el gancho] [una oración corta que la aterriza] #tag #tag #tag`
+
+Ejemplos que cumplen: *"Is This the End of the United Kingdom? Three nations just signed to leave"*,
+*"Is Britain Over? Scotland, Wales and Ireland signed the same page today"*.
+
+**Y la miniatura lleva la MISMA pregunta**, en dos o tres palabras enormes (`IS BRITAIN / OVER?`).
+Título y miniatura se leen como una sola cosa; si el título pregunta y la miniatura afirma, se
+anulan.
+
+Lo del 13-sep que **sigue**: sin prefijo `PALABRA-EMOCIÓN:`, ≤ 100 caracteres, tres hashtags iguales
+en el título y en la descripción, lo que promete el título se cumple en el video, sin inventar
+hechos. Lo que **cae**: la cifra o la fecha obligatoria al principio (11-sep). Una cifra puede ir en
+la oración corta si es lo que engancha, pero ya no abre el título.
+
+(Los títulos con cifra adelante que quedaron publicados hasta el 13-sep **se quedan como están**,
+por la misma decisión suya de ese día.)
+
+- ≤ 100 caracteres; lo que promete el título se cumple en el video; tres hashtags, los mismos en la descripción; sin
+  inventar hechos (cada título se apoya en algo que el video dice). La evidencia también va contra los hashtags dentro
+  del título (anexo §2), pero Agustín solo decidió sobre el prefijo: los hashtags siguen hasta que diga otra cosa.
+- Lo que sigue vigente por **otra** regla suya (la 14, monetización, `MONETIZACION.md` §1): sin `Nazi`, sin
+  `BREAKING`, sin `invasion` para personas, sin `fraud` sin atribución.
+
+### 7.2 Propuestas del asistente que NO son regla (quedan para que Agustín las adopte o las tire)
+
+- "~70 caracteres como máximo" (8-sep). Su regla del 11-sep dice ≤ 100.
+- "La cifra va al título **o** a la miniatura, no a los dos" (8-sep). Su plantilla del 11-sep lleva la cifra en los dos.
+- "Sin fechas" (8-sep, anotado como límite de la fórmula). Lo reemplazó él el 11-sep: *"una cifra dura o una fecha"*.
+- "Si a las 48 h el CTR está bajo el 4 %, probar el mismo título sin la palabra" (8-sep). A la escala actual las pruebas
+  A/B de título terminan sin ganador (`ANALISIS_ITERACION_2026-09-13.md` §1.3).
+- La evidencia externa contra el prefijo en mayúsculas, contra los hashtags dentro del título y a favor de 40-60
+  caracteres está en `_anexo_evidencia_titulos_2026-09-13.md`. **No es una regla del canal**: es un dato para que decida.
+
+### 7.3 Lo publicado (decisión de Agustín, 13-sep: **se queda como está**, con prefijo o sin él)
+
+- Eps. 01 y 05: las tres variantes A/B van **sin** palabra-emoción (las subió así Agustín; la ficha del 05 las traía con `SHOCK`/`EXPOSED`/`COLLAPSE`/`BOMBSHELL`).
+- S03 a S09 (12-sep): `10 DAYS BEFORE OCT 7: …`, `$418.82: …`, `AUGUST 7: …`, `2.4%: …`, `12%: …`, `0 of 12: …`, `5 Seats: …`: cifra adelante y hashtags, **sin palabra-emoción**. Las escribió el asistente y las subió Agustín.
+- Ep. 04: la prueba A/B terminó sin ganador y quedó visible la peor variante (`EXPOSED…`, 28,9 % del tiempo de reproducción); `SECRET…` hizo 35,9 %.
+
+### 7.4 Historial de candidatos por episodio (registro, sin cambios)
 
 Video 1, candidatos en orden (reescritos el 2026-09-08; los sobrios quedan en `SUBIR_01.md` como respaldo):
 
@@ -281,7 +332,7 @@ Rusia. Título y miniatura no repiten la misma frase: el título cuenta la histo
 ## 6. Lo que queda abierto
 
 Decisiones tuyas (sin ellas no se abre el canal):
-- [x] Nombre: **Paper Trail**, `@papertrail` (decisión de Agustín 2026-09-07). Imágenes regeneradas, descripción
+- [x] Nombre: **Paper Trail**, `@papertrailgeo` (decisión de Agustín 2026-09-07; el handle real quedó con el sufijo). Imágenes regeneradas, descripción
   y plantilla actualizadas, tarjeta del cold open cambiada en `piloto.py`/`piloto2.py` (el video 1 se re-renderiza
   con ella: `produccion/01_aviacion_rusa_v5.mp4`).
 - [ ] Avatar: A, B o C (§2, `out/_avatares_circulo.jpg`).

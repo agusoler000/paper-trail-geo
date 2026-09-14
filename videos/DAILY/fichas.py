@@ -32,7 +32,7 @@ Sin dependencias nuevas: PIL y stdlib. numpy solo en el autotest.
 
     python videos/DAILY/fichas.py --autotest
 """
-import functools, math, os, random, shutil, sys, tempfile, zlib
+import functools, json, math, os, random, shutil, sys, tempfile, zlib
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 BASE = os.path.dirname(os.path.abspath(__file__))
@@ -347,6 +347,96 @@ HOJAS = {
 # nombre de la hoja. Si se quiere que un nombre desconocido corte el render, va aca.
 HOJAS_REALES = {}
 
+# Nombre de la hoja en INGLES: el canal es en ingles y el rotulo se ve en pantalla.
+ROTULO_HOJA = {
+    "mundo": "the world", "europa": "europe", "europa_este": "eastern europe",
+    "americas": "the americas", "sudamerica": "south america",
+    "atlantico_sur": "the south atlantic", "asia": "asia",
+    "medio_oriente": "the middle east", "africa": "africa", "pacifico": "the pacific",
+}
+
+# --------------------------------------------------------------------------- costas reales
+# El TODO de arriba pedia enganchar las hojas de produccion/mapa_*.py. Se resolvio distinto y
+# mejor: en vez de PNGs por episodio, se dibujan las costas desde el mismo Natural Earth 50m que
+# ya usa produccion/mapa_mundo.py (fuentes/mapas/ne_50m_countries.geojson), con la MISMA
+# proyeccion `_proyector` con la que se ubican los puntos. O sea que la costa y los puntos no
+# pueden desalinearse: salen de la funcion de proyeccion, no de una imagen ajustada a ojo.
+# La capa se cachea por (limites, tamano de caja): se dibuja una vez por ficha, no por cuadro.
+GEOJSON = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                       "fuentes", "mapas", "ne_50m_countries.geojson")
+TIERRA = (243, 237, 222)      # papel recortado: la tierra va ENCIMA del tablero
+COSTA = (146, 133, 110)
+_PAISES = None
+_CAPAS = {}
+
+
+def _paises():
+    """Carga Natural Earth una sola vez por proceso. Si falta, el mapa sigue saliendo sin costas."""
+    global _PAISES
+    if _PAISES is None:
+        try:
+            from shapely.geometry import shape
+            with open(GEOJSON, encoding="utf-8") as fh:
+                crudo = json.load(fh)
+            _PAISES = [shape(f["geometry"]) for f in crudo["features"] if f.get("geometry")]
+        except Exception:
+            _PAISES = []
+    return _PAISES
+
+
+def _anillos(g):
+    if g.geom_type == "Polygon":
+        yield list(g.exterior.coords)
+        for h in g.interiors:
+            yield list(h.coords)
+    elif g.geom_type in ("MultiPolygon", "GeometryCollection"):
+        for sub in g.geoms:
+            for r in _anillos(sub):
+                yield r
+
+
+def _capa_tierra(lim, caja, proj):
+    """RGBA del tamano de la caja con la tierra recortada. Cacheada."""
+    lon0, lon1, lat0, lat1 = lim
+    x0, y0, x1, y1 = [int(round(v)) for v in caja]
+    w, h = x1 - x0, y1 - y0
+    clave = (round(lon0, 3), round(lon1, 3), round(lat0, 3), round(lat1, 3), w, h)
+    if clave in _CAPAS:
+        return _CAPAS[clave]
+    capa = Image.new("RGBA", (max(w, 1), max(h, 1)), (0, 0, 0, 0))
+    paises = _paises()
+    if paises:
+        try:
+            from shapely.geometry import box
+            # el recorte se hace en dos ventanas para que una hoja que cruza el antimeridiano
+            # (pacifico: lon0=100, lon1=205) tome tambien lo que en el archivo esta en negativo
+            ventanas = [box(lon0, lat0, min(lon1, 180.0), lat1)]
+            if lon1 > 180.0:
+                ventanas.append(box(-180.0, lat0, lon1 - 360.0, lat1))
+            dc = ImageDraw.Draw(capa)
+            for g in paises:
+                for v in ventanas:
+                    if not g.intersects(v):
+                        continue
+                    try:
+                        rec = g.intersection(v)
+                    except Exception:
+                        continue
+                    for anillo in _anillos(rec):
+                        if len(anillo) < 3:
+                            continue
+                        pts = [proj(lo, la) for lo, la in anillo]
+                        pts = [(px - x0, py - y0) for px, py in pts]
+                        dc.polygon(pts, fill=TIERRA + (255,))
+                        # la costa se traza aparte: `outline` de polygon da un pelo de 1 px que
+                        # a esta escala no se ve, y la costa es lo que hace legible la hoja
+                        dc.line(pts + [pts[0]], fill=COSTA + (255,), width=2, joint="curve")
+        except Exception:
+            pass
+    _CAPAS[clave] = capa
+    return capa
+
+
 
 def _limites(hoja, puntos):
     """Limites de la hoja. Si la hoja no esta en el catalogo, se deducen de los puntos con aire."""
@@ -405,7 +495,7 @@ def ficha_mapa(im, d, datos, t, rojo):
     puntos = [p for p in _g(datos, "puntos", []) if isinstance(p, dict)]
     flechas = _g(datos, "flechas", []) or []
 
-    _rotulo(d, hoja.replace("_", " "))
+    _rotulo(d, ROTULO_HOJA.get(hoja, hoja.replace("_", " ")))
     titulo = _g(datos, "titulo", "")
     y = Y_TOP
     if titulo:
@@ -417,6 +507,8 @@ def ficha_mapa(im, d, datos, t, rojo):
     # la hoja: rectangulo de papel de mapa, graticula tenue y marcas de registro en las esquinas
     tarjeta(im, caja, MAPA, rot=0.0)
     x0, y0, x1, y1 = [int(round(v)) for v in caja]
+    tierra = _capa_tierra(lim, caja, proj)
+    im.paste(tierra, (x0, y0), tierra)
     lon0, lon1, lat0, lat1 = lim
     pl, pt = _paso_grat(lon1 - lon0), _paso_grat(lat1 - lat0)
     lon = math.ceil(lon0 / pl) * pl
@@ -591,11 +683,16 @@ def ficha_titular(im, d, datos, t, rojo):
     px, py = cx0 + 40, cy0 + 34
     pw = (cx1 - cx0) - 80
     medio = str(_g(datos, "medio", "")).upper()
-    fm, lm, _ = encajar(medio, pw - 220, 48, 38, pxmin=20, bold=True, serif=True, max_lineas=1)
-    d.text((px, py), lm[0], font=fm, fill=TINTA)
     fecha = str(_g(datos, "fecha", ""))
     ffe = f(23)
-    d.text((px + pw - ancho_txt(fecha, ffe), py + 12), fecha, font=ffe, fill=GRIS)
+    # el hueco de la fecha se MIDE, no se supone: con 220 px fijos, "15-16 September 2026" se
+    # metia debajo del nombre del medio y se comia la primera cifra
+    hueco = ancho_txt(fecha, ffe) + 26 if fecha else 0
+    fm, lm, _ = encajar(medio, max(120, pw - hueco), 48, 38, pxmin=20, bold=True, serif=True,
+                        max_lineas=1)
+    d.text((px, py), lm[0], font=fm, fill=TINTA)
+    if fecha:
+        d.text((px + pw - ancho_txt(fecha, ffe), py + 12), fecha, font=ffe, fill=GRIS)
     py += 58
     d.line([(px, py), (px + pw, py)], fill=TINTA, width=3)
     d.line([(px, py + 7), (px + pw, py + 7)], fill=TINTA, width=1)
@@ -631,8 +728,12 @@ def ficha_titular(im, d, datos, t, rojo):
         d.line([(px, py), (px + int(pw * r.uniform(0.55, 1.0)), py)], fill=TENUE, width=7)
         py += 22
 
-    pie = "clipped from the source · full link in the description"
-    d.text((MX, Y_BOT - 44), pie, font=f(22), fill=GRIS)
+    # El pie se puede reemplazar o apagar. La tarjeta del propio programa (el saludo, la despedida)
+    # no viene recortada de ninguna prensa, y decir "clipped from the source" en la PRIMERA tarjeta
+    # que ve el espectador lee a plantilla mal puesta. Con "pie": "" no se dibuja nada.
+    pie = datos.get("pie", "clipped from the source · full link in the description")         if isinstance(datos, dict) else "clipped from the source · full link in the description"
+    if pie:
+        d.text((MX, Y_BOT - 44), str(pie), font=f(22), fill=GRIS)
 
 
 # ================================================================ FICHA 4 - dato
@@ -784,7 +885,9 @@ def ficha_serie(im, d, datos, t, rojo):
     d.line([(gx0, gy0 - 14), (gx0, gy1)], fill=TINTA, width=4)
     d.line([(gx0, gy1), (gx1 + 10, gy1)], fill=TINTA, width=4)
     if unidad:
-        d.text((gx0 - 14 - ancho_txt(unidad, f(22, True)), gy0 - 42), unidad, font=f(22, True),
+        # se ancla al margen si no entra a la izquierda del grafico: una unidad larga
+        # ("% of votes cast") se salia del panel y quedaba cortada por el borde
+        d.text((max(MX, gx0 - 14 - ancho_txt(unidad, f(22, True))), gy0 - 42), unidad, font=f(22, True),
                fill=TINTA)
 
     pts = [(gx0 + (x - xmin) * sx, gy1 - (v - lo) * sy) for x, v in zip(xs, ys)]

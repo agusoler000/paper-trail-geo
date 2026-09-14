@@ -154,3 +154,30 @@ Reino Unido el mejor argumento que tiene. Detalle en `guiones/04_malvinas/postur
   anunciada de £180 millones a 10 años).
 - No entra en el debate sobre Cisjordania ni Sáhara Occidental, aunque Memorias de Pez lo use como analogía.
 - No usa la palabra "invasión" para 1833 en el título ni en la miniatura (`MONETIZACION.md`).
+
+### 6.1 Cortes no declarados hasta el 2026-09-13 (auditoría, anexo §B.6)
+
+**Opiniones de Carajo que quedaron fuera** y no estaban listadas (la postura §3 decía que las dos fuentes iban atribuidas;
+Memorias de Pez se absorbió como voz propia y Carajo se descartó sin decirlo):
+- «Milei es un estadista» (leyó la bipolaridad, apostó a Trump, eligió el momento de Sea Lion). Fuera.
+- «El Reino Unido hundió el Belgrano para cerrar la puerta de Haig». Fuera: el guion (l.385-386) dice que no lo va a
+  zanjar, sin atribuir la tesis a nadie.
+- Ushuaia como hub logístico antártico y capital político del reclamo. Fuera.
+- El Atlántico Sur como única comunicación bioceánica indestructible. Fuera.
+
+**Datos únicos que se cayeron en la poda** (`guiones/04_malvinas/_podar.py` decía «no se toca ninguna cifra»; se
+tocaron seis, cuatro del lado argentino y dos del británico):
+- Participación en el referéndum de 2013: ~92 %.
+- La ley argentina contra empresas que operan en las islas sin permiso, vigente desde 2010, y los intentos de aplicarla en
+  2012, 2015 y 2022 (Navitas).
+- «…primero en la fila en el presupuesto de 2027».
+- «…por miedo a sanciones argentinas» (l.489 quedó «are turning the job down», sin el porqué).
+- «Downing Street called the position long-standing and unwavering.»
+- «and expel its ambassador».
+
+**Tres frases que quedaron colgadas** en el guion publicado porque se borró su antecedente: l.467 *«It is why now.»*,
+l.484 *«it was tried again»*, l.514 *«you cannot do both»*. Y l.153 «The United Provinces of the Río de la Plata» perdió
+la aclaración «the country that will become Argentina».
+
+**Ironía en voz fuera de lo autorizado** (postura §2: la ironía va en lo visual): l.237 *«It is a tidy argument.»*,
+l.342 *«which was a choice»*, l.426-427 *«a device with a wonderful name»*. Decisión de Agustín si quedan como criterio.

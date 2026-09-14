@@ -187,8 +187,13 @@ def escanear():
                   if f.startswith('prop_') and f.endswith('.png')]
     fam.append(('props', 'Objetos de papel dibujados por codigo (props*.py). 0 creditos. Antes de dibujar uno nuevo, '
                          'buscar aca: hay %d.' % len(props),
-                [{'clave': f[5:-4], 'ruta': rel(os.path.join(dd, f)), 'modelo': '0 cr (codigo)', 'creditos': 0,
-                  'quien': '', 'usado_en': [], 'notas': ''} for f, dd in props]))
+                [dict({'clave': f[5:-4], 'ruta': rel(os.path.join(dd, f)), 'modelo': '0 cr (codigo)',
+                       'creditos': 0, 'quien': '', 'usado_en': [], 'notas': ''},
+                      **{k: v for k, v in ficha_de(f[5:-4], cat).items() if v not in (None, '', [])})
+                 for f, dd in props]))
+    # La familia 'props' consultaba el catalogo: hasta el 2026-09-11 escribia quien='' fijo, asi que un
+    # prop pagado con IA (el primero fue `bibi`, USD 0,21 en fal) quedaba en el indice como si fuera
+    # codigo gratis y `buscar` no lo encontraba por su nombre. Ahora hereda su ficha como las demas.
 
     # ---------------------------------------------------------------- marca (voz e intro/outro ya pagadas)
     items = []

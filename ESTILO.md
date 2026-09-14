@@ -4,6 +4,23 @@
 > Idioma del canal: **inglés**. Idioma de trabajo: español.
 > Creado: 2026-08-31, tras investigación con 14 agentes + verificación adversarial + prueba de render real.
 > Complemento técnico: `ANIMACION.md`. Estrategia y negocio: `IDEA.md`.
+>
+> **Vigencia (agregado el 2026-09-13, sin reglas nuevas).** Este archivo lo escribió el asistente el 31-ago con criterio
+> propio; varias de sus "reglas" las derogó Agustín después y seguían acá como vigentes. Lo que **no** rige:
+>
+> | Sección | Qué decía | Qué decidió Agustín |
+> |---|---|---|
+> | §1 | "Cero emoción", narrador plano | 7-sep: relato dramático, ganchos, música con arco (ya anotado en §1) |
+> | §2.3 | Prohibido dibujar políticos reales | 3-sep: derogado; caricaturas de papel de líderes reales (ya anotado) |
+> | §2.4-2.5 | Elenco cerrado de 8 arquetipos y 8 escenarios, "cero excepciones" | Nunca fue regla suya; ningún episodio la cumple (hay 18 rigs) |
+> | §3 | "Nunca suscribite"; "prohibido antes de 0:60 nombre del canal, resumen, pedido de suscripción" | 7 y 8-sep (regla 4): intro de preguntas + intro general que pide like y suscripción **antes** del cuerpo; outro que pide suscripción |
+> | §3 | Estructura 7-8 min | 3-sep: 15-17 min, mínimo 15:30 |
+> | §4 | Sponsor como escena in-universe | Propuesta; ningún guion reserva el beat |
+> | §5 regla 7 | "Solo YouTube Audio Library o Kevin MacLeod; nunca música de PicsArt" | Regla 9 de Agustín: cues propias con Lyria vía PicsArt. Verificado el 13-sep (ver §5.7): las generaciones en plan pago se entregan para uso comercial |
+> | §5 regla 1 | "Jamás analista" (personaje recurrente que explica) | No es regla suya, pero el riesgo (bucket de "expertos de IA") entra por su regla 14 de monetización; el diario ya no llama "analista" a ningún presentador |
+> | §6 | Cadencia quincenal de 7-8 min con banco de 4 | 7-sep: quincenal de 15-17, sin banco; desde el 7-sep se publicó más seguido |
+>
+> Lo demás (paleta, técnica de recorte, mapas, escritura A:/V:, normalización TTS, checklist §7) sigue siendo la referencia.
 
 ---
 
@@ -242,7 +259,8 @@ La caricatura no es un riesgo: **es una ventaja regulatoria neta** frente al for
 | La política de *inauthentic content* (15/07/2025) es un gate de **monetización del YPP**, no de strikes | Con modelo de sponsors el impacto directo es menor — pero ver abajo |
 | Bucket de julio 2026: **personas de IA presentadas como expertos en temas políticos** = no monetizable | **Bala directa a un canal de geopolítica sin cara** |
 
-**Reglas duras que salen de eso:**
+**Reglas duras que salen de eso** (propuestas del asistente a partir de la investigación; entran por la regla 14 de
+Agustín, monetización, no por sí mismas):
 
 1. **Marca-publicación, jamás analista.** Nada de un personaje animado recurrente con nombre propio
    que "explica" geopolítica. Nada de credenciales implícitas. Nada de "nuestro analista". Voz en off
@@ -260,9 +278,21 @@ La caricatura no es un riesgo: **es una ventaja regulatoria neta** frente al for
 6. **Modelos**: SDXL/Juggernaut (RAIL++-M) y FLUX.1-**schnell** (Apache 2.0) sí.
    **FLUX.1-dev NO** — licencia de modelo no comercial. Decidirlo hoy, antes de que la identidad
    visual dependa de pesos que no se pueden monetizar.
-7. **Música**: solo YouTube Audio Library o Kevin MacLeod (CC-BY, monetizable con crédito).
-   **Nunca música de PicsArt** — sus Terms prohíben expresamente percibir ingresos por publicidad en
-   obras que la incluyan.
+7. **Música** — corregido el 2026-09-13 tras leer los términos (la versión anterior de esta regla decía "solo YouTube
+   Audio Library o Kevin MacLeod; nunca música de PicsArt, sus Terms prohíben percibir ingresos por publicidad").
+   Lo que dicen las fuentes, textual: (a) la cláusula de los *Terms of Use* de PicsArt que prohíbe ingresos por
+   publicidad es la §2.4 de **"Moods – Epidemic Sound – Music Integration"**: *"You may not allow and receive remuneration
+   from the display of advertisements or premium pro-rata revenues in connection with making available your End-User
+   Productions"*, y aplica a la **biblioteca de Epidemic Sound** dentro de PicsArt (uso "non-commercial… for your
+   personal use"), no a las generaciones de IA (https://picsart.com/terms-of-use). (b) Para la música generada con Lyria en
+   PicsArt, el propio PicsArt escribe: *"Everything it generates is original and cleared for commercial use"* y en su FAQ
+   *"Yes, all tracks are original and cleared for commercial use"* (https://picsart.com/blog/lyria-3-cross-platform-integration/,
+   26-mar-2026). (c) El centro de ayuda dice que las generaciones de IA en plan pago se entregan para uso comercial y que
+   PicsArt no garantiza que se pueda reclamar el copyright de lo generado
+   (https://support.picsart.com/hc/en-us/articles/9814385860381). **Conclusión:** las cues Lyria del canal (regla 9 de
+   Agustín) no chocan con los términos; lo que no se puede usar en un video monetizado es la biblioteca **Moods/Epidemic
+   Sound** de PicsArt, que el canal no usa. Límite que queda: es la palabra de PicsArt en un blog y un FAQ, no una licencia
+   firmada; si el canal entra al Partner Program conviene guardar una captura de esas páginas con fecha.
 8. **Bandera o escudo nacional jamás como logo, avatar o favicon** (Art. 6ter + política de
    impersonation). Dentro de mapas y escenas, sin problema.
 

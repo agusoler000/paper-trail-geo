@@ -11,7 +11,7 @@
 |---|---|---|
 | Qué es | El mecanismo detrás de un tema de fondo. Sigue valiendo dentro de un año. | Un hecho de la semana, explicado por su mecanismo. Vale 2-3 semanas. |
 | Ejemplos hechos | Ep. 1 (aviación rusa), ep. 2 (AfD 44 %) | — |
-| Duración | 10-12 min (mientras la retención sea baja); 15-17 min cuando suba | **4-7 min** |
+| Duración | **15-17 min** (regla 5 de Agustín: mínimo 15:30 de cuerpo). El "10-12 min mientras la retención sea baja" que decía esta fila era propuesta del asistente; se quitó el 2026-09-13, y el dato de ese día (`ANALISIS_ITERACION_2026-09-13.md` §1.3: el % visto es ~28-29 % con 18 y con 33 min) tampoco lo sostiene | **4-7 min** |
 | Guion | 11 beats (`ESTILO.md` §3), 1.500-2.300 palabras | **5 beats**: cold open (15 s) · qué pasó (60 s) · por qué importa (90 s) · quién gana y quién pierde (90 s) · qué mirar ahora (30 s) + NEXT. 600-900 palabras |
 | Fuentes | 2+ videos de YouTube (los elige Agustín) + hoja de referencia | 2+ videos o notas de agencia; misma hoja de referencia, más corta |
 | Tiempo desde el hecho | Da igual | **Publicar en ≤ 72 h** del hecho; si no, es reportaje |
@@ -21,7 +21,7 @@
 | Intro / outro | Cold open → intro 8 s → cuerpo → outro 15 s | Igual |
 | Shorts | **3-5, con guion exclusivo** (modelo nuevo 2026-09-08, `SHORTS.md`) | **3-4, con guion exclusivo**; si el hecho no da para 3, se hacen los que den |
 | Miniatura | Cara grande + ≤ 3 palabras + un objeto | Igual, más un **sello rojo `BRIEF`** en una esquina para distinguirlo en el feed |
-| Título | `PALABRA-EMOCIÓN: quién verbo qué giro` | Igual (sin fechas, tu regla) |
+| Título | La regla vive en `CANAL.md` §7.1 (única fuente; reconciliada el 2026-09-13) | Igual |
 | Créditos / costo | 60-180 cr · USD 2,75-3,00 en fal | 30-60 cr · USD 1-1,5 en fal |
 | Horas de producción | 4-5 días | 1-2 días: mismo cuidado por minuto, menos minutos |
 | Publicación | Jueves 13:00 ART, quincenal | **Cuando ocurre**, martes o viernes 13:00 ART; no desplaza al reportaje |

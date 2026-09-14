@@ -136,7 +136,9 @@ Reglas de serie:
 4. **Sello `PART 2 OF 5`** de papel, misma esquina en todas, misma tipografía. Es lo que hace que se vea como serie
    en el feed y lo que hace que alguien busque las otras.
 5. **Playlist propia** con el nombre de la serie. Las N entran ahí y el link va en las N descripciones.
-6. **Una por día, en orden, a la misma hora.** Publicadas salteadas, la serie no existe.
+6. **Una por día, en orden, a la misma hora.** Publicadas salteadas, la serie no existe. **Excepción de Agustín (2026-09-11):
+   si la serie es noticia, sale entera el mismo día** (la S02 salió así, con 30 min entre piezas). Dato del 13-sep: la S01
+   (una por día) quedó con 10 de 12 piezas por debajo de 50 vistas; la S02 (mismo día) hizo 206-441 por pieza.
 7. **El "video relacionado"** de cada pieza apunta a la anterior. Excepción: si la serie desemboca en un episodio largo
    del mismo tema, todas apuntan al episodio — **ese es el mejor uso de una serie** y convierte la serie en el tráiler
    de un Dispatch.
@@ -232,9 +234,8 @@ y series, que es el formato que más rinde en Shorts porque construye hábito.
 
 ## 8. Al subir (2 min por pieza)
 
-1. Subir el MP4. Título y descripción de `PUBLICAR.md`. **Título** (regla de Agustín): palabra-emoción en mayúsculas
-   + dos puntos, distinta en cada uno — `FEAR:`, `BOMBSHELL:`, `PANIC:`, `SHOCK:`, `WARNING:`, `COLLAPSE:`, `EXPOSED:`,
-   `BETRAYAL:`, `SECRET:`, `ALERT:`. Sin `BREAKING`, sin fechas, sin `Nazi`, y la palabra tiene que cumplirse en la pieza.
+1. Subir el MP4. Título y descripción de `PUBLICAR.md`. **Título: la regla vive en `CANAL.md` §7.1 y solo ahí** (reconciliada
+   el 2026-09-13; el "sin fechas" que decía esta línea lo reemplazó Agustín el 11-sep por "cifra dura o fecha adelante").
 2. **Video relacionado** → el episodio (modo A) o la pieza anterior (modo B). Es el único enlace clicable dentro del
    feed de Shorts; sin eso el short es un callejón sin salida.
 3. Comentario propio fijado (lo tiene que hacer Agustín: el asistente no puede comentar en su nombre).

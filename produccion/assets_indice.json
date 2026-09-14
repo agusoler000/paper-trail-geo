@@ -1,6 +1,6 @@
 {
- "generado": "2026-09-11",
- "creditos_acumulados": 55,
+ "generado": "2026-09-14",
+ "creditos_acumulados": 58,
  "familias": {
   "rigs": {
    "que_es": "Personajes de papel recortados en piezas (cabeza, torso, 2 brazos x 2 segmentos). REUSABLES SIEMPRE: el ep. 5 usa los del 1 al 4.",
@@ -428,6 +428,30 @@
   "hero": {
    "que_es": "Planos generativos (still + image-to-video). Lo MAS caro que generamos: 10-20 cr por clip. Cada uno con su ficha .json (modelo, prompt, creditos, que se descarto y por que).",
    "items": [
+    {
+     "clave": "daily_fed",
+     "ruta": "produccion/hero/daily_fed.json",
+     "clips": [],
+     "modelo": "flux-2-pro",
+     "creditos": 1,
+     "quien": "THE MONEY · el dial de tasas y el barril que se derrama sobre el",
+     "usado_en": [
+      "DAILY/2026-09-14"
+     ],
+     "notas": ""
+    },
+    {
+     "clave": "daily_hormuz",
+     "ruta": "produccion/hero/daily_hormuz.json",
+     "clips": [],
+     "modelo": "flux-2-pro",
+     "creditos": 1,
+     "quien": "THE MIDDLE EAST · el estrecho, la cola de barcos y el que no pasa",
+     "usado_en": [
+      "DAILY/2026-09-14"
+     ],
+     "notas": ""
+    },
     {
      "clave": "hangar",
      "ruta": "produccion/hero/hangar.json",
@@ -877,6 +901,54 @@
      "notas": ""
     },
     {
+     "clave": "mapabk",
+     "ruta": "videos/06_ia_economia_politica/arte/assets",
+     "piezas": 3,
+     "capas": [
+      "mapabk_base.png",
+      "mapabk_ciudades.png",
+      "mapabk_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapa07",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets",
+     "piezas": 4,
+     "capas": [
+      "mapa07_base.png",
+      "mapa07_ciudades.png",
+      "mapa07_ductos.png",
+      "mapa07_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapa08",
+     "ruta": "videos/08_reino_unido/arte/assets",
+     "piezas": 5,
+     "capas": [
+      "mapa08_base.png",
+      "mapa08_ciudades.png",
+      "mapa08_naciones.png",
+      "mapa08_pts.json",
+      "mapa08_tres.png"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
      "clave": "mapa11",
      "ruta": "videos/S01_11s/arte/assets",
      "piezas": 5,
@@ -907,11 +979,40 @@
      "quien": "",
      "usado_en": [],
      "notas": ""
+    },
+    {
+     "clave": "mapagolfo",
+     "ruta": "videos/S04_recibo_iran/arte/assets",
+     "piezas": 3,
+     "capas": [
+      "mapagolfo_base.png",
+      "mapagolfo_ciudades.png",
+      "mapagolfo_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mapapacto",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets",
+     "piezas": 2,
+     "capas": [
+      "mapapacto_base.png",
+      "mapapacto_pts.json"
+     ],
+     "modelo": "0 cr (Natural Earth + codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
     }
    ]
   },
   "props": {
-   "que_es": "Objetos de papel dibujados por codigo (props*.py). 0 creditos. Antes de dibujar uno nuevo, buscar aca: hay 408.",
+   "que_es": "Objetos de papel dibujados por codigo (props*.py). 0 creditos. Antes de dibujar uno nuevo, buscar aca: hay 719.",
    "items": [
     {
      "clave": "acorazado",
@@ -3938,6 +4039,888 @@
      "notas": ""
     },
     {
+     "clave": "vinieta",
+     "ruta": "videos/06_ia_economia_politica/arte/assets/prop_vinieta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "alacena_llena",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_alacena_llena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "alacena_media",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_alacena_media.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "alacena_vacia",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_alacena_vacia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_iq",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_bandera_iq.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ir",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_bandera_ir.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ye",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_bandera_ye.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_cpi",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_barra_cpi.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_diesel",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_barra_diesel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_fuels",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_barra_fuels.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bombeo",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_bombeo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bombeo_roto",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_bombeo_roto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "camion",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_camion.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cesta",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_cesta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cheque_5000",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_cheque_5000.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hoja_trabajo",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_hoja_trabajo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "interruptor",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_interruptor.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "leche",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_leche.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mina",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_mina.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palanca",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_palanca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palanca_rota",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_palanca_rota.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pan",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_pan.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "paquete",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_paquete.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_abierta",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_puerta_abierta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_cerrada",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_puerta_cerrada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "recibo_largo",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_recibo_largo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_both_doors",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_both_doors.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_built_1980s",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_built_1980s.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_closed",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_closed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_plan_b",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_no_plan_b.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_switch",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_no_switch.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_not_tight",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_not_tight.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_off_friday",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_off_friday.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_record",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_record.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_shut",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_shut.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_since_1982",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_since_1982.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_true",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_true.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_useless",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_sello_useless.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_371",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_surtidor_371.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_606",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_surtidor_606.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_798",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_surtidor_798.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "taza_cafe",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_taza_cafe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tuberia",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_tuberia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tuberia_cerrada",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_tuberia_cerrada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tuberia_corta",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_tuberia_corta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "valvula",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_valvula.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "valvula_cerrada",
+     "ruta": "videos/07_petroleo_ormuz/arte/assets/prop_valvula_cerrada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "archivador",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_archivador.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "arma",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_arma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "arma_doblada",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_arma_doblada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "balanza_cargada",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_balanza_cargada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "balanza_rota",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_balanza_rota.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "balanza_vacia",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_balanza_vacia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_en",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_en.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_en_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_en_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ie",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_ie.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ie_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_ie_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ni",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_ni.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ni_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_ni_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_sc",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_sc.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_sc_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_sc_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_uk",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_uk.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_uk_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_uk_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_wa",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_wa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_wa_sm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_bandera_wa_sm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barco_guerra",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_barco_guerra.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "calculadora",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_calculadora.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "candado",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_candado.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cerradura",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_cerradura.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cerradura_sola",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_cerradura_sola.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ciudad",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_ciudad.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "colono",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_colono.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "espejo08",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_espejo08.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "espejo_roto",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_espejo_roto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "gatillo",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_gatillo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "inventario",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_inventario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "maquina_sellos",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_maquina_sellos.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "memorandum",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_memorandum.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "memorandum_limpio",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_memorandum_limpio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mini_bandera_abierta",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_mini_bandera_abierta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mini_bandera_rota",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_mini_bandera_rota.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "mini_grieta",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_mini_grieta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_0",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_0.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_1",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_2",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_3",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_3.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_4",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_4.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "montania_5",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_montania_5.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ojiva",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_ojiva.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pluma",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_pluma.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_downing",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_puerta_downing.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_downing_ab",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_puerta_downing_ab.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "silla_eu",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_silla_eu.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "silla_partida",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_silla_partida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "submarino",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_submarino.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tarjeta_abajo",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_tarjeta_abajo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tarjeta_fm",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_tarjeta_fm.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "techo",
+     "ruta": "videos/08_reino_unido/arte/assets/prop_techo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
      "clave": "alfombra_rezo",
      "ruta": "videos/S01_11s/arte/assets/prop_alfombra_rezo.png",
      "modelo": "0 cr (codigo)",
@@ -3976,11 +4959,18 @@
     {
      "clave": "bl_busto",
      "ruta": "videos/S01_11s/arte/assets/prop_bl_busto.png",
-     "modelo": "0 cr (codigo)",
-     "creditos": 0,
-     "quien": "",
-     "usado_en": [],
-     "notas": ""
+     "modelo": "flux-pro/v1.1-ultra via fal",
+     "creditos": 1,
+     "quien": "Caricatura de papel de bin Laden (busto y figura entera)",
+     "usado_en": [
+      "S01_11s (miniaturas de las 12 piezas)"
+     ],
+     "notas": "",
+     "usd": 0.03,
+     "archivo": "videos/S01_11s/arte/assets/prop_bl_busto.png (+ prop_bl_entero.png)",
+     "prompt": "descrito por atributos, sin nombre propio: asceta alto y enjuto, cara muy larga, barba gris muy larga como capa aparte, nariz ganchuda, panuelo crema en la cabeza, tunica color arena. Estilo recorte de papel Terry Gilliam, fondo crema plano, sin armas ni banderas",
+     "recorte": "videos/S01_11s/arte/recortar_bl.py (quita el fondo crema por relleno desde los bordes)",
+     "nota": "Rig no articulado: solo imagen. Si alguna vez se necesita animado, pasarlo por juntas.json + cortador.py"
     },
     {
      "clave": "bl_entero",
@@ -4579,6 +5569,1930 @@
     {
      "clave": "zapato",
      "ruta": "videos/S01_11s/arte/assets/prop_zapato.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_26",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_barra_26.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_5",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_barra_5.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_76",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_barra_76.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barra_80",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_barra_80.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barrotes",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_barrotes.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "campana_bolsa",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_campana_bolsa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carta_renuncia",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_carta_renuncia.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "codigo_claude",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_codigo_claude.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "codigo_humano",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_codigo_humano.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "contrato_falta1",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_contrato_falta1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "curvas",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_curvas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "espejo",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_espejo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "expediente_disp",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_expediente_disp.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_amodei",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_amodei.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_anthropic",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_anthropic.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_astra",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_astra.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_buckmaster",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_buckmaster.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_coxon",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_coxon.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_hubinger",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_hubinger.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_oculta",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_oculta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_openai",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_openai.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_sanders",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ficha_sanders.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "formulario_s1",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_formulario_s1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hilo_x",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_hilo_x.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe_junio",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_informe_junio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_10",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_medidor_10.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_25",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_medidor_25.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "medidor_quieto",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_medidor_quieto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palanca_abajo",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_palanca_abajo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "palanca_arriba",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_palanca_arriba.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pliego_1",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_pliego_1.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pliego_2",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_pliego_2.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pliego_ley",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_pliego_ley.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "puerta_cerrada",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_puerta_cerrada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "rack_41",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_rack_41.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_17h",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_reloj_17h.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_biggest_ever",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_biggest_ever.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_cheat_wins",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_cheat_wins.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_closing",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_closing.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_death_penalty",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_death_penalty.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_disputed",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_disputed.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_eight_days",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_eight_days.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_comment",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_no_comment.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_plan",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_no_plan.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_not_a_forecast",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_not_a_forecast.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_not_public",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_not_public.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_reckless",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_reckless.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_resigned",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_resigned.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_root",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_root.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_stop_us",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_stop_us.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_textbook",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_textbook.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_twenty_years",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_twenty_years.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_unchanged",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_unchanged.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_undefined",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_undefined.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_unverifiable",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_unverifiable.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_warning_shot",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_warning_shot.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_we_are_safe",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_sello_we_are_safe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tablon_agentes",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_tablon_agentes.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "tarta_90",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_tarta_90.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ventana_abierta",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ventana_abierta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ventana_cerrada",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ventana_cerrada.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ventana_media",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_ventana_media.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "vortice",
+     "ruta": "videos/S02_ia_riesgo/arte/assets/prop_vortice.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_ae",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_bandera_ae.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_eg",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_bandera_eg.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_il",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_bandera_il.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bibi",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_bibi.png",
+     "modelo": "fal-ai/flux-pro/v1.1",
+     "creditos": 0,
+     "quien": "Caricatura de papel de un primer ministro anciano (se usa como Netanyahu)",
+     "usado_en": [
+      "S03_aviso_oct7"
+     ],
+     "notas": "",
+     "archivo": "videos/S03_aviso_oct7/arte/assets/prop_bibi.png",
+     "usd": 0.21,
+     "intentos": 5,
+     "nota": "El parecido es APROXIMADO: lee como estadista anciano de traje azul, no como Netanyahu. Sirve con el contexto del texto (OCT 7, la bandera). Pendiente: un rig articulado del elenco con el metodo de pruebas/elenco/prompts_lideres.md. No es un rig: no tiene juntas, se usa como prop y en la miniatura.",
+     "prompt": "Cut paper collage puppet, layered cardstock craft... elderly head of government, wide square jaw, heavy jowls, thick swept-back silver-white hair, dark navy suit, blue tie. Sin nombre propio (los generadores rechazan personas reales)."
+    },
+    {
+     "clave": "cal_oct27",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_cal_oct27.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cal_oct7",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_cal_oct7.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cohete_p",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_cohete_p.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "dron_p",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_dron_p.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "exp_jericho",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_exp_jericho.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_bibi",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_ficha_bibi.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_mbz",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_ficha_mbz.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ficha_sinwar",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_ficha_sinwar.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "hoja_senales",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_hoja_senales.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "moto_p",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_moto_p.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "parapente",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_parapente.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "portada_diario",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_portada_diario.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_45",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_reloj_45.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_absolute_lie",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_absolute_lie.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_beyond",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_beyond.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_denied",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_denied.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_it_is_true",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_it_is_true.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_libel",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_libel.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_denial",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_no_denial.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_no_proof",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_no_proof.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ready",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_ready.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_unfit",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_sello_unfit.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "telefono_gr",
+     "ruta": "videos/S03_aviso_oct7/arte/assets/prop_telefono_gr.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "buque_us",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_buque_us.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "petrolero",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_petrolero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_aid",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_aid.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_iransays",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_iransays.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notsmall",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_notsmall.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_pump",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_pump.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_record",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_record.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_taxes",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_taxes.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ussays",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_sello_ussays.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_298",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_surtidor_298.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_422",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_surtidor_422.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "ticket",
+     "ruta": "videos/S04_recibo_iran/arte/assets/prop_ticket.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_cn",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_bandera_cn.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_pk",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_bandera_pk.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_sa",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_bandera_sa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "bandera_tr",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_bandera_tr.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "buque_us",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_buque_us.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "caza",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_caza.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "marcador",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_marcador.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "pacto_hoja",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_pacto_hoja.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_mapmoved",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_mapmoved.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_nato",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_nato.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_nbc",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_nbc.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notaparty",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_notaparty.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notarming",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_notarming.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_nuclear",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_nuclear.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_reuters",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_reuters.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_veto",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_veto.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_wapo",
+     "ruta": "videos/S05_mapa_alianzas/arte/assets/prop_sello_wapo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_banca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca_azul",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_banca_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "capitolio",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_capitolio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpetas",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_carpetas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_venta",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_cartel_venta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_casa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grafico_caida",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_grafico_caida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_informe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "linea_tiempo",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_linea_tiempo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "llave",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_llave.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_arena",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_reloj_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_avg27",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_avg27.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_five",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_five.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lowest",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_lowest.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notinroom",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_notinroom.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ontable",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_ontable.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_receipt",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_receipt.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_twelve",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_twelve.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zero",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_zero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zerobbl",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_sello_zerobbl.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_422",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_surtidor_422.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "urna",
+     "ruta": "videos/S06_fed_inflacion/arte/assets/prop_urna.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_banca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca_azul",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_banca_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "capitolio",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_capitolio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpetas",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_carpetas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_venta",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_cartel_venta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_casa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grafico_caida",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_grafico_caida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_informe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "linea_tiempo",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_linea_tiempo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "llave",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_llave.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_arena",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_reloj_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_avg27",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_avg27.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_five",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_five.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lowest",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_lowest.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notinroom",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_notinroom.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ontable",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_ontable.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_receipt",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_receipt.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_twelve",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_twelve.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zero",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_zero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zerobbl",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_sello_zerobbl.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_422",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_surtidor_422.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "urna",
+     "ruta": "videos/S07_vivienda/arte/assets/prop_urna.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_banca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca_azul",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_banca_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "capitolio",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_capitolio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpetas",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_carpetas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_venta",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_cartel_venta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_casa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grafico_caida",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_grafico_caida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_informe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "linea_tiempo",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_linea_tiempo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "llave",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_llave.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_arena",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_reloj_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_avg27",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_avg27.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_five",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_five.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lowest",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_lowest.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notinroom",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_notinroom.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ontable",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_ontable.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_receipt",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_receipt.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_twelve",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_twelve.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zero",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_zero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zerobbl",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_sello_zerobbl.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_422",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_surtidor_422.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "urna",
+     "ruta": "videos/S08_presupuesto/arte/assets/prop_urna.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca",
+     "ruta": "videos/S09_midterms/arte/assets/prop_banca.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "banca_azul",
+     "ruta": "videos/S09_midterms/arte/assets/prop_banca_azul.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "barril",
+     "ruta": "videos/S09_midterms/arte/assets/prop_barril.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "capitolio",
+     "ruta": "videos/S09_midterms/arte/assets/prop_capitolio.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "carpetas",
+     "ruta": "videos/S09_midterms/arte/assets/prop_carpetas.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "cartel_venta",
+     "ruta": "videos/S09_midterms/arte/assets/prop_cartel_venta.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "casa",
+     "ruta": "videos/S09_midterms/arte/assets/prop_casa.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "conteo",
+     "ruta": "videos/S09_midterms/arte/assets/prop_conteo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "grafico_caida",
+     "ruta": "videos/S09_midterms/arte/assets/prop_grafico_caida.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "informe",
+     "ruta": "videos/S09_midterms/arte/assets/prop_informe.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "linea_tiempo",
+     "ruta": "videos/S09_midterms/arte/assets/prop_linea_tiempo.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "llave",
+     "ruta": "videos/S09_midterms/arte/assets/prop_llave.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "reloj_arena",
+     "ruta": "videos/S09_midterms/arte/assets/prop_reloj_arena.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_avg27",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_avg27.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_five",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_five.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_lowest",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_lowest.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_notinroom",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_notinroom.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_ontable",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_ontable.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_receipt",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_receipt.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_twelve",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_twelve.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zero",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_zero.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "sello_zerobbl",
+     "ruta": "videos/S09_midterms/arte/assets/prop_sello_zerobbl.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "surtidor_422",
+     "ruta": "videos/S09_midterms/arte/assets/prop_surtidor_422.png",
+     "modelo": "0 cr (codigo)",
+     "creditos": 0,
+     "quien": "",
+     "usado_en": [],
+     "notas": ""
+    },
+    {
+     "clave": "urna",
+     "ruta": "videos/S09_midterms/arte/assets/prop_urna.png",
      "modelo": "0 cr (codigo)",
      "creditos": 0,
      "quien": "",

@@ -62,7 +62,7 @@ información" se resuelve solo: la noticia cae en el bloque que le corresponde y
 |---|---|---|---|
 | **A** | El corresponsal — traje azul, anteojos rectangulares, anchor | **THE POWERS** · abre el cold open y cierra el programa | Es la cara institucional. Lo genérico, que como presentador único era su defecto, acá es exactamente lo que se le pide al ancla. |
 | **C** | El archivista — chaleco, moño, pluma, anteojos redondos | **THE MONEY** + **TECH & ENERGY** + **WHAT TO WATCH** | Es el hombre del expediente: números, series, documentos y el calendario de lo que viene. Su papel literal. |
-| **B** | El analista — joven, mangas arrolladas, tiradores | **THE SOUTH** + **THE PACIFIC** | El corresponsal regional, fuera de la mesa central. Su registro más liviano, que desentonaba en una nota de guerra, acá juega a favor. |
+| **B** | El enviado — joven, mangas arrolladas, tiradores (hasta el 13-sep se llamaba "El analista"; se cambió porque `ESTILO.md` §5.1 documenta que YouTube trata como no monetizable a "personas de IA presentadas como expertos en temas políticos", y la etiqueta "analista" es exactamente esa presentación; regla 14 de Agustín) | **THE SOUTH** + **THE PACIFIC** | El corresponsal regional, fuera de la mesa central. Su registro más liviano, que desentonaba en una nota de guerra, acá juega a favor. |
 
 **Lo que esto habilita y con uno solo era imposible:** en un evento `disputed`, **dos presentadores
 sostienen las dos lecturas en pantalla**. La separación HECHO / AFIRMACIÓN deja de ser una tarjeta y pasa a
@@ -105,7 +105,7 @@ La voz era la unica linea que no era cero, y con Piper lo es.
 | Presentador | Voz Piper | Velocidad |
 |---|---|---|
 | A · El corresponsal | `en_US-ryan-high` | 2x tiempo real (la mas cuidada) |
-| B · El analista | `en_US-joe-medium` | 6x |
+| B · El enviado | `en_US-joe-medium` | 6x |
 | C · El archivista | `en_GB-alan-medium` | 14x |
 
 **Lo que se pierde, dicho sin vueltas:** Piper no tiene la direccion de actor de eleven-v3. Es un
@@ -156,8 +156,9 @@ Levante son su propio teatro y no se reparten parejo con el resto del mundo.
 
 | Bloque | Minimo | Maximo | Presentador | Que cubre |
 |---|---|---|---|---|
-| COLD OPEN | \- | fijo 0:45 | A | El hecho del dia + "stay to the end" |
-| INTRO | \- | fijo 0:15 | \- | Sello de papel, THE LEDGER, la fecha |
+| **SALUDO (bloque INTRO)** | \- | ~0:20 | A | Buenos dias, bienvenidos a THE LEDGER, la fecha hablada entera y la insistencia en quedarse. **Va PRIMERO, antes de la intro del canal** |
+| *(intro del canal)* | \- | 13,96 s | \- | `produccion/intro_canal.mp4`. Pide LIKE y SUSCRIPCION; por eso el saludo no las pide |
+| COLD OPEN | \- | fijo 0:45 | A | El hecho del dia y por que importa |
 | **THE POWERS** | 3:00 | 9:00 | A | EEUU · Europa · China · Rusia |
 | **THE MIDDLE EAST** | 1:30 | 6:00 | B | Israel · Iran · Golfo · Levante |
 | **THE MONEY** | 2:00 | 6:00 | C | Mercados, comercio, bancos centrales |
@@ -165,11 +166,25 @@ Levante son su propio teatro y no se reparten parejo con el resto del mundo.
 | **THE SOUTH** | 1:30 | 5:00 | B | Latinoamerica, Argentina primero |
 | **THE PACIFIC** | 1:00 | 4:00 | B | Australia, NZ, Indo-Pacifico, Taiwan |
 | **WHAT TO WATCH** | 1:30 | 2:30 | C | El calendario de lo que viene |
-| OUTRO | \- | fijo 0:20 | \- | Like, suscripcion, el video de manana |
+| OUTRO | \- | fijo 0:20 | A | Gracias y hasta manana |
+| *(outro del canal)* | \- | 19,79 s | \- | `produccion/outro_canal.mp4`. Like, suscripcion, el proximo expediente |
 
 ### Como se reparten los minutos
 
-1. **Lo fijo primero** (cold open, intro, outro): 1:20 que no se mueven.
+1. **Lo fijo primero** (saludo, cold open, outro): ~1:15 que no se mueven, mas los 34 s de
+   intro y outro del canal, que no salen del guion.
+
+> **El orden de apertura, decidido por Agustin el 2026-09-14** (*"antes de la intro del canal meter
+> en este Y EN TODOS los videos de noticias una intro que diga muy buenos dias, bienvenidos a The
+> Ledger... tenemos todas las noticias del dia lunes 14 de septiembre del 2026... y luego alguna
+> insistencia en quedarse"*):
+>
+> **saludo del dia → intro del canal → cold open → programa → outro → outro del canal**
+>
+> El saludo es el bloque INTRO del guion: se renderiza como cualquier otro, con el presentador y su
+> ficha, porque **nombra la fecha** y por lo tanto no puede ser un clip pregrabado. El texto es fijo
+> y vive en `escaleta.TEXTO_INTRO`; lo unico que cambia cada dia es la fecha hablada.
+> El corte donde entra la intro del canal lo calcula `mezclar._corte_saludo()`.
 2. **Cada bloque se lleva su MINIMO.** Asi ninguno desaparece: Latinoamerica conserva su minuto y
    medio aunque no haya pasado nada, porque la audiencia que viene por eso vuelve manana.
 3. **Lo que sobra se reparte segun el peso del dia**: la suma de importancia de los acontecimientos
@@ -342,12 +357,23 @@ beats duraban 9, 9 y 7 segundos. La voz real duro 6,3, 7,1 y 3,9. Sin corregirlo
 cambiado en mitad de cada frase y la boca se habria quedado quieta hablando.
 
 **Defectos conocidos, anotados al verlos:**
-- **El brazo de C en pose `senala` cruza el pliegue** y se mete en el panel de la ficha. Hay que
-  acotar el angulo por presentador o achicar el rig de C. Visible en `_escena_tres.jpg`.
+- ~~**El brazo de C en pose `senala` cruza el pliegue**~~ — **arreglado el 2026-09-14**, y la causa
+  no era el angulo. `escena.py` llamaba a `rig.componer()` con `margen=0`, que es exactamente lo
+  que `rig.py` documenta como recorte: la mano se perdia contra el borde del PNG original. Ahora
+  compone con `MARGEN_POSES` y recorta a un **encuadre comun a las cinco poses** (`Escena._encuadre`),
+  asi ninguna pose se corta y el cuerpo no cambia de tamano al cambiar de pose. De paso el angulo
+  de `senala` bajo de 36 a 26 grados: a 36 el brazo quedaba horizontal y leia a maniqui.
 - En `abre los brazos`, a C se le ve una costura horizontal en la cintura (el hueco que dejan las
   manos al moverse sobre el chaleco).
-- La ficha `mapa` dibuja un marco con puntos por proyeccion simple; falta engancharla a las hojas
-  reales de `produccion/mapa_*.py` para cumplir la regla 24.
+- ~~La ficha `mapa` dibuja un marco con puntos por proyeccion simple~~ — **arreglado el
+  2026-09-14**, y se resolvio distinto de lo que decia el TODO. En vez de enganchar los PNG por
+  episodio de `produccion/mapa_*.py`, la ficha dibuja las costas desde el mismo Natural Earth 50m
+  que ya usaba `produccion/mapa_mundo.py` (`fuentes/mapas/ne_50m_countries.geojson`) **con la misma
+  `_proyector()` que ubica los puntos**: costa y puntos salen de la misma funcion, asi que no
+  pueden desalinearse, y no hay imagen que ajustar a ojo. La capa se cachea por (limites, caja).
+  La regla 24 sigue haciendose cumplir sobre los puntos, sin cambios.
+- El rotulo de la hoja salia en castellano (`EUROPA ESTE`) en un canal en ingles. Arreglado con
+  `ROTULO_HOJA`.
 - El bloque del brief solo se reparte bien cuando corrio la extraccion (los `topics` los pone el LLM).
   Sin claves, todo cae en THE POWERS.
 
@@ -371,5 +397,108 @@ cambiado en mitad de cada frase y la boca se habria quedado quieta hablando.
 4. **`escena.py`**: rigs + los 8 renderizadores de ficha. El trabajo grueso; no depende del Radar.
 5. **Las 2 voces nuevas** de ElevenLabs para B y C (George queda para A).
 6. **Intro y outro propias** del formato, distintas de las del canal.
-7. **Nombre del formato.** En el cuadro está puesto THE LEDGER como marcador de posición. Lo decide Agustín.
+7. ~~**Nombre del formato.**~~ — **decidido por Agustín el 2026-09-13:** *"usamos THE LEDGER pero que
+   haya marca del canal también"*. La cabecera lleva **PAPER TRAIL** en azul arriba y **THE LEDGER** en
+   el cuerpo grande debajo, con "· daily" separado por un filete. Está en `escena.py`, en la cabecera.
 8. El Radar que lo alimenta: `RADAR.md`.
+
+---
+
+## 12. Primer episodio, hecho a mano (2026-09-14)
+
+El VPS estaba caido, asi que el episodio del lunes 14 se produjo entero en la maquina de Agustin.
+**El guion no lo escribio el LLM de la cascada: lo escribio la sesion, a mano**, en
+`videos/DAILY/_guion_2026-09-14.py`, que emite el mismo `guion.json` y valida contra el mismo
+`ESQUEMA_GUION`. Las demas etapas corrieron con el codigo de produccion.
+
+| | |
+|---|---|
+| Duracion | 15:00 · 35 beats · 10 bloques · 2.321 palabras |
+| Voz | Piper, 13.783 caracteres, 202 s de CPU, **USD 0** (ElevenLabs habria sido 1,38) |
+| Render | 21.615 cuadros, **77 cuadros/s** con 16 workers |
+| Mezcla | 3m49s de ffmpeg · 45,8 MB |
+| Coste total | **USD 0** |
+
+**Lo que se aprendio y ya esta en el codigo:**
+
+1. **Piper por defecto lee a 190 palabras por minuto**, que es velocidad de podcast. Un informativo
+   va a 150-160. Ahora `voz.VELOCIDAD` fija `length_scale` por presentador (A 1,22 · B 1,18 ·
+   C 1,20) y la velocidad **entra en la clave del cache**: si no, cambiar la cadencia no se oye
+   hasta borrar el cache a mano.
+2. **La estimacion de duracion del guion hay que hacerla en caracteres, no en palabras**, y con la
+   cadencia real: 14,2 car/s. Con 13 el guion salio 2 min corto y hubo que ampliarlo despues de
+   sintetizar.
+3. **Los minimos por bloque de §4 hay que respetarlos al escribir, no al repartir.** WHAT TO WATCH
+   salio en 42 s contra su minimo de 1:30 porque el guion le dio dos beats.
+4. **Las etiquetas de los puntos del mapa se pisan** cuando dos ciudades caen cerca en la hoja
+   (Kryvyi Rih sobre Zaporizhzhia, Beijing sobre Tokyo). Por ahora se resuelve sacando el punto
+   menos importante; la ficha no separa etiquetas sola.
+5. **En `titular`, el hueco de la fecha se mide**, no se supone: con 220 px fijos, un medio largo
+   ("FEDERAL RESERVE · FOMC") se comia la primera cifra de la fecha.
+6. **En `serie`, la unidad se ancla al margen** si no entra a la izquierda del grafico.
+
+**Lo que sigue abierto, para que lo decida Agustin:**
+
+- **El hueco entre el brazo y el torso** en A y en B. Es del dibujo original, no del rig: los
+  brazos vienen separados del cuerpo por fondo. C no lo tiene porque los suyos estan pegados al
+  chaleco. Se arregla regenerando A y B en fal, o corriendo el pivote del hombro hacia adentro
+  (gratis, hay que probarlo).
+- **Intro y outro propias del formato** (§11.6). Hasta que existan van las del canal.
+- **LA VOZ.** Agustin, 2026-09-14, despues de escuchar el episodio entero: *"en el futuro creo que
+  tendremos que cambiar la voz porque no me agrada mucho, se nota que es MUY robotica"*. No es un
+  rechazo para este episodio ("esta bien mejor como prueba"), es una decision aplazada. Los numeros
+  para cuando la tome: este guion en ElevenLabs son **USD 1,68**, o sea **~USD 50 al mes** a treinta
+  episodios. Piper es USD 0. El punto medio a explorar antes de pagar eso: usar ElevenLabs solo en
+  el saludo y el cold open (los 70 s que deciden si se quedan) y Piper en el cuerpo, que serian
+  ~USD 0,12 por episodio; hay que probar si el salto de voz a mitad del video se nota mas de lo que
+  suma. **No se cambia nada hasta que lo pida.**
+
+---
+
+## 13. La auditoria del 14-sep, y las seis reglas que ahora hace cumplir el codigo
+
+La primera entrega de este episodio salio **sin intro, sin outro y sin musica**, y Agustin lo marco
+en cuanto lo abrio. La auditoria completa quedo en `_dias/2026-09-14/AUDITORIA.md`: trece
+incumplimientos. Lo que hay que retener, porque son errores de proceso y no de codigo:
+
+1. **La regla 4 de la skill es del canal entero, no de los Dispatch.** *"Intro del canal al principio
+   y outro al final, en TODOS los videos."* Los clips estaban renderizados desde el 11-sep
+   (`produccion/intro_canal.mp4`, `outro_canal.mp4`) y hay pegador. Ahora los pega
+   `videos/DAILY/mezclar.py`, que es la etapa 7 de §5 hecha de verdad.
+2. **La cortina no era una decision creativa pendiente: estaba decidida en §5 de este documento**
+   ("voz + cortina + intro/outro"). Saltearla "para no decidir por Agustin" fue decidir por Agustin.
+   Receta en `produccion/CREDITOS_MUSICA.md`: 12 dB bajo la voz, ducking -5 dB.
+3. **`escaleta.py` ya traia los textos fijos de INTRO y OUTRO**, con un comentario que dice *"No los
+   redacta el LLM: son siempre iguales"*, y los dos piden like y suscripcion. El guion a mano los
+   ignoro y escribio otros. **Antes de redactar un bloque fijo, mirar si ya esta escrito.**
+4. **La compuerta de banderas rojas de §5 se corre ANTES de rendir, no despues.** En este episodio
+   levanto tres, y la util fue la de fuente unica: media docena de cifras salian todas del mismo
+   brief. Un brief que cita a Reuters no son dos fuentes. Dos de ellas se reemplazaron por fuente
+   primaria (BLS para el IPC) y ahi aparecio que la eleccion de Sajonia-Anhalt fue el **6** y no el 7.
+5. **La regla 13 pide `postura.md` escrito, no el interrogatorio en la cabeza.** Ahora esta en
+   `_dias/<fecha>/postura.md`, con la tabla de donde se aplico cada respuesta.
+6. **Los minimos por bloque de §4 se comprueban al emitir el guion.** El generador del dia imprime
+   `<-- POR DEBAJO DEL MINIMO` y hay que mirarlo.
+
+Version 2 del episodio: **18:38** con intro y outro pegadas, cortina bajo todo, las dos fichas
+`plano` que pedia §3 (`produccion/hero/daily_hormuz.json` y `daily_fed.json`, USD 0,048 de fal), y
+41 beats. Coste total de la produccion: **USD 0,048**.
+
+## 14. La ficha de subida lleva SIEMPRE tres y tres
+
+Reclamo de Agustin el 2026-09-14: *"Eran 3 titulos y 3 miniaturas para probar. Lo sabes, lo hacemos
+en todos los videos"*. La primera ficha del diario mandaba un titulo con alternativas en texto y
+**una sola** miniatura.
+
+Lo que va en cada `SUBIR.md`, sin excepcion:
+
+1. **Tres titulos y tres miniaturas, emparejados.** La cifra de la miniatura es la del titulo: son
+   una prueba, no dos. Las miniaturas **renderizadas** (`miniatura.py` las saca a
+   `miniatura_A/B/C.jpg`) mas `_miniaturas.jpg`, la hoja de comparacion **a 320 px de ancho**, que
+   es como se ven en el feed. Lo que no se lee ahi no existe: la primera tanda del 14 tenia la
+   tercera linea a 34 px y era ilegible. `miniatura.py` ahora aborta si esa linea pasa de 4 palabras.
+2. **Las etiquetas**, en minusculas separadas por coma (`CANAL.md` §4). La primera es siempre
+   `the ledger`: es con la que se agrupa la serie y con la que la lista se auto-alimenta.
+3. **La lista de reproduccion.** `THE LEDGER — Daily Geopolitics`, y el campo que importa es
+   **ordenar por fecha de publicacion, mas reciente primero**: por defecto YouTube ordena al reves y
+   en un mes el diario abre por un episodio viejo.

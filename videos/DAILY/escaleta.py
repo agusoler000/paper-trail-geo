@@ -36,17 +36,34 @@ NOMBRE_IROLA = "IROLA"
 
 # Lo que no se mueve nunca. El INTRO va PRIMERO: Agustin pidio que "todos los inicios de los
 # videos tienen que empezar con un mini intro de 5 segundos". Despues viene el gancho.
-FIJOS = {"INTRO": 0.132, "COLD OPEN": 0.75, "OUTRO": 0.08}
+FIJOS = {"INTRO": 0.32, "COLD OPEN": 0.75, "OUTRO": 0.08}
 
 # El saludo NOMBRA LA FECHA, asi que no puede ser un clip pregrabado: se sintetiza cada manana.
 # Con Piper eso cuesta cero, y tarda menos de un segundo.
 #
-# Dura 7,9 s y Agustin habia dicho "5 segundos". Va el texto COMPLETO igual, por su regla:
-# "si te digo algo que dura 5 segundos y termina durando 7, no pasa nada; no me tomes tan
-# literal. Si hago enfasis en que tiene que durar EXACTAMENTE ese tiempo, ahi si" (2026-09-11).
+# DONDE VA (Agustin, 2026-09-14): "antes de la intro del canal meter en este Y EN TODOS los videos
+# de noticias una intro que diga muy buenos dias, bienvenidos a The Ledger... tenemos todas las
+# noticias del dia lunes 14 de septiembre del 2026... y luego alguna insistencia en quedarse".
+# O sea el orden es:  SALUDO -> intro del canal -> cold open -> programa.
+# Esto encaja con `canal/INTRO_OUTRO.md` ("va al principio del video, DESPUES de la intro propia
+# del episodio") y con la regla del 2026-09-08 de gancho propio antes de la intro general.
+#
+# QUE LLEVA Y QUE NO:
+#   - saluda y nombra el programa;
+#   - una linea que atrape, no una lista de temas (los temas son el cold open);
+#   - la fecha hablada entera, con dia de la semana y ano;
+#   - la insistencia en quedarse, apuntando a WHAT TO WATCH, que es el bloque que hace volver.
+#   - NO pide like ni suscripcion: la intro del canal entra dos segundos despues y ya las pide
+#     las dos. Decirlo dos veces en treinta segundos suena a ruego.
+#
+# Dura ~19 s. Agustin habia dicho "5 segundos" en septiembre 11 para la version corta; esta la
+# pidio el 14 con contenido que no entra en cinco. Vale su regla de que los numeros son
+# referencia y no especificacion (2026-09-11).
 # Medido con la voz de Irola (ryan-high): 20 caracteres por segundo.
-TEXTO_INTRO = ("Good morning, and welcome to the news of the day. It is {fecha}, "
-               "twenty twenty-six. Don't forget to subscribe and like the video.")
+TEXTO_INTRO = ("Good morning, and welcome to The Ledger. If you have time for one programme "
+               "about the world today, make it this one. Every story that matters from {fecha}, "
+               "twenty twenty-six, in order, and with the source on screen. Stay with us to the "
+               "end: the last block is the calendar of what moves next.")
 TEXTO_OUTRO = ("Thank you. It has been a pleasure to be with you today. "
                "Don't forget to subscribe and like the video.")
 

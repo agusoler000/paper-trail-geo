@@ -37,12 +37,19 @@ FICHA = json.loads((S / 'serie.json').read_text(encoding='utf-8'))
 VOZ_ID = 'JBFqnCBsd6RMkjVDRZzb'          # George
 PRE, POST = 0.55, 0.45
 
-APERTURA = "[low, a newsroom voice, matter-of-fact]"
+# Una apertura por pieza. La 1 arranca en frio a proposito: su linea 0 es el golpe
+# («They shot him while he was live on camera»), no el contexto — 2026-09-14, por el dato de que
+# las piezas sanas del canal abren con el hecho duro y no con la introduccion.
+APERTURA = {
+ 0: "[cold, flat, stating a fact — no emotion]",
+ 1: "[low, a newsroom voice, matter-of-fact]",
+ 2: "[low, a newsroom voice, matter-of-fact]",
+}
 
 # Una tabla por pieza. La clave es el indice de linea A:.
 TAGS = {
  0: {                                    # Momika
-   1: "[pause] [flat, hard]",
+   1: "[pause] [backing up, scene-setting]",
    2: "[slower, each detail landing]",
    3: "[dry]",
    4: "[pause] [slow, each word landing]",
@@ -98,7 +105,7 @@ def dirigir():
     tot_cr = 0
     for n in range(len(FICHA['shorts'])):
         L = lineas(n)
-        out = [APERTURA]
+        out = [APERTURA[n]]
         for i, l in enumerate(L):
             if i in TAGS[n]: out.append(TAGS[n][i])
             out.append(l)

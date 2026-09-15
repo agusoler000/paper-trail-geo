@@ -247,6 +247,12 @@ Ejemplos que cumplen: *"Is This the End of the United Kingdom? Three nations jus
 Título y miniatura se leen como una sola cosa; si el título pregunta y la miniatura afirma, se
 anulan.
 
+**Y si el video habla de un país, su bandera va en la miniatura** (Agustín, 2026-09-14, al ver las
+miniaturas de la S10: *"cada vez que hablamos de un país tiene que estar su bandera"*). Sin
+excepciones. Va como chip arriba a la izquierda, con halo para separarla del fondo oscuro, sin tapar
+la pregunta. A 216 px —que es como se ve en la grilla— la bandera dice de qué se trata antes de que
+nadie lea una palabra, y encadena visualmente las piezas del mismo país.
+
 Lo del 13-sep que **sigue**: sin prefijo `PALABRA-EMOCIÓN:`, ≤ 100 caracteres, tres hashtags iguales
 en el título y en la descripción, lo que promete el título se cumple en el video, sin inventar
 hechos. Lo que **cae**: la cifra o la fecha obligatoria al principio (11-sep). Una cifra puede ir en

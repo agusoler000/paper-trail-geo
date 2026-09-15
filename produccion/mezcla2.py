@@ -8,10 +8,27 @@ eventos.json puede traer "cues": [{"beats":[0,1,2,3],"file":"musica/cue_01_intro
 Cada cue cubre los beats indicados (segun tiempos.json); si es mas corta se repite con crossfade; entre cues
 hay crossfade de 3 s. El pulso se configura con "pulso": [{"beats":[6],"bpm":[60,80],"db":-16}, ...].
 """
-import json, sys, os, math
+import json, sys, os, math, subprocess
 import numpy as np, soundfile as sf
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 from mezcla import cargar, db, pista_sfx, ducking, SR
+
+# COMPRESOR SUAVE SOBRE LA VOZ (2026-09-15, auditoria §6.5). El ep. 06 se entrego con la voz a
+# -29 dBFS de media y 3,5 dB de rango; la referencia del canal integra -14,5 LUFS con LRA 2,1. El
+# problema no es solo el nivel: con este rango, las lineas flojas se pierden bajo la cortina y la
+# de al lado suena bien, asi que subir el master entero no alcanza. 3:1 sobre -18 dB empareja la
+# voz ANTES de la mezcla, que es donde hay que hacerlo (despues ya esta mezclada con la musica).
+# Se hace con ffmpeg (`acompressor`) y no con numpy a proposito: es exactamente el filtro que
+# nombra la especificacion, esta probado, y reimplementar una envolvente de ataque/relajacion a
+# mano es codigo nuevo que habria que verificar sin necesidad.
+COMP='acompressor=threshold=-18dB:ratio=3:attack=10:release=150:makeup=2:knee=4'
+
+def comprimir(voz_p, activo=True):
+    """Devuelve la ruta del wav de voz comprimido (o el original si `activo` es False)."""
+    if not activo: return voz_p
+    out=os.path.splitext(voz_p)[0]+'_comp.wav'
+    subprocess.run(['ffmpeg','-v','error','-y','-i',voz_p,'-af',COMP,'-ac','1','-ar',str(SR),out],check=True)
+    return out
 
 def cue_track(n, cues, beats, fade=3.0):
     out=np.zeros(n,np.float32); F=int(fade*SR)
@@ -46,7 +63,12 @@ def pulso_track(n, pulsos, beats, rv):
 
 def main():
     voz_p,ev_p,ti_p,out=sys.argv[1:5]
-    voz=cargar(voz_p); n=len(voz); rv=np.sqrt(np.mean(voz**2))
+    crudo=cargar(voz_p)
+    voz=cargar(comprimir(voz_p,'--sin-comp' not in sys.argv)); n=min(len(voz),len(crudo)) or len(voz)
+    voz=voz[:n] if len(voz)>=n else np.pad(voz,(0,n-len(voz)))
+    rv=np.sqrt(np.mean(voz**2))
+    f0=lambda x:20*np.log10(np.sqrt(np.mean(x**2))+1e-9)
+    print('voz: %.1f dB -> %.1f dB tras el compresor (%s)'%(f0(crudo),f0(voz),COMP.split('=')[0]))
     ev=json.load(open(ev_p,encoding='utf-8')); beats=json.load(open(ti_p,encoding='utf-8'))['beats']
     base=os.path.dirname(os.path.abspath(__file__))
     cues=[dict(c,file=os.path.join(base,c['file'])) for c in ev['cues']]

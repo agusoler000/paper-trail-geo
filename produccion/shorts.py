@@ -19,6 +19,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageChops
 import numpy as np
 import props as PR
 from props import TINTA, PAPEL, OCRE, ROJO, MADERA, FONT, FONTC
+from motor import DEBILES, agrupar   # fuente unica: la misma manera de partir el texto en el canal
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
@@ -215,11 +216,8 @@ def banda_sub(texto_lineas, resaltar):
 
 
 # ---------------------------------------------------------------- subtitulos
-# palabras que no pueden quedar al final de un subtitulo (rompen la lectura)
-DEBILES = {'and', 'the', 'of', 'in', 'to', 'a', 'an', 'or', 'that', 'with', 'for', 'is', 'are',
-           'it', 'on', 'at', 'as', 'but', 'by', 'from', 'was', 'were', 'not', 'its', 'their',
-           'his', 'her', 'you', 'we', 'they', 'this', 'these', 'those', 'no', 'so', 'if', 'when',
-           'without', 'into', 'over', 'about', 'than', 'because', 'while', 'after', 'before'}
+# `DEBILES` (palabras que no pueden quedar al final de un subtitulo) vive ahora en `motor.py`:
+# lo usan el HUD del motor (`Scene.subtitulos`) y este armador, y tienen que partir igual.
 
 
 def trocear(texto, max_chars=50):
@@ -267,21 +265,69 @@ def partir(texto, fnt, ancho_max):
     return out
 
 
-def cues(lineas, t0):
-    """Convierte lineas del guion en cues de subtitulo de <=2 lineas, con tiempos relativos."""
+def palabras_de(ruta_tiempos):
+    """`_palabras.json` al lado del `tiempos.json`, si existe. Formato: [[palabra, t0, t1], ...]."""
+    p = os.path.join(os.path.dirname(os.path.abspath(ruta_tiempos)), '_palabras.json')
+    if not os.path.exists(p): return None
+    try:
+        w = json.load(open(p, encoding='utf-8'))
+        return [(str(a), float(b), float(c)) for a, b, c in w] or None
+    except Exception:
+        return None
+
+
+def _palabras_de_linea(L, palabras):
+    """[(palabra del GUION, t0, t1)] de una linea, con los tiempos de las palabras REALES.
+
+    Las palabras de `_palabras.json` vienen normalizadas (minusculas, sin puntuacion): sirven para
+    los TIEMPOS, no para el texto. Asi que se toman los tokens del guion —que son los que se leen—
+    y se les reparte el tiempo por posicion entre las palabras reales de la linea. Antes el tiempo
+    se repartia por cantidad de CARACTERES, que es lo que hacia que el subtitulo fuera por delante
+    en las frases con numeros («forty-nine thousand» dura mucho mas de lo que ocupa)."""
+    toks = L['texto'].split()
+    n = len(toks)
+    if not n: return []
+    ws = [(a, b) for _, a, b in (palabras or [])
+          if L['inicio'] - 0.12 <= a <= L['fin'] + 0.12]
+    if not ws:
+        d = (L['fin'] - L['inicio']) / n
+        return [(toks[i], L['inicio'] + i * d, L['inicio'] + (i + 1) * d) for i in range(n)]
+    m = len(ws)
+    out = []
+    for i, tk in enumerate(toks):
+        k0 = min(m - 1, int(i * m / n))
+        k1 = min(m - 1, max(k0, int((i + 1) * m / n) - 1))
+        out.append((tk, ws[k0][0], max(ws[k1][1], ws[k0][0] + 0.06)))
+    return out
+
+
+def cues(lineas, t0, palabras=None):
+    """Lineas del guion -> cues de subtitulo de <=2 lineas, con tiempos relativos a `t0`.
+
+    Con `palabras` (de `_palabras.json`) los cortes son grupos de <=4 palabras con los tiempos
+    REALES de la voz (§6.4). Sin ellas, el reparto por caracteres de siempre."""
     fnt = FONT(58)
     ancho = SUB_W - 40
     out = []
-    for L in lineas:
-        trozos = trocear(L['texto'])
-        chars = [len(x) for x in trozos]
-        total = sum(chars) or 1
-        dur = L['fin'] - L['inicio']
-        t = L['inicio'] - t0
-        for tr, c in zip(trozos, chars):
-            d = dur * c / total
-            out.append({'t0': t, 't1': t + d, 'lineas': partir(tr, fnt, ancho)})
-            t += d
+    if palabras:
+        for L in lineas:
+            pl = _palabras_de_linea(L, palabras)
+            if not pl: continue
+            for g in agrupar(pl):
+                txt = ' '.join(w for w, _, _ in g)
+                out.append({'t0': g[0][1] - t0, 't1': g[-1][2] - t0,
+                            'lineas': partir(txt, fnt, ancho)})
+    else:
+        for L in lineas:
+            trozos = trocear(L['texto'])
+            chars = [len(x) for x in trozos]
+            total = sum(chars) or 1
+            dur = L['fin'] - L['inicio']
+            t = L['inicio'] - t0
+            for tr, c in zip(trozos, chars):
+                d = dur * c / total
+                out.append({'t0': t, 't1': t + d, 'lineas': partir(tr, fnt, ancho)})
+                t += d
     # cerrar huecos cortos para que no parpadee
     for i in range(len(out) - 1):
         if out[i + 1]['t0'] - out[i]['t1'] < 0.5:
@@ -323,7 +369,7 @@ def construir(ep, cfg, S, tmp, out_dir, solo_frame=False):
     fondo_im.convert('RGB').save(os.path.join(d_tmp, 'fondo.png'))
     frente().save(os.path.join(d_tmp, 'frente.png'))
 
-    cs = cues(tramo, t0)
+    cs = cues(tramo, t0, palabras_de(os.path.join(AQUI, cfg['tiempos'])))
     ent = ['-loop', '1', '-framerate', str(FPS), '-i', os.path.join(d_tmp, 'fondo.png'),
            '-ss', f'{t0:.3f}', '-t', f'{dur:.3f}', '-i', master,
            '-i', os.path.join(d_tmp, 'frente.png')]
@@ -387,6 +433,131 @@ def construir(ep, cfg, S, tmp, out_dir, solo_frame=False):
                   '-t', f'{total:.3f}', '-r', str(FPS),
                   '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
                   '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', out])
+    return out
+
+
+# ---------------------------------------------------------------- armado VERTICAL NATIVO (v4)
+def chip_parte(n, N, size=40):
+    """Sello `PART n OF N`: lo que hace que la tanda se lea como serie en el feed."""
+    f = FONTC(size)
+    tw, th = medir('PART %d OF %d' % (n, N), f)
+    px, py = 26, 14
+    p = hoja_papel(tw + px * 2, th + py * 2, PAPEL, radio=9)
+    ImageDraw.Draw(p).text(((tw + px * 2) / 2, (th + py * 2) / 2), 'PART %d OF %d' % (n, N),
+                           fill=ROJO + (255,), font=f, anchor='mm')
+    return p
+
+
+def armar_vertical(cuerpo, tiempos, out, hook=(), rojo=None, resaltar=(), n=None, N=None,
+                   palabras=None, cue=None, subs=True, hook_dur=3.5, barra=True, cta=False,
+                   musica_db=-19.0, fps=FPS, tmp=None):
+    """Arma un short **vertical nativo**: el cuerpo YA es 1080x1920 y no se mete en ninguna hoja.
+
+    Es el cambio de §6.4. El armador viejo (`construir`) mete un bloque de video de 1000x563 en una
+    hoja de papel: el video ocupa el **27 % del area** de la pantalla del telefono y el gancho
+    compite con el durante los 90 s. Aca el cuerpo ES la pantalla, y encima van:
+
+      · el gancho como tarjeta grande SOLO los primeros `hook_dur` s (con su linea en rojo),
+      · el chip `PART n OF N` arriba a la izquierda,
+      · la barra de progreso ocre abajo,
+      · los subtitulos palabra a palabra — `subs=False` si el cuerpo ya los trae por HUD del motor,
+      · musica (`cue`) y `loudnorm=I=-14:TP=-1.5:LRA=9` sobre el master.
+
+    `tiempos`: ruta o dict del `tiempos.json` de la pieza. `palabras`: `_palabras.json`, si no se
+    pasa se busca al lado del tiempos.json. `cuerpo` tiene que traer la voz.
+    Devuelve la ruta de salida.
+    """
+    if isinstance(tiempos, str):
+        ruta_t = tiempos; T = json.load(open(tiempos, encoding='utf-8'))
+    else:
+        ruta_t = None; T = tiempos
+    L = T['lineas']
+    dur = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
+                                '-of', 'csv=p=0', cuerpo], capture_output=True, text=True).stdout)
+    d_tmp = tmp or os.path.join(AQUI, '_vert_tmp', os.path.splitext(os.path.basename(out))[0])
+    os.makedirs(d_tmp, exist_ok=True)
+    os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+    res = set(x.lower() for x in resaltar)
+    if palabras is None and ruta_t: palabras = palabras_de(ruta_t)
+
+    ent = ['-i', cuerpo]
+    filtros = [f'[0:v]scale={W}:{H}:flags=lanczos,setsar=1,format=rgba[c0]']
+    prev, idx = 'c0', 1
+
+    # ---- gancho: tarjeta grande, solo al principio, con fundido propio (no un corte seco)
+    if hook:
+        card = tarjeta_hook(list(hook), rojo, size=104, ancho_max=W - 130)
+        f = os.path.join(d_tmp, 'hook.png'); card.save(f)
+        # `-loop 1 -t` convierte el PNG en un CLIP. Sin eso, `fade` no tiene sobre que trabajar (una
+        # imagen suelta es un solo cuadro) y el gancho no aparecia en ningun momento del video.
+        ent += ['-loop', '1', '-framerate', str(fps), '-t', f'{hook_dur:.3f}', '-i', f]
+        x, y = (W - card.width) // 2, int(H * 0.30) - card.height // 2
+        filtros.append(f'[{idx}:v]format=rgba,fade=t=in:st=0:d=0.28:alpha=1,'
+                       f'fade=t=out:st={max(0.3, hook_dur-0.45):.2f}:d=0.45:alpha=1[hk]')
+        filtros.append(f"[{prev}][hk]overlay={x}:{max(24, y)}:eof_action=pass:"
+                       f"enable='between(t,0,{hook_dur:.2f})'[h0]")
+        prev = 'h0'; idx += 1
+
+    # ---- chip PART n OF N
+    if n and N:
+        cp = chip_parte(n, N)
+        f = os.path.join(d_tmp, 'chip.png'); cp.save(f)
+        ent += ['-i', f]
+        filtros.append(f'[{prev}][{idx}:v]overlay=40:42[p0]')
+        prev = 'p0'; idx += 1
+
+    # ---- subtitulos palabra a palabra (si el cuerpo no los trae ya por HUD)
+    if subs:
+        for i, c in enumerate(cues(L, 0.0, palabras)):
+            p = banda_sub(c['lineas'], res)
+            f = os.path.join(d_tmp, f'sub_{i:03d}.png'); p.save(f)
+            ent += ['-i', f]
+            x, y = (W - p.width) // 2, int(H * 0.795) - p.height // 2
+            filtros.append(f"[{prev}][{idx}:v]overlay={x}:{y}:"
+                           f"enable='between(t,{c['t0']:.3f},{c['t1']:.3f})'[s{i}]")
+            prev = f's{i}'; idx += 1
+
+    if cta:
+        tc = tarjeta_cta()
+        f = os.path.join(d_tmp, 'cta.png'); tc.save(f)
+        ent += ['-i', f]
+        x, y = (W - tc.width) // 2, (H - tc.height) // 2
+        filtros.append(f"[{prev}][{idx}:v]overlay={x}:{y}:"
+                       f"enable='between(t,{dur-CTA_DUR:.2f},{dur:.2f})'[k0]")
+        prev = 'k0'; idx += 1
+
+    if barra:
+        filtros.append(f"[{prev}]drawbox=x=0:y={H-16}:w='{W}*t/{dur:.3f}':h=11:"
+                       f"color=0x{OCRE[0]:02x}{OCRE[1]:02x}{OCRE[2]:02x}@0.95:t=fill[vout]")
+    else:
+        filtros.append(f'[{prev}]null[vout]')
+
+    # ---- audio: voz del cuerpo + cortina, y loudnorm al final (§6.5; YouTube no sube lo flojo)
+    hay_voz = bool(subprocess.run(
+        ['ffprobe', '-v', 'error', '-select_streams', 'a', '-show_entries', 'stream=index',
+         '-of', 'csv=p=0', cuerpo], capture_output=True, text=True).stdout.strip())
+    tiene_cue = bool(cue and os.path.exists(cue))
+    if tiene_cue:
+        ent += ['-i', cue]
+        filtros.append(f'[{idx}:a]aloop=loop=-1:size=2e9,atrim=0:{dur:.3f},'
+                       f'afade=t=in:st=0:d=1.2,afade=t=out:st={max(0.1, dur-1.9):.3f}:d=1.8,'
+                       f'volume={musica_db:.1f}dB[mus]')
+        idx += 1
+    if hay_voz and tiene_cue:
+        filtros.append('[0:a][mus]amix=inputs=2:duration=first:dropout_transition=0,'
+                       'loudnorm=I=-14:TP=-1.5:LRA=9[aout]')
+    elif hay_voz:
+        filtros.append('[0:a]loudnorm=I=-14:TP=-1.5:LRA=9[aout]')
+    elif tiene_cue:
+        filtros.append('[mus]loudnorm=I=-14:TP=-1.5:LRA=9[aout]')
+
+    mapa_a = ['-map', '[aout]'] if (hay_voz or tiene_cue) else []
+    ffmpeg(ent + ['-filter_complex', ';'.join(filtros), '-map', '[vout]'] + mapa_a +
+                 ['-t', f'{dur:.3f}', '-r', str(fps),
+                  '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p'] +
+                 (['-c:a', 'aac', '-b:a', '192k'] if (hay_voz or tiene_cue) else []) +
+                 ['-movflags', '+faststart', out])
+    print('vertical nativo ->', out, round(os.path.getsize(out) / 1048576, 1), 'MB')
     return out
 
 

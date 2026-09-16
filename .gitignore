@@ -185,6 +185,9 @@ videos/1*/_*.json
 videos/1*/_*.log
 videos/1*/_*.sh
 
-# Los zips de assets que viajan a mano entre maquinas, y su contenido desempaquetado.
+# Los zips que viajan a mano entre maquinas, y su contenido desempaquetado: los de assets del canal
+# y los paquetes de una produccion (`ep13_yemen_regenerar.zip`, 224 MB). El de la 13 no lo cubria
+# ningun patron y se habria colado en el commit siguiente.
 assets_[0-9]*_*/
 assets_[0-9]*_*.zip
+ep[0-9]*_*.zip

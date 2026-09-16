@@ -152,3 +152,39 @@ produccion/intro_v3/_tmp/
 produccion/intro_v3/audio/
 produccion/intro_v3/*.png
 produccion/.render_v5.lock
+
+# ---------------------------------------------------------------- episodios 10+ (videos/13_yemen/...)
+# Hasta el 16-sep habia reglas para videos/0*/ (el episodio entero fuera) y videos/S1*/ (selectivas,
+# el codigo si). Un episodio de DOS CIFRAS que no empieza por 0 no lo cubria ninguna: un
+# `git add videos/13_yemen/` habria subido 7,3 GB de cuadros sueltos, 1,5 GB de masters y el guion.
+# Misma politica que S1*: el CODIGO de la produccion va al repo porque es la plantilla del motor v4;
+# guiones, hojas de fuentes, postura, audio, masters, cuadros y assets generados, no.
+videos/1*/**/guion.md
+videos/1*/postura.md
+videos/1*/fuentes/
+# El directorio audio/ NO se ignora entero: dentro vive CODIGO (alinear13.py, actos13.py) que hace
+# falta para reproducir la produccion. Git no puede re-incluir un archivo si su directorio padre
+# esta excluido, asi que se listan los DATOS uno a uno y los .py pasan.
+videos/1*/audio/*.wav
+videos/1*/audio/*.json
+videos/1*/audio/dirigido/
+videos/1*/audio/actos/
+videos/1*/audio/texto/
+videos/1*/salida/
+videos/1*/arte/assets/
+videos/1*/publicar/*.png
+videos/1*/publicar/*.md
+videos/1*/shorts/**/audio/
+videos/1*/shorts/**/salida/
+videos/1*/shorts/GUIONES.md
+videos/1*/_frames/
+videos/1*/_qc/
+videos/1*/_*.jpg
+videos/1*/_*.png
+videos/1*/_*.json
+videos/1*/_*.log
+videos/1*/_*.sh
+
+# Los zips de assets que viajan a mano entre maquinas, y su contenido desempaquetado.
+assets_[0-9]*_*/
+assets_[0-9]*_*.zip

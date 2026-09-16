@@ -5,8 +5,30 @@ from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageFont
 rng=np.random.default_rng(9)
 TINTA=(34,32,28); PAPEL=(233,223,203); OCRE=(217,164,65); AZUL=(43,76,111); ROJO=(184,64,47); MAPA=(220,207,180)
 MADERA=(107,74,51); GRIS=(120,118,110); VERDE=(143,169,140); BLANCO=(245,240,228); HIELO=(200,215,225)
-def FONT(s): return ImageFont.truetype('C:/Windows/Fonts/GeorgiaPro-Bold.ttf',s)
-def FONTC(s): return ImageFont.truetype('C:/Windows/Fonts/GeorgiaPro-CondBold.ttf',s)
+# Georgia Pro es la tipografia del canal, pero es de pago y no esta en todas las maquinas: en la de
+# desarrollo del 16-sep solo estaba Georgia (que es la misma familia, sin los pesos extendidos).
+# Sin este respaldo, `props.py` no arranca ahi y no se puede producir nada. Donde SI esta Georgia Pro
+# el resultado no cambia: se prueba primero y solo se cae al respaldo si falta, asi que las 12
+# producciones anteriores siguen rindiendo igual.
+_FUENTES = {
+    'bold': ('C:/Windows/Fonts/GeorgiaPro-Bold.ttf', 'C:/Windows/Fonts/georgiab.ttf'),
+    'cond': ('C:/Windows/Fonts/GeorgiaPro-CondBold.ttf', 'C:/Windows/Fonts/georgiab.ttf'),
+}
+_AVISADO = set()
+def _fuente(cual, s):
+    for i, ruta in enumerate(_FUENTES[cual]):
+        try:
+            f = ImageFont.truetype(ruta, s)
+            if i and cual not in _AVISADO:
+                _AVISADO.add(cual)
+                print('props.py: no esta %s; uso %s' % (os.path.basename(_FUENTES[cual][0]),
+                                                        os.path.basename(ruta)))
+            return f
+        except OSError:
+            continue
+    raise SystemExit('props.py: no encuentro ninguna fuente de %r' % cual)
+def FONT(s): return _fuente('bold', s)
+def FONTC(s): return _fuente('cond', s)
 def grano(size):
     g=rng.random((size[1]//5+2,size[0]//5+2)).astype(np.float32)
     return np.asarray(Image.fromarray((g*255).astype(np.uint8)).resize(size,Image.BICUBIC)).astype(np.float32)/255-0.5

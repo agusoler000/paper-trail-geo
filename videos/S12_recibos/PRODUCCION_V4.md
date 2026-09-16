@@ -88,6 +88,14 @@ vídeo sale **un 25-30 % más bajo**. Comprobado en la pieza 1: donde el predict
 14,7 el vídeo daba 10,9 / 11,0 / 10,6, o sea por debajo del umbral. **El predictor hay que leerlo
 con umbral 17, no 12.** Es el número que usa `cortes(n, umbral=17.0)`.
 
+### 2.3a Un corte con RAMPA no cuenta como corte
+`mesa()` entraba con el velo en 0,14 s y el documento en 0,36 s. A 24 fps eso son 3 y 9 cuadros: un
+fundido, no un corte. Y `ritmo.py` mide a **cuatro muestras por segundo**, así que el cambio se
+reparte en tres muestras de ~11 en vez de una de ~30 y **el corte no se cuenta**. Medido en el corte
+de 8,40 s de la pieza 1: 10,6 / 11,6 / 10,6 contra un umbral de 12, y los dos planos contados como
+uno de 8 s. Con `mesa(..., seco=True)` —velo instantáneo y documento en 0,10 s— el mismo corte pasa
+a **27,1**. Un corte tiene que cortar; el fundido queda para cuando se quiera un fundido.
+
 ### 2.3b MESA sin documento
 Cuando lo que tiene que leerse son las **barras** o las tarjetas, un documento compite con ellas.
 `mesa(..., doc=None)` oscurece el mundo y pone los props de escritorio, sin papel. Sirve para dos
@@ -175,6 +183,22 @@ y regenerar o recompactar la voz mueve la coreografía con ella. **Es la diferen
 partitura y volver a correr `check`.**
 
 ---
+
+### 2.11 El prop `factura` lleva un símbolo de EURO dibujado
+Se usó como documento de mesa en la pieza 2 (que está en **dólares**) y en la 3 (que está en
+**libras**). Se ve en la hoja de contacto y no lo caza ningún check: es un prop, y los checks miran
+encuadre, huecos y cifras, no iconografía. Cambiado por `informe` y `libro_mayor`. **Antes de usar
+un prop de dinero, mirar qué moneda tiene dibujada.**
+
+### 2.12 Un cartel grande tapando la animación
+En la pieza 3 la torre que crece (`torre_n`) se dibujaba **encima** del `contrato99`, porque los dos
+van centrados. Cuando la animación es el contenido, el plano va con `doc=None`: el documento sobra.
+
+### 2.13 Dos pools de render a la vez
+Dejé una cadena fallada corriendo en segundo plano y lancé otra encima: **dos pools de 20 workers
+escribiendo los mismos `_frames_v4`**, y piezas que aparecían terminadas y volvían atrás minutos
+después. Antes de lanzar una cadena, comprobar que no hay otra viva (`Get-CimInstance Win32_Process`
+y contar los `python.exe`: el reposo de esta máquina son 7).
 
 ## 3. Decisiones que no son técnicas y que Agustín puede querer cambiar
 

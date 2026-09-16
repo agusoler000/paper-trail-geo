@@ -242,6 +242,85 @@ def _torre(pct, w=250):
 
 
 # ------------------------------------------------------------------ main
+
+# ---------------------------------------------------------------- documentos CON NOMBRE
+# REGLA 14 DEL CANAL, aplicada a los props: ningun prop con texto horneado entra si su texto no
+# esta en el guion o en `fuentes/referencia.md`. La tanda de prueba entro con dos que lo rompian y
+# se colaron hasta el master:
+#   · `contrato99` decia «LEASE / 99 YEARS» mientras la voz decia «Same contracts. Same TEN years»
+#     (F3.5: los contratos son 2019-2029, diez anos). Un dato inventado en pantalla.
+#   · `resolucion` decia «UNITED NATIONS / 2065», que no aparece en ningun guion de esta serie.
+# Y tres mas eran sellos genericos sin nombre («REPORT», «DECREE», «POLICY»): un documento sin
+# nombre no cuenta nada, el espectador no sabe que esta mirando.
+#
+# Cada linea de aqui abajo sale de la hoja de fuentes, con su F al lado.
+DOCS = {
+ # pieza 1
+ 'doc_eia':      ('U.S. ENERGY INFORMATION ADMINISTRATION',
+                  ['WEEKLY PETROLEUM STATUS REPORT',
+                   'STRATEGIC PETROLEUM RESERVE',
+                   'WEEK OF SEPTEMBER 4, 2026'], 'F1.1'),
+ 'doc_doe':      ('U.S. DEPARTMENT OF ENERGY',
+                  ['NOTICE OF SALE',
+                   '11 MARCH 2026',
+                   '172,000,000 BARRELS'], 'F1.6'),
+ # pieza 2
+ 'doc_poliza':   ('WAR-RISK INSURANCE',
+                  ['HORMUZ TRANSIT',
+                   'PREMIUM: 7.5% - 10% OF HULL',
+                   'PER VOYAGE'], 'F2.3'),
+ # pieza 3
+ 'doc_contrato': ('ASYLUM ACCOMMODATION CONTRACTS',
+                  ['SIGNED 2019  ·  TERM 2019-2029',
+                   'TEN YEARS',
+                   'COSTED AT £4.5 BILLION'], 'F3.5'),
+ 'doc_cuentas':  ('HOME OFFICE',
+                  ['ANNUAL REPORT AND ACCOUNTS',
+                   'ASYLUM SUPPORT AND ACCOMMODATION',
+                   'YEAR TO MARCH 2026'], 'F3.1 / F3.3'),
+}
+
+
+def documento(titulo, lineas, w=520):
+    """Un documento de papel CON NOMBRE: cabecera, regla y dos o tres lineas de contenido.
+
+    Se lee a 405 px porque el titulo va grande y en dos renglones si hace falta; el cuerpo son
+    lineas cortas, no parrafos: en un short nadie lee un parrafo."""
+    h = int(w * 1.34)
+    q = papel((w, h), lambda d: d.rounded_rectangle([1, 1, w-2, h-2], radius=int(w*0.035), fill=255),
+              BLANCO)
+    d = ImageDraw.Draw(q)
+    d.rounded_rectangle([int(w*0.045), int(h*0.035), w-int(w*0.045), h-int(h*0.035)],
+                        radius=int(w*0.022), outline=TINTA+(70,), width=3)
+    # cabecera
+    y = int(h*0.105)
+    f = FONTC(int(w*0.062))
+    pal = titulo.split(); ren = []; cur = ''
+    for t in pal:
+        pr = (cur + ' ' + t).strip()
+        if d.textlength(pr, font=f) > w*0.84 and cur: ren.append(cur); cur = t
+        else: cur = pr
+    ren.append(cur)
+    for r in ren:
+        d.text((w/2, y), r, fill=TINTA+(255,), font=f, anchor='ma'); y += int(w*0.072)
+    y += int(h*0.012)
+    d.line([(int(w*0.10), y), (int(w*0.90), y)], fill=TINTA+(190,), width=4); y += int(h*0.045)
+    # cuerpo
+    f2 = FONTC(int(w*0.049))
+    for i, L in enumerate(lineas):
+        col = ROJO if i == len(lineas)-1 else TINTA
+        ff = f2
+        while d.textlength(L, font=ff) > w*0.84 and ff.size > 14: ff = FONTC(ff.size-2)
+        d.text((w/2, y), L, fill=col+(255,), font=ff, anchor='ma'); y += int(w*0.070)
+    # renglones de relleno, para que parezca un documento y no una tarjeta
+    yy = y + int(h*0.02)
+    while yy < h - int(h*0.10):
+        d.line([(int(w*0.14), yy), (int(w*(0.86 - 0.12*((yy//7) % 3)))), yy],
+               fill=TINTA+(55,), width=3)
+        yy += int(h*0.045)
+    return q
+
+
 def guardar(im, nombre):
     im.save(os.path.join(OUT, 'prop_%s.png' % nombre))
     return nombre
@@ -262,6 +341,10 @@ def main():
         hechos.append(guardar(_barra(76*k, OCRE,  'MONEY'),        'barra_d%02d' % i))
         hechos.append(guardar(_barra(35*k, AZUL,  'PEOPLE'),       'barra_g%02d' % i))
         hechos.append(guardar(_torre(100*k),                            'torre_n%02d' % i))
+
+    for nom, (tit, lin, fte) in DOCS.items():
+        hechos.append(guardar(documento(tit, lin), nom))
+        print('   %-14s %s   [%s]' % (nom, tit, fte))
 
     print('%d props en %s' % (len(hechos), OUT))
     if '--hoja' in sys.argv:

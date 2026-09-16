@@ -58,7 +58,30 @@ que dijo una sola redacción. La regla vive en `CHECK` de la base, no en un prom
 Documentos: [`RADAR.md`](RADAR.md) (arquitectura y lo medido), [`videos/DAILY/DIARIO.md`](videos/DAILY/DIARIO.md)
 (el manual del formato), [`radar/CONTRATO.md`](radar/CONTRATO.md) (las firmas entre módulos).
 
+### Animacion narrativa
+
+La capa opcional de [puesta en escena narrativa](produccion/NARRATIVA_V5.md) agrega
+acciones con personajes, mecanismos y comparaciones sincronizadas con la voz.
+[Acciones sobre mapas](produccion/ACCIONES_MAPA.md) documenta rutas, tropas,
+vehiculos y encuadre geografico. No cambia el comportamiento de episodios anteriores
+ni de THE LEDGER. La direccion se revisa con cuadros reales antes de renderizar.
+
+`produccion/versiones_animacion.py` crea copias locales verificadas con SHA-256 y
+las restaura en un directorio nuevo, sin sobrescribir el proyecto.
+
+### Encargos De Videos
+
+[Encargos dirigidos por modelo](produccion/ENCARGO.md) conecta tema o Google Trends
+con titulo, miniatura, gancho, guion, largo y shorts originales. El modelo ejecuta
+las etapas y el sistema verifica entregables y evidencias; no genera ni publica
+videos por si solo. La cantidad, las fechas y el QC editorial los decide Agustin.
+
 ## Levantarlo en otra máquina
+
+Para trabajar con los videos en otro ordenador, leer primero
+[OTRO_EQUIPO.md](produccion/OTRO_EQUIPO.md): Git contiene el codigo, no el arte,
+los episodios ni las credenciales. La instalacion siguiente es la del VPS, no
+un instalador de escritorio.
 
 ```bash
 sudo bash despliegue/instalar.sh      # swap, venv, modelos, base, timers

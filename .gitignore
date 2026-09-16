@@ -133,6 +133,7 @@ desktop.ini
 # planes visuales) si va al repo porque es la plantilla del motor v4; guiones, audio, hojas de fuentes,
 # assets generados (PNG de 5-8 MB), fichas de subida y cuadros de control, no.
 videos/S1*/**/guion.md
+videos/S1*/**/guion_v.md
 videos/S1*/fuentes/
 videos/S1*/shorts/**/audio/
 videos/S1*/shorts/serie.json
@@ -142,9 +143,12 @@ videos/S1*/publicar/
 videos/S1*/**/_*
 videos/S1*/**/__pycache__/
 canal/ENFOQUE_*.md
+canal/DEMANDA_*.md
+videos/**/postura.md
 # intro v3: solo el codigo; los cuadros generados (PNG de 5-18 MB), el audio y los temporales, no
 produccion/intro_v3/cuadros/
 produccion/intro_v3/planos/
 produccion/intro_v3/_tmp/
 produccion/intro_v3/audio/
 produccion/intro_v3/*.png
+produccion/.render_v5.lock

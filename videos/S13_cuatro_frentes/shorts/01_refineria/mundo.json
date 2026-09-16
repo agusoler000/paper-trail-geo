@@ -1,0 +1,107 @@
+{
+ "nombre": "s13_rusia_oeste",
+ "bbox": [
+  27.0,
+  44.5,
+  45.0,
+  58.5
+ ],
+ "w": 2600,
+ "out_dir": "../../arte/assets",
+ "etiquetas": false,
+ "sitios": {
+  "Kyiv": [
+   30.5234,
+   50.4501
+  ],
+  "Moscow": [
+   37.6173,
+   55.7558
+  ],
+  "Ryazan": [
+   39.7126,
+   54.6269
+  ]
+ },
+ "puntos": {},
+ "agua": [
+  [
+   "BLACK SEA",
+   31.3,
+   45.45,
+   44
+  ]
+ ],
+ "rotulos_extra": [
+  [
+   "UKRAINE",
+   31.6,
+   48.9,
+   86
+  ],
+  [
+   "RUSSIA",
+   41.2,
+   51.6,
+   96
+  ]
+ ],
+ "capas": {
+  "ukr": [
+   [
+    "UKR"
+   ],
+   "acreedor",
+   110
+  ]
+ },
+ "pins": {
+  "Kyiv": {
+   "color": "ocre",
+   "r": 14,
+   "size": 46,
+   "off": [
+    1.2,
+    -0.5
+   ]
+  },
+  "Moscow": {
+   "color": "gris",
+   "r": 10,
+   "size": 40,
+   "off": [
+    1.2,
+    -0.5
+   ]
+  },
+  "Ryazan": {
+   "color": "ocre",
+   "r": 14,
+   "size": 46,
+   "off": [
+    1.2,
+    0.5
+   ]
+  }
+ },
+ "escritorio": [
+  [
+   "lupa",
+   0.13,
+   0.82,
+   0.078
+  ],
+  [
+   "moneda",
+   0.888,
+   0.848,
+   0.042
+  ],
+  [
+   "regla",
+   0.858,
+   0.15,
+   0.022
+  ]
+ ]
+}

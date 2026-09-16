@@ -27,11 +27,12 @@ Banderas:
   CIFRA_SIN_PANTALLA  la linea dice una cantidad y esa cantidad no esta en ninguna tarjeta, prop o
                       HUD visible entre inicio-1,5 s y fin+1,5 s (comparada por MAGNITUD: «1.13T»,
                       «1,13 trillion» y «1130000000000» son la misma cifra).
-                      **LIMITE CONOCIDO**: el texto en pantalla se lee del NOMBRE del objeto
-                      (`card:$1.13T`), no de sus pixeles. Una cifra dibujada DENTRO de un prop —una
-                      tabla, un grafico de barras— es invisible para esta bandera y da un falso
-                      positivo: en el ep. 09 pasa con las cuatro cifras de la tabla del Tesoro. Por
-                      eso esta avisa y no aborta; la que aborta es VACIO.
+                      El texto en pantalla se lee del NOMBRE del objeto (`card:$1.13T`) y, para
+                      un `doc:`/`prop:`/`seq:`, del texto HORNEADO que se declara al lado del PNG
+                      (`prop_<nombre>.txt`) — el mismo archivo que mira `compo.check`. Asi la cifra
+                      dibujada DENTRO de una tabla o de un grafico cuenta como que esta en pantalla,
+                      que es lo que era (ep. 09, 2026-09-16). Lo que no este declarado sigue siendo
+                      invisible para esta bandera, asi que avisa y no aborta; la que aborta es VACIO.
   LUGAR_SIN_MAPA      la linea nombra un sitio del pts.json y el punto no esta dentro de la ventana.
   TEXTO_VIEJO         un texto nacido hace mas de 12 s sigue en pantalla.
   PROP_HUERFANO       un objeto entra en una linea que no lo nombra (ni su V:). Aviso, no aborta.
@@ -132,10 +133,24 @@ def magnitudes(txt):
     return {round(v, 6) for v in out if v not in (0.0, 1.0, 2.0)}
 
 
+def _digitos(v):
+    """Los digitos significativos de una magnitud, sin separadores ni ceros de cola."""
+    t = ('%.2f' % abs(float(v))).rstrip('0').rstrip('.').replace('.', '')
+    return t.lstrip('0') or '0'
+
+
 def _casan(a, b, tol=0.02):
-    """Dos magnitudes son la misma si coinciden al 2 % o si sus digitos son el mismo numero a otra
-    escala (1,13 y 1.130.000.000.000 son la misma cifra dicha de dos maneras)."""
+    """Dos magnitudes son la misma si coinciden al 2 %, si sus digitos son el mismo numero a otra
+    escala (1,13 y 1.130.000.000.000 son la misma cifra dicha de dos maneras) o si los digitos de
+    una estan DENTRO de los de la otra.
+
+    Lo ultimo es para los numeros que se dicen en varias lineas: el cold open del ep. 09 lee
+    «cuarenta billones, cuarenta y seis mil millones...» en una linea y «trescientos veintidos mil
+    setecientos noventa y dos» en la siguiente, y en pantalla esta el numero ENTERO, con esos
+    digitos dentro. Decir que falta es falso."""
     if a == b: return True
+    da, db = _digitos(a), _digitos(b)
+    if len(da) >= 4 and len(db) >= 4 and (da in db or db in da): return True
     if a and b and abs(a - b) <= tol * max(abs(a), abs(b)): return True
     for k in (1e2, 1e3, 1e6, 1e9, 1e12):
         if b and abs(a - b * k) <= tol * max(abs(a), abs(b * k)): return True
@@ -151,6 +166,28 @@ def _textos(objs):
         for p in TEXTUALES:
             if n.startswith(p): out.append(n[len(p):]); break
     return out
+
+
+_HORN = {}
+
+
+def _horneado(nombre):
+    """El texto que un prop lleva IMPRESO, declarado en `prop_<nombre>.txt` al lado del PNG. Es la
+    misma declaracion que exige `compo.check`: si un papel dice algo, esta escrito en alguna parte."""
+    if nombre in _HORN: return _HORN[nombre]
+    cand = []
+    vids = os.path.join(AQUI, '..', 'videos')
+    if os.path.isdir(vids):
+        for d in sorted(os.listdir(vids)):
+            cand.append(os.path.join(vids, d, 'arte', 'assets'))
+    cand.append(os.path.join(AQUI, 'assets'))
+    txt = ''
+    for base in cand:
+        f = os.path.join(base, 'prop_%s.txt' % nombre)
+        if os.path.exists(f):
+            txt = open(f, encoding='utf-8').read(); break
+    _HORN[nombre] = txt
+    return txt
 
 
 def _todos_visibles(sc, t):
@@ -241,6 +278,10 @@ def auditar(sc, tiempos, pts=None, P=None, out=None, dur=None, guion=None, paso=
                     n = getattr(o, 'name', '') or ''
                     for p in TEXTUALES:
                         if n.startswith(p): en_pantalla |= magnitudes(n[len(p):]); break
+                    else:
+                        for p in ('doc:', 'prop:', 'seq:'):
+                            if n.startswith(p):
+                                en_pantalla |= magnitudes(_horneado(n[len(p):])); break
                 k += 0.5
             if not any(_casan(a, b) for a in mag for b in en_pantalla):
                 bander.append('CIFRA_SIN_PANTALLA'); conteo['CIFRA_SIN_PANTALLA'] += 1

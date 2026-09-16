@@ -47,6 +47,9 @@ MEDIOS = [
     'abc news', 'nbc', 'cbs', 'sky news', 'guardian', 'the times', 'wsj', 'wall street',
     'pbs', 'afp', 'associated press', ' ap ', 'ft.com', 'financial times', 'ndtv',
     'channel 4', 'euronews', 'france 24', 'the economist', 'newsweek', 'forbes',
+    # Tabloides britanicos: son medios y el 16-sep pasaron por creadores. 'the sun' va
+    # con el articulo para no tragarse canales como "Sun Tzu" o "Rising Sun".
+    'the sun', 'daily star', 'metro.co.uk', 'lbc', 'talktv', 'gb news', 'sky sports',
     'business standard', 'times now', 'india today', 'msnbc', 'npr', 'telegraph',
     'independent', 'mirror', 'express', 'daily mail', 'usa today', 'washington post',
     'new york times', 'nytimes', 'yahoo finance', 'wion', 'firstpost', 'global news',

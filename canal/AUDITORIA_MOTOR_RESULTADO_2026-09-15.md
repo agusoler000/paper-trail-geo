@@ -146,7 +146,34 @@ Lo que NO pasa la auditoría y va a la pasada de corrección:
    cuadro. Sin personaje, el corte de 24-37 s (documento + tarjetas) es el tramo más "cartel" de la pieza.
 3. Rojo: hay hasta tres rojos por cuadro (pin, ruta, cifra). Se anota; no bloquea.
 
-*Piezas 1-3: en producción.*
+### Piezas 1-3 · primera pasada (20:12-20:23) — auditadas sobre los mp4 finales, 16 cuadros reales cada una
+
+| Pieza | `ritmo.py` | Veredicto del orquestador | Por qué |
+|---|---|---|---|
+| 1 · El tanque (75 s) | quietos 4,0 % · mov. 5,41 · PASS | **NO pasa** | 9 de 16 cuadros son mar vacío con un pin (el bbox del Golfo es casi todo agua y la costa corre por el borde superior); documentos placeholder (`REPORT`, `DECREE`); el depósito gris viejo; el burócrata no aparece en ningún cuadro muestreado |
+| 2 · Hormuz (66 s) | quietos 5,3 % · mov. 8,03 · 31,6 cortes/min · PASS | ✅ con retoques | Irán se pinta de rojo al decir "uninsurable", los 12 petroleros, el ejecutivo de pie sobre Omán; sobra un `REPORT` genérico y el barril se lee como mancha |
+| 3 · Hoteles (71 s) | quietos 5,3 % · mov. 5,76 · **FAIL** (un plano de 6,2 s) | **NO pasa** | **`LEASE 99 YEARS` en pantalla mientras la voz dice "same ten years"** (prop inventado: los contratos son de 10 años, F3.5) — el error guion→imagen que esta auditoría existe para impedir; `£8M A DAY` tapa el título del libro mayor; las barras 76/35 casi no se ven; la torre es chica en medio del mar |
+
+### Piezas 1-4 · segunda pasada (23:05-23:19) — ✅ las cuatro aceptadas y enviadas a Agustín (23:15)
+
+| Pieza | Duración | `ritmo.py` (medido por el orquestador) | sync | Qué se corrigió |
+|---|---|---|---|---|
+| 1 · El tanque | 71,9 s | quietos **0,3 %** · mov. 6,18 · PASS | VACIO 0 · CIFRA 0 | bbox con tierra en el cuadro; documentos con nombre (EIA · Weekly Petroleum Status Report · 4-sep); el tanque dibujado con escala; el burócrata sobre Texas |
+| 2 · Hormuz | 66,5 s | quietos 4,9 % · mov. **8,21** · 32,5 cortes/min · PASS | VACIO 0 · CIFRA 0 | póliza con su título real (War-risk insurance · Hormuz transit · 7,5-10 % of hull); barril con etiqueta CRUDE |
+| 3 · Hoteles | 71,5 s | quietos 4,9 % · mov. 6,01 · PASS | VACIO 0 · CIFRA 0 | **`LEASE 99 YEARS` eliminado**: contrato `2019-2029 · TEN YEARS · £4.5bn` + sello SAME CONTRACT; `£8M A DAY` fuera del libro mayor; torre y barras 76/35 grandes |
+| 4 · Ceuta | 75,5 s | quietos 2,7 % · mov. 7,02 · PASS | VACIO 0 · CIFRA 0 | tarjetas separadas de la sentencia; el jurista visible (chico) |
+
+Lo que queda para la pasada del compositor, no bloqueante: en la 1 la tarjeta `11 MARCH` roza al
+burócrata (35 s); en la 4 `THE ORDINARY PROCEDURE` toca el borde inferior de la sentencia (36-38 s) y
+el jurista es pequeño; los rótulos de países en el mapa son bg y a veces quedan cortados por el borde
+(normal en un mapa). Copias para móvil (`*_movil.mp4`, 8,5-9,6 MB) enviadas.
+
+**Lo que esto enseña, y ya está pedido al compositor** (`produccion/compo.py`, en construcción): (a) `sync.py`
+no lee el texto horneado en un prop — hace falta `TEXTO_NO_DICHO`: todo texto en pantalla se declara y
+se cruza contra el guion y la hoja de fuentes; (b) `TIERRA_EN_CUADRO`: un plano de mapa tiene que
+tener ≥ 40 % de tierra o contenido en la ventana, y el compositor elige centro y zoom para cumplirlo;
+(c) `PERSONAJE` visible ≥ 6 s de pie sobre tierra, medido. La lista de correcciones (15 puntos) se
+mandó al agente de la S12 a las 20:35; las piezas se re-renderizan y se vuelven a auditar.
 
 ## 5. Ep. 09 — (pendiente, después de los shorts)
 

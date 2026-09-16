@@ -1,0 +1,133 @@
+{
+ "nombre": "s13_taiwan",
+ "bbox": [
+  115.0,
+  123.5,
+  20.5,
+  29.0
+ ],
+ "w": 2600,
+ "out_dir": "../../arte/assets",
+ "etiquetas": false,
+ "sitios": {
+  "Taipei": [
+   121.5654,
+   25.033
+  ],
+  "Kaohsiung": [
+   120.3014,
+   22.6273
+  ],
+  "Fuzhou": [
+   119.2965,
+   26.0745
+  ],
+  "Xiamen": [
+   118.0894,
+   24.4798
+  ]
+ },
+ "puntos": {
+  "este": [
+   122.05,
+   23.8
+  ],
+  "xi": [
+   119.25,
+   27.3
+  ],
+  "costa_este": [
+   121.35,
+   23.9
+  ],
+  "centro_tw": [
+   120.95,
+   23.75
+  ]
+ },
+ "agua": [],
+ "rotulos_extra": [
+  [
+   "TAIWAN",
+   121.05,
+   23.35,
+   50
+  ],
+  [
+   "CHINA",
+   116.7,
+   27.9,
+   80
+  ]
+ ],
+ "capas": {
+  "twn": [
+   [
+    "TWN"
+   ],
+   "acreedor",
+   110
+  ]
+ },
+ "pins": {
+  "Taipei": {
+   "color": "ocre",
+   "r": 13,
+   "size": 42,
+   "off": [
+    0.6,
+    -0.35
+   ]
+  },
+  "Kaohsiung": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "anc": "rm",
+   "off": [
+    -0.5,
+    0
+   ]
+  },
+  "Fuzhou": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "anc": "rm",
+   "off": [
+    -0.5,
+    0
+   ]
+  },
+  "Xiamen": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "anc": "rm",
+   "off": [
+    -0.5,
+    0
+   ]
+  }
+ },
+ "escritorio": [
+  [
+   "lupa",
+   0.13,
+   0.82,
+   0.078
+  ],
+  [
+   "moneda",
+   0.888,
+   0.848,
+   0.042
+  ],
+  [
+   "regla",
+   0.858,
+   0.15,
+   0.022
+  ]
+ ]
+}

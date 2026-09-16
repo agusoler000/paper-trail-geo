@@ -158,7 +158,7 @@ class Pieza:
 
     # ------------------------------------------------------------------ MESA (correccion 1)
     def mesa(self, t0, t1, doc, fy=0.44, alto=0.50, oscuro=0.30, escritorio=ESCRITORIO,
-             rot=2.6, deriva=0.130, sfx='paper'):
+             rot=2.6, deriva=0.130, sfx='paper', seco=False):
         """Plano de MESA: mundo oscurecido + DOCUMENTO grande + props de escritorio de fondo.
 
         Sin hoja rayada: el documento es el papel. El documento **se mueve** (crece un `deriva` y
@@ -166,9 +166,15 @@ class Pieza:
         tambien esta quieto, el plano entero es una foto — que es de donde salia el 27 % de quietos
         de `prueba_vida.py`."""
         mu = self.mu
+        # `seco=True`: el velo entra DE GOLPE en vez de en 0,14 s. Un corte a mesa con rampa es un
+        # fundido de tres cuadros, y `ritmo.py` mide a cuatro muestras por segundo: el cambio se
+        # reparte en tres muestras de ~11 en vez de una de ~30, y **el corte no se cuenta**. Medido
+        # en el corte de 8,40 s de la pieza 1: daba 10,6-11,6 contra un umbral de 12. Y ademas un
+        # corte tiene que cortar.
+        ram = 0.001 if seco else 0.14
         if t0 > 0.05:
-            mu.dark.set(max(0.0, t0 - 0.14), mu.dark(max(0.0, t0 - 0.14)), 'hold')
-            mu.dark.set(t0, oscuro, 'io')
+            mu.dark.set(max(0.0, t0 - ram), mu.dark(max(0.0, t0 - ram)), 'hold')
+            mu.dark.set(t0, oscuro, 'hold' if seco else 'io')
         else:
             mu.dark.set(0.0, oscuro, 'hold')
         mu.dark.set(max(t0 + 0.2, t1 - 0.12), oscuro, 'hold'); mu.dark.set(t1, 0.0, 'io')
@@ -182,8 +188,8 @@ class Pieza:
             # y da un corte de verdad (la pantalla entera cambia de tono) alli donde dos planos de
             # mapa seguidos no lo darian.
             return None
-        o = self.hud(imagen(doc), t0 + 0.05, t1 - 0.05, 0.5, fy, alto, z=40,
-                     nombre='doc:' + doc, entra=0.36, sale=0.26, sfx=sfx)
+        o = self.hud(imagen(doc), t0 + (0.01 if seco else 0.05), t1 - 0.05, 0.5, fy, alto, z=40,
+                     nombre='doc:' + doc, entra=0.10 if seco else 0.36, sale=0.26, sfx=sfx)
         # El documento CRECE HACIA el tamano que `hud()` calculo, no a partir de el: `hud()` ya
         # eligio la escala mayor que entra en el cuadro, asi que multiplicarla por (1+deriva) al
         # final lo sacaba por los bordes — 21 violaciones de la regla 1 en la pieza 1, 19 en la 3.

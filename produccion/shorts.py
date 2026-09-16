@@ -578,6 +578,15 @@ def publicar_md(ep, cfg, out_dir):
                 f"*Del episodio {mm(tr[0]['inicio'])}–{mm(tr[-1]['fin'])} (lineas {S['l0']}–{S['l1']}).* {S['por_que']}\n",
                 "**Titulo**", "```", S['titulo'], "```",
                 "**Descripcion**", "```", S['desc'] + '\n\n' + tags, "```",
+                # ETIQUETAS DE STUDIO: van en TODAS las fichas (Agustin, 13-sep y de nuevo 15-sep:
+                # "te faltan las etiquetas en todas"). 12-18 palabras clave, <= 500 caracteres, la
+                # palabra buscada primero (regla 27). Si la ficha no trae `etiquetas`, se arman
+                # con los tags + el nombre del canal, y se avisa para que alguien las complete.
+                "**Etiquetas (Studio -> Mostrar mas -> Etiquetas)**", "```",
+                (', '.join(S['etiquetas']) if S.get('etiquetas')
+                 else ', '.join(list(S['tags']) + ['geopolitics', 'paper trail'])
+                      + '   <-- COMPLETAR: la ficha no traia etiquetas'),
+                "```",
                 f"**En pantalla:** {' / '.join(S['hook'])}\n"]
     p = os.path.join(out_dir, 'PUBLICAR.md')
     open(p, 'w', encoding='utf-8').write('\n'.join(out) + '\n')

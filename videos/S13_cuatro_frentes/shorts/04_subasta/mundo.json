@@ -1,0 +1,108 @@
+{
+ "nombre": "s13_uk",
+ "bbox": [
+  -8.8,
+  2.3,
+  49.8,
+  59.2
+ ],
+ "w": 2600,
+ "out_dir": "../../arte/assets",
+ "etiquetas": false,
+ "sitios": {
+  "London": [
+   -0.1276,
+   51.5072
+  ],
+  "Edinburgh": [
+   -3.1883,
+   55.9533
+  ],
+  "Cardiff": [
+   -3.1791,
+   51.4816
+  ],
+  "Belfast": [
+   -5.9301,
+   54.5973
+  ]
+ },
+ "puntos": {},
+ "agua": [
+  [
+   "NORTH SEA",
+   1.2,
+   56.3,
+   52
+  ]
+ ],
+ "rotulos_extra": [
+  [
+   "BRITAIN",
+   -1.6,
+   53.2,
+   70
+  ]
+ ],
+ "capas": {},
+ "pins": {
+  "London": {
+   "color": "ocre",
+   "r": 14,
+   "size": 46,
+   "off": [
+    0.5,
+    0.4
+   ]
+  },
+  "Edinburgh": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "off": [
+    0.4,
+    -0.3
+   ]
+  },
+  "Cardiff": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "anc": "rm",
+   "off": [
+    -0.4,
+    0
+   ]
+  },
+  "Belfast": {
+   "color": "gris",
+   "r": 9,
+   "size": 34,
+   "anc": "rm",
+   "off": [
+    -0.4,
+    0
+   ]
+  }
+ },
+ "escritorio": [
+  [
+   "lupa",
+   0.13,
+   0.82,
+   0.078
+  ],
+  [
+   "moneda",
+   0.888,
+   0.848,
+   0.042
+  ],
+  [
+   "regla",
+   0.858,
+   0.15,
+   0.022
+  ]
+ ]
+}

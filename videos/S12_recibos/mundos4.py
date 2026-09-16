@@ -49,7 +49,11 @@ GRIS = (108, 102, 92)
 # Cada una verificada contra su pagina de Wikipedia el 2026-09-15 (ver `fuentes/coords_f110.md`).
 GULF = dict(
     nombre='gulf',
-    bbox=(-97.5, -89.5, 24.5, 33.5),          # h/w = 1,30: mas alto que ancho
+    # Subido el borde sur de 24,5 a 26,0 y el norte de 33,5 a 34,5: con el bbox viejo el mar
+    # ocupaba el 55 % del alto del mundo y la camara pasaba la mitad de la pieza sobre agua vacia
+    # con un pin (9 de 16 cuadros de la auditoria). Ahora la tierra es mayoria y la costa cae en el
+    # tercio inferior del cuadro en los planos de mapa. h/w sigue > 1 (1,22).
+    bbox=(-97.5, -89.5, 26.0, 34.5),
     w=2600,
     # Verificadas una a una contra su pagina de Wikipedia el 2026-09-15 (infobox). Las que traia
     # PLAN_VISUAL_V4.md estaban cerca pero no eran las del infobox: Lake Charles se iba 0,029 deg
@@ -64,14 +68,18 @@ GULF = dict(
     # Posiciones calculadas contra la VENTANA a zmin (x = 358..2242 px de mundo), no a ojo.
     # MEXICO se cae: su unico hueco de tierra queda en x=293, fuera de la franja que recorre la
     # camara, y la voz no lo nombra ni una vez.
-    rotulos_extra=[('TEXAS', -95.95, 31.30, 84), ('LOUISIANA', -92.30, 31.40, 78)],
+    rotulos_extra=[('TEXAS', -95.75, 31.60, 84), ('LOUISIANA', -92.30, 31.70, 78)],
     # `sujeto` es CELESTE (72,178,190) y el oceano es TEAL (70,142,152): pintar EE. UU. de
     # `sujeto` sobre este mapa hacia que la tierra y el mar fueran el mismo color — se ve en la
     # primera hoja de contacto de la pieza 1, donde el cuadro entero es teal y los cuatro domos
     # flotan sin costa. Ademas mataba el movimiento medido (sin contraste no hay diferencia de
     # pixeles que medir). Va `institucion` (azul), que ademas es lo correcto: el sujeto de la pieza
     # es LA RESERVA, un organismo del Estado (ESTADO.md §3), no «el pais del que habla el video».
-    capas={'usa': (['USA'], MV.ROL['institucion'], 205)},
+    # alpha 160, no 205 (el mismo arreglo que Gran Bretana en la pieza 3): a 205 el azul tapa el
+    # kaki entero y la tierra deja de parecer tierra — queda una mancha azul contra un mar teal y el
+    # ojo se pierde. A 160 el relieve y el color del terreno se ven debajo y el azul lee como un
+    # tinte, que es lo que tiene que ser: el color dice el ROL, no sustituye al mapa.
+    capas={'usa': (['USA'], MV.ROL['institucion'], 160)},
     pins={'Freeport': {'color': MV.ROJO, 'r': 11, 'size': 40, 'anc': 'rm', 'off': (-2.4, 0.2)},
           'Winnie': {'color': MV.ROJO, 'r': 11, 'size': 40, 'anc': 'rm', 'off': (-2.4, 1.5)},
           'Lake Charles': {'color': MV.ROJO, 'r': 11, 'size': 40, 'off': (2.4, 1.6)},
@@ -120,7 +128,10 @@ UK = dict(
     agua=[('NORTH SEA', 0.20, 56.50, 52), ('IRISH SEA', -5.10, 53.60, 52),
           ('THE CHANNEL', -2.40, 50.00, 52)],
     rotulos_extra=[('BRITAIN', -2.60, 54.60, 84), ('IRELAND', -7.40, 53.30, 68)],
-    capas={'gbr': (['GBR'], MV.ROL['institucion'], 205),
+    # alpha 160, no 205: a 205 la isla entera quedaba azul solida y el ojo leia el TEAL del mar
+    # como si fuera la tierra (inversion de figura y fondo, visible en la hoja de contacto). A 160
+    # el kaki del terreno se sigue viendo debajo y el azul lee como un tinte, no como un relleno.
+    capas={'gbr': (['GBR'], MV.ROL['institucion'], 160),
            'irl': (['IRL'], MV.ROL['tercero'], 175)},
     pins={'London': {'color': MV.ROJO, 'r': 13, 'size': 44, 'anc': 'rm', 'off': (-2.4, 1.0)},
           'Manchester': {'color': MV.OCRE, 'r': 9, 'size': 34, 'anc': 'rm', 'off': (-2.5, -0.4)},

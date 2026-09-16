@@ -36,16 +36,16 @@ WHAT THIS VIDEO DOES NOT SAY
 """
 
 DESC = {
- 0: """America's emergency oil reserve is 39% full. The last time it was this low, Ronald Reagan was in his first term - and the war in the Strait of Hormuz had not started yet.
+ 1: """America's emergency oil reserve is 39% full. The last time it was this low, Ronald Reagan was in his first term - and the war in the Strait of Hormuz had not started yet.
 
 """ + FUENTES_COMUNES,
- 1: """Traffic through the Strait of Hormuz is down 95%. Almost nothing has been sunk. What closed the strait was not a weapon - it was the price of insuring a ship to cross it.
+ 2: """Traffic through the Strait of Hormuz is down 95%. Almost nothing has been sunk. What closed the strait was not a weapon - it was the price of insuring a ship to cross it.
 
 """ + FUENTES_COMUNES,
- 2: """Britain spends GBP 8 million a day housing asylum seekers in hotels. Hotels take 76% of the accommodation budget and house 35% of the people in it. The contracts were costed at GBP 4.5 billion and are now expected to cost GBP 15.3 billion.
+ 3: """Britain spends GBP 8 million a day housing asylum seekers in hotels. Hotels take 76% of the accommodation budget and house 35% of the people in it. The contracts were costed at GBP 4.5 billion and are now expected to cost GBP 15.3 billion.
 
 """ + FUENTES_COMUNES,
- 3: """On 29 June a Spanish court published a ruling. Thirty-two days later, 49,000 people crossed into Ceuta in 24 hours. Nobody changed a law and nobody moved a fence.
+ 4: """On 29 June a Spanish court published a ruling. Thirty-two days later, 49,000 people crossed into Ceuta in 24 hours. Nobody changed a law and nobody moved a fence.
 
 """ + FUENTES_COMUNES,
 }
@@ -53,13 +53,13 @@ DESC = {
 # Etiquetas POR PIEZA: esta tanda son dos temas distintos (regla 27, la palabra medida es
 # `iran war` en las dos primeras y `immigration` en las dos ultimas).
 TAGS = {
- 0: ('iran war, strait of hormuz, strategic petroleum reserve, spr, oil prices, oil reserve, '
+ 1: ('iran war, strait of hormuz, strategic petroleum reserve, spr, oil prices, oil reserve, '
      'energy security, brent crude, geopolitics, paper trail, the receipt,'),
- 1: ('iran war, strait of hormuz, tanker war, war risk insurance, shipping, oil tankers, '
+ 2: ('iran war, strait of hormuz, tanker war, war risk insurance, shipping, oil tankers, '
      'freight rates, oil prices, geopolitics, paper trail, the receipt,'),
- 2: ('immigration, uk immigration, asylum hotels, home office, asylum seekers uk, '
+ 3: ('immigration, uk immigration, asylum hotels, home office, asylum seekers uk, '
      'public spending, procurement, national audit office, britain, geopolitics, paper trail,'),
- 3: ('immigration, ceuta, spain, morocco, europe border, supreme court, migration, '
+ 4: ('immigration, ceuta, spain, morocco, europe border, supreme court, migration, '
      'schengen, european union, geopolitics, paper trail, the receipt,'),
 }
 

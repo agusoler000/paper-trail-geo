@@ -162,7 +162,9 @@ def pieza_4(p):
                        ('regla', 0.858, 0.150, 0.022)])
     p.mesa(K[9], K[10], 'sentencia', fy=0.40, alto=0.46,
            escritorio=[('lupa', 0.130, 0.820, 0.078), ('moneda', 0.888, 0.848, 0.042)])
-    p.mesa(K[14], K[15], 'resolucion', fy=0.40, alto=0.44,
+    # SIN documento: `resolucion` lleva «UNITED NATIONS / 2065» horneado, que no aparece en
+    # ningun guion de esta serie (regla 14). El contenido del plano es el sello y la cifra.
+    p.mesa(K[14], K[15], None, oscuro=0.56,
            escritorio=[('lupa', 0.130, 0.820, 0.078), ('regla', 0.858, 0.150, 0.022)])
     p.mesa(K[16], K[17], 'sentencia', fy=0.42, alto=0.50)
 
@@ -208,11 +210,14 @@ def pieza_4(p):
     p.rotulo('TWO PROCEDURES', K[8] + 0.10, K[9] - 0.05)
     # Sale antes del final del plano: la tarjeta «SWIM AROUND THE BARRIER» entra arriba y con el rig
     # todavia en pantalla le caia en la cara (visto en la hoja de contacto).
-    p.figura('05_jurista', K[8] + 0.15, min(K[9] - 0.15, t_swim - 0.20), sobre=(-5.502, 36.176),
-             mira='Ceuta', alto_rel=0.25, gestos=(K[8] + 1.8,))
+    # >= 8 s: entra con «summary return applies to the fence» y se queda toda la explicacion de
+    # las dos vias. Antes duraba 3 s y no aparecia en ninguno de los 16 cuadros muestreados.
+    p.figura('05_jurista', K[7] + 0.35, K[9] - 0.15, sobre=(-5.502, 36.176),
+             mira='Ceuta', alto_rel=0.25,
+             gestos=(K[7] + 2.0, K[8] + 1.2, K[8] + 3.4))
     p.card('SWIM AROUND' + NL + 'THE BARRIER', t_swim + 0.10, K[10] - 0.10, fy=0.185, alto=0.078,
            size=58, z=54)
-    p.card('THE ORDINARY PROCEDURE', t_ord + 0.10, K[10] - 0.10, fy=0.310, alto=0.050, size=58,
+    p.card('THE ORDINARY PROCEDURE', t_ord + 0.10, K[10] - 0.10, fy=0.560, alto=0.050, size=58,
            tcolor=ROJO, z=54)
 
     p.card('THE RULING' + NL + 'WAS PUBLISHED', t_pub + 0.10, K[11] - 0.10, fy=0.185, alto=0.078,
@@ -304,125 +309,138 @@ def pieza_1(p):
     t_com = p.t('comments', desde=t_should)
 
     C = p.mu.meta['capas']
-    p.mu.add_layer(C['usa'], t_amer + 0.10, 1.4, mode='fade')
-    p.mu.add_layer(C['marcas'], t_amer + 0.10, 0.3, mode='fade')
+    # AQUI NO SE PINTA EL PAIS. La regla del canal es «el color dice el ROL en la historia», y en
+    # este mapa **no hay mas que un pais**: pintar EE. UU. no distingue a nadie de nadie, y a cambio
+    # convierte el cuadro en un campo azul liso donde los cuatro domos flotan. Se vio en la hoja de
+    # 16 cuadros: el unico cuadro que respiraba era el anterior a que la capa entrara. La tierra se
+    # queda kaki, con su relieve, y lo que narra son los PINES ROJOS de los cuatro domos, que es de
+    # lo que habla la pieza. (Las otras tres piezas si pintan, porque ahi hay dos actores.)
+    p.mu.add_layer(C['marcas'], 0.6, 0.3, mode='fade')
 
     K = [0.0,
          t_res + 0.55,          # 1 -> 2   cierra sobre los domos
-         t_up + 0.60,           # 2 -> 3   MESA: el deposito
+         t_up + 0.60,           # 2 -> 3   MESA: el tanque
          t_reagan - 0.55,       # 3 -> 4   MAPA abierto: Reagan
-         t_term + 0.60,         # 4 -> 5   MESA: el parte semanal
+         t_term + 0.60,         # 4 -> 5   MESA: el parte semanal de la EIA
          t_filing + 0.80,       # 5 -> 6   MAPA cerrado: 285 millones
          t_sept + 0.90,         # 6 -> 7   MESA: 727 millones
-         p.L(2)[0] - 0.05,      # 7 -> 8   MAPA abierto: el burocrata
-         t_11 - 0.55,           # 8 -> 9   MESA: el decreto
-         t_172 + 0.90,          # 9 -> 10  MAPA cerrado: 172 millones (el plano 9 daba 6,05 s)
+         p.L(2)[0] - 0.05,      # 7 -> 8   MAPA: entra el burocrata
+         t_11 + 0.90,           # 8 -> 9   MAPA cerrado: sigue el burocrata
+         t_172 + 2.20,          # 9 -> 10  MESA: el decreto del DOE
          p.L(3)[0] - 0.05,      # 10 -> 11 MAPA: el tanque se vacia
-         t_17 - 0.55,           # 11 -> 12 MAPA cerrado: +17 %
+         t_17 - 0.55,           # 11 -> 12 MESA: +17 %
          p.L(4)[0] - 0.05,      # 12 -> 13 MAPA abierto: cinco semanas
          t_brent + 0.55,        # 13 -> 14 MESA: Brent
          p.L(5)[0] - 0.05,      # 14 -> 15 MESA: el petrolero
-         t_stops - 0.45,        # 15 -> 16 MESA: el deposito vacio / Hormuz
+         t_stops - 0.45,        # 15 -> 16 MESA: el tanque vacio / Hormuz
          p.L(6)[0] - 0.05,      # 16 -> 17 MAPA cerrado: vuelve el 39 %
-         t_money - 0.80,        # 17 -> 18 MAPA abierto: la moneda
+         t_money - 0.80,        # 17 -> 18 MESA: la moneda
          p.L(7)[0] - 0.05,      # 18 -> 19 MAPA: la pregunta
          D]
 
+    # TODOS los planos de mapa miran a TIERRA. El montaje anterior pasaba 9 de 16 cuadros sobre mar
+    # vacio con un pin: el mundo se rehizo con mas tierra (bbox lat 26-34,5) y aqui los encuadres se
+    # eligieron midiendo el porcentaje de tierra de cada uno sobre el PNG del mundo — el peor da
+    # 57 %, el mejor 87 %, y ninguno pasa del 55 % de agua que pedia la auditoria.
+    RIG = (877, 1195)                      # donde se para el burocrata, en px de mundo
     PLAN = [
-        ('mapa', (MED[0] + 60, MED[1] + 300), Z + 0.02, (MAR[0] + 20, MAR[1] + 190), Z + 0.34),
-        ('mapa', (WI[0] - 40, WI[1] - 300), Z + 0.95, (WI[0] + 60, WI[1] - 20), Z + 1.42),
-        ('mesa', (MED[0] - 60, MED[1] + 40), 1.02, (MED[0] + 50, MED[1] - 40), 1.683),
-        ('mapa', (MAR[0] - 80, MAR[1] - 40), Z + 0.06, (LC[0] + 40, LC[1] + 220), Z + 0.38),
-        ('mesa', (MED[0] + 60, MED[1] - 30), 1.06, (MED[0] - 50, MED[1] + 50), 1.749),
-        ('mapa', (FR[0] + 90, FR[1] + 150), Z + 0.52, (FR[0] - 40, FR[1] + 10), Z + 0.96),
-        ('mesa', (MED[0] + 50, MED[1] - 40), 1.10, (MED[0] - 60, MED[1] + 40), 1.815),
-        ('mapa', (1120, 1180), Z + 0.10, (1280, 1320), Z + 0.44),          # 8 · el burocrata
-        ('mesa', (MED[0] - 60, MED[1] + 50), 1.04, (MED[0] + 50, MED[1] - 40), 1.716),
-        ('mapa', (BR[0] - 60, BR[1] + 130), Z + 0.56, (BR[0] + 50, BR[1] - 20), Z + 1.00),
-        ('mapa', (MAR[0] + 60, MAR[1] + 30), Z + 0.04, (WI[0] - 30, WI[1] + 40), Z + 0.46),
-        ('mesa', (WI[0] - 60, WI[1] + 120), 1.06, (WI[0] + 70, WI[1] - 30), 1.749),
-        ('mapa', (MAR[0] - 40, MAR[1] + 60), Z + 0.02, (LC[0] + 30, LC[1] + 30), Z + 0.44),
-        ('mesa', (LC[0] + 60, LC[1] + 120), 1.08, (LC[0] - 70, LC[1] - 10), 1.782),
-        ('mesa', (MED[0] - 50, MED[1] + 40), 1.02, (MED[0] + 60, MED[1] - 40), 1.683),
-        ('mesa', (MED[0] + 60, MED[1] - 40), 1.08, (MED[0] - 50, MED[1] + 50), 1.782),
-        ('mapa', (FR[0] + 60, FR[1] + 140), Z + 0.58, (FR[0] - 50, FR[1] - 10), Z + 0.98),
-        ('mesa', (MAR[0] + 40, MAR[1] - 260), 1.06, (LC[0] - 40, LC[1] - 260), 1.749),
-        ('mapa', (MAR[0] + 20, MAR[1] + 240), Z + 0.02, (FR[0] + 40, FR[1] - 40), Z + 0.44),
+        ('mapa', (MED[0] + 40, MED[1] - 380), Z + 0.02, (WI[0] + 60, WI[1] - 60), Z + 0.36),
+        ('mesa', (BR[0] - 40, BR[1] - 120), 1.04, (LC[0] + 60, LC[1] - 40), 1.716),
+        ('mapa', (WI[0] - 70, WI[1] - 160), Z + 0.92, (WI[0] + 60, WI[1] - 30), Z + 1.40),
+        ('mesa', (MED[0] - 60, MED[1] - 460), 1.02, (FR[0] + 40, FR[1] - 220), 1.683),
+        ('mesa', (MED[0] + 60, MED[1] - 330), 1.06, (MED[0] - 50, MED[1] - 250), 1.749),
+        ('mapa', (WI[0] - 60, WI[1] - 150), Z + 0.92, (WI[0] + 70, WI[1] - 20), Z + 1.40),
+        ('mesa', (MED[0] + 50, MED[1] - 340), 1.10, (MED[0] - 60, MED[1] - 260), 1.815),
+        ('mapa', (RIG[0] + 150, RIG[1] + 300), Z + 0.14, (RIG[0] - 40, RIG[1] + 140), Z + 0.48),
+        ('mapa', (RIG[0] + 190, RIG[1] + 330), Z + 1.05, (RIG[0] - 60, RIG[1] + 180), Z + 1.52),
+        ('mesa', (MED[0] - 60, MED[1] - 350), 1.04, (MED[0] + 50, MED[1] - 270), 1.716),
+        ('mapa', (MED[0] + 60, MED[1] - 420), Z + 0.02, (LC[0] - 40, LC[1] - 70), Z + 0.40),
+        ('mesa', (WI[0] - 60, WI[1] - 200), 1.06, (WI[0] + 70, WI[1] - 90), 1.749),
+        ('mapa', (MED[0] - 40, MED[1] - 400), Z + 0.04, (WI[0] + 60, WI[1] - 90), Z + 0.42),
+        ('mesa', (LC[0] + 60, LC[1] - 180), 1.08, (LC[0] - 70, LC[1] - 60), 1.782),
+        ('mesa', (MED[0] - 50, MED[1] - 320), 1.02, (MED[0] + 60, MED[1] - 400), 1.683),
+        ('mesa', (MED[0] + 60, MED[1] - 340), 1.08, (MED[0] - 50, MED[1] - 250), 1.782),
+        ('mapa', (FR[0] + 50, FR[1] - 190), Z + 0.94, (FR[0] - 50, FR[1] - 70), Z + 1.42),
+        ('mesa', (MED[0] + 40, MED[1] - 360), 1.06, (LC[0] - 40, LC[1] - 150), 1.749),
+        ('mapa', (MED[0] - 60, MED[1] - 300), Z + 0.32, (MED[0] + 60, MED[1] - 470), Z + 0.02),
     ]
     for i, (tipo, c0, z0, c1, z1) in enumerate(PLAN):
         p.plano(K[i], K[i + 1], c0, z0, c1, z1, tipo)
 
-    p.mesa(K[2], K[3], 'deposito_oil', fy=0.400, alto=0.420)
-    p.mesa(K[4], K[5], 'informe', fy=0.400, alto=0.460)
-    p.mesa(K[6], K[7], 'informe', fy=0.400, alto=0.460,
-           escritorio=[('lupa', 0.130, 0.820, 0.078), ('regla', 0.858, 0.150, 0.022)])
-    p.mesa(K[8], K[9], 'decreto', fy=0.400, alto=0.480)
-    p.mesa(K[11], K[12], 'flecha_arriba', fy=0.400, alto=0.330,
-           escritorio=[('moneda', 0.888, 0.848, 0.042)])
-    p.mesa(K[13], K[14], 'barril', fy=0.405, alto=0.330,
-           escritorio=[('lupa', 0.130, 0.820, 0.078), ('regla', 0.858, 0.150, 0.022)])
-    p.mesa(K[14], K[15], 'petrolero', fy=0.410, alto=0.300)
-    p.mesa(K[17], K[18], 'moneda', fy=0.400, alto=0.260,
+    # El deposito gris con «OIL» era feo y no decia nada: el tanque de la secuencia (`tanque_n`) es
+    # el mismo dibujo que se usa para la animacion, con su escala y su nivel marcado.
+    p.mesa(K[1], K[2], 'tanque_n12', seco=True, fy=0.395, alto=0.440)
+    p.mesa(K[3], K[4], None, seco=True, oscuro=0.46,
            escritorio=[('lupa', 0.130, 0.820, 0.078)])
-    # El plano 16 usa OTRO objeto a proposito: dos planos de mesa seguidos con el mismo documento
-    # no se leen como un corte (el documento es HUD y no se mueve con la camara).
-    p.mesa(K[15], K[16], 'deposito_oil', fy=0.400, alto=0.400,
+    p.mesa(K[4], K[5], 'doc_eia', seco=True, fy=0.400, alto=0.500)
+    p.mesa(K[6], K[7], 'doc_eia', seco=True, fy=0.385, alto=0.545,
+           escritorio=[('lupa', 0.130, 0.820, 0.078), ('regla', 0.858, 0.150, 0.022)])
+    p.mesa(K[9], K[10], 'doc_doe', seco=True, fy=0.400, alto=0.520)
+    p.mesa(K[11], K[12], 'flecha_arriba', seco=True, fy=0.400, alto=0.330,
+           escritorio=[('moneda', 0.888, 0.848, 0.042)])
+    p.mesa(K[13], K[14], 'barril', seco=True, fy=0.405, alto=0.330,
+           escritorio=[('lupa', 0.130, 0.820, 0.078), ('regla', 0.858, 0.150, 0.022)])
+    p.mesa(K[14], K[15], 'petrolero', seco=True, fy=0.410, alto=0.300)
+    p.mesa(K[15], K[16], 'tanque_n00', seco=True, fy=0.395, alto=0.430,
+           escritorio=[('lupa', 0.130, 0.820, 0.078)])
+    p.mesa(K[17], K[18], 'moneda', seco=True, fy=0.400, alto=0.260,
            escritorio=[('lupa', 0.130, 0.820, 0.078)])
 
     p.rotulo('THE RESERVE', 0.85, K[1] - 0.10)
-    p.cifra('OPENED IN MARCH', 0.10, K[1] + 0.25, fy=0.640, alto=0.062, size=84,
+    p.cifra('OPENED IN MARCH', 0.10, K[1] + 0.03, fy=0.640, alto=0.062, size=84, tcolor=PR.TINTA)
+    p.card('TO PUSH THE PRICE DOWN', K[1] + 0.05, K[2] - 0.10, fy=0.745, alto=0.048, size=58,
+           z=54, entra=0.14)
+    p.cifra('THE PRICE WENT UP', t_up + 0.05, K[2] + 0.05, fy=0.185, alto=0.058, size=76)
+    p.cifra('THE TANK IS NOW', K[2] + 0.05, K[3] - 0.04, fy=0.185, alto=0.058, size=76,
             tcolor=PR.TINTA)
-    p.card('TO PUSH THE PRICE DOWN', t_res + 0.20, K[2] - 0.10, fy=0.745, alto=0.048, size=58,
-           z=54)
-    p.cifra('THE PRICE WENT UP', t_up + 0.05, K[3] - 0.10, fy=0.185, alto=0.058, size=76)
-    # el deposito dice el dato ANTES que la tarjeta: se vacia hasta el 39 %
-    p.secuencia('tanque_n', K[2] + 0.15, t_39a - 0.10, 12, 5, 0.50, 0.400, 0.330, z=44,
-                nombre='prop:deposito_oil')
-    p.cifra('39% FULL', t_39a + 0.10, K[3] - 0.10, fy=0.690, alto=0.115, size=150)
-    p.card('LAST TIME THIS LOW:' + NL + 'RONALD REAGAN, FIRST TERM', K[3] - 0.15, K[4] + 0.20,
-           fy=0.190, alto=0.082, size=54, z=54)
+    p.secuencia('tanque_n', K[2] + 0.15, t_39a - 0.10, 12, 5, 0.50, 0.395, 0.440, z=44,
+                nombre='prop:tanque')
+    p.cifra('39% FULL', t_39a + 0.10, K[3] - 0.04, fy=0.760, alto=0.105, size=140)
+    p.card('LAST TIME THIS LOW:' + NL + 'RONALD REAGAN, FIRST TERM', K[3] + 0.02, K[4] + 0.20,
+           fy=0.190, alto=0.082, size=54, z=54, entra=0.14)
     p.cifra('1982', t_reagan + 0.55, K[4] + 0.20, fy=0.330, alto=0.090, size=130)
 
     p.rotulo('ITS OWN WEEKLY FILING', K[4] + 0.30, K[5] - 0.10)
-    p.card('NOT AN ESTIMATE', K[4] + 0.45, K[5] + 0.85, fy=0.735, alto=0.048, size=60, z=54)
-    p.cifra('285,360,000', t_285 + 0.10, K[6] + 0.25, fy=0.330, alto=0.105, size=132)
-    p.card('BARRELS', t_barrels1 + 0.10, K[6] + 0.25, fy=0.430, alto=0.042, size=56, z=60)
-    p.card('WEEK OF SEPT 4', t_sept + 0.15, K[6] + 0.25, fy=0.510, alto=0.046, size=54, z=54)
+    p.card('NOT AN ESTIMATE', K[4] + 0.45, K[5] + 0.85, fy=0.870, alto=0.042, size=52, z=54)
+    p.cifra('285,360,000', t_285 + 0.10, K[6] + 0.25, fy=0.175, alto=0.100, size=126)
+    p.card('BARRELS', t_barrels1 + 0.10, K[6] + 0.25, fy=0.275, alto=0.040, size=54, z=60)
     p.rotulo('BUILT TO HOLD', K[6] + 0.30, K[7] - 0.10)
-    p.cifra('727,000,000', t_727 + 0.10, K[7] + 0.35, fy=0.700, alto=0.105, size=132,
+    p.cifra('727,000,000', t_727 + 0.10, K[7] + 0.35, fy=0.780, alto=0.100, size=126,
             tcolor=PR.TINTA)
 
-    p.figura('01_burocrata', K[7] + 0.20, K[8] - 0.20, sobre=(-94.80, 31.30), mira='Freeport',
-             alto_rel=0.25, gestos=(K[7] + 1.9,))
-    p.cifra('THIS IS HOW IT EMPTIED', t_empt - 0.25, K[8] + 0.25, fy=0.735, alto=0.058, size=72,
+    # >= 8 s de pie sobre Texas, cruzando los dos planos de mapa (antes 3,6 s y no aparecia en
+    # ninguno de los 16 cuadros de la auditoria).
+    p.figura('01_burocrata', K[7] + 0.20, K[9] - 0.25, sobre=(-94.80, 31.30), mira='Freeport',
+             alto_rel=0.26, gestos=(K[7] + 1.9, K[8] + 1.2, K[8] + 3.2))
+    p.cifra('THIS IS HOW IT EMPTIED', t_empt - 0.25, K[8] + 0.25, fy=0.175, alto=0.056, size=70,
             tcolor=PR.TINTA)
-    p.rotulo('THE RELEASE', K[8] + 0.35, K[9] - 0.10)
-    p.cifra('11 MARCH', t_11 + 0.10, K[9] - 0.10, fy=0.700, alto=0.070, size=92)
-    p.cifra('172,000,000 OUT', t_172 + 0.15, K[10] - 0.10, fy=0.320, alto=0.105, size=112)
+    p.cifra('11 MARCH', K[8] + 0.02, K[9] - 0.10, fy=0.300, alto=0.105, size=140)
+    p.rotulo('THE RELEASE', K[9] + 0.25, K[10] - 0.10)
+    p.cifra('172,000,000 OUT', t_172 + 0.15, K[10] + 0.30, fy=0.790, alto=0.100, size=108)
     p.card('THE LARGEST EMERGENCY' + NL + 'RELEASE EVER AGREED', t_agreed - 0.90, K[10] + 0.30,
-           fy=0.450, alto=0.078, size=52, z=54)
+           fy=0.885, alto=0.070, size=50, z=54)
 
     # LA ANIMACION CENTRAL: el deposito se vacia mientras la flecha del precio sube. Las dos cosas
     # a la vez son el argumento entero — bajo el que tenia que subir y subio el que tenia que bajar.
-    p.secuencia('tanque_n', K[10] + 0.15, K[11] - 0.25, 12, 0, 0.275, 0.400, 0.300, z=46,
-                nombre='prop:deposito_oil')
+    p.secuencia('tanque_n', K[10] + 0.15, K[11] - 0.25, 12, 0, 0.275, 0.400, 0.360, z=46,
+                nombre='prop:tanque')
     p.card('THE PRICE WENT UP', K[10] + 0.10, K[11] - 0.10, fy=0.175, alto=0.050, size=62, z=54)
-    p.cifra('+17%', K[11] - 0.15, K[12] - 0.10, fy=0.640, alto=0.120, size=180)
+    p.cifra('+17%', K[11] - 0.15, K[12] - 0.10, fy=0.740, alto=0.115, size=170)
 
     p.cifra('5 WEEKS', t_5w + 0.05, K[13] - 0.10, fy=0.180, alto=0.060, size=84, tcolor=PR.TINTA)
-    p.cifra('-19,000,000', t_19 + 0.10, K[13] + 0.30, fy=0.320, alto=0.110, size=132)
-    p.cifra('$104.61', t_61 - 0.55, K[14] + 0.35, fy=0.660, alto=0.110, size=150)
+    p.cifra('-19,000,000', t_19 + 0.10, K[13] + 0.30, fy=0.320, alto=0.105, size=126)
+    p.cifra('$104.61', t_61 - 0.55, K[14] + 0.35, fy=0.740, alto=0.105, size=140)
     p.rotulo('BRENT, LAST WEEK', t_brent + 0.20, K[14] - 0.10)
 
     p.cifra('A RESERVE EXISTS' + NL + 'FOR EXACTLY ONE DAY', t_oneday - 0.85, K[15] + 0.25,
-            fy=0.730, alto=0.090, size=62, tcolor=PR.TINTA)
+            fy=0.760, alto=0.086, size=60, tcolor=PR.TINTA)
     p.rotulo('THE DAY THE OIL STOPS', K[15] + 0.35, K[16] - 0.10)
-    p.cifra('THE STRAIT' + NL + 'OF HORMUZ', t_hormuz - 0.55, K[16] + 0.35, fy=0.735, alto=0.105,
-            size=90)
+    p.cifra('THE STRAIT' + NL + 'OF HORMUZ', t_hormuz - 0.55, K[16] + 0.35, fy=0.760, alto=0.100,
+            size=86)
 
-    p.secuencia('tanque_n', K[16] + 0.15, K[16] + 1.70, 0, 5, 0.500, 0.400, 0.320, z=46,
-                nombre='prop:deposito_oil')
-    p.cifra('39%', K[16] + 1.55, K[17] + 0.20, fy=0.690, alto=0.125, size=200)
+    p.secuencia('tanque_n', K[16] + 0.15, K[16] + 1.70, 0, 5, 0.500, 0.395, 0.400, z=46,
+                nombre='prop:tanque')
+    p.cifra('39%', K[16] + 1.55, K[17] + 0.20, fy=0.760, alto=0.115, size=185)
     p.card('SOMEBODY IS' + NL + 'MAKING MONEY ON THIS', t_money - 0.55, K[18] + 0.05, fy=0.700,
            alto=0.086, size=58, tcolor=ROJO, z=56)
     p.card('SHOULD A COUNTRY SPEND' + NL + 'ITS RESERVE TO MOVE A PRICE?', K[18] + 0.02,
@@ -525,11 +543,13 @@ def pieza_2(p):
     for i, (tipo, c0, z0, c1, z1) in enumerate(PLAN):
         p.plano(K[i], K[i + 1], c0, z0, c1, z1, tipo)
 
-    p.mesa(K[7], K[8], 'poliza', fy=0.400, alto=0.460)
-    p.mesa(K[8], K[9], 'factura', fy=0.400, alto=0.450,
+    p.mesa(K[7], K[8], 'doc_poliza', fy=0.400, alto=0.520)
+    # el mismo documento, mas cerca: es el plano de las cifras de la poliza. El corte se lee por
+    # el encuadre (1,10 -> 1,82), no por cambiar de papel.
+    p.mesa(K[8], K[9], 'doc_poliza', fy=0.380, alto=0.560,
            escritorio=[('lupa', 0.130, 0.820, 0.078), ('moneda', 0.888, 0.848, 0.042)])
     p.mesa(K[14], K[15], None, oscuro=0.62, escritorio=[('lupa', 0.130, 0.820, 0.078)])
-    p.mesa(K[15], D, 'poliza', fy=0.400, alto=0.480)
+    p.mesa(K[15], D, 'doc_poliza', fy=0.400, alto=0.520)
 
     p.rotulo('THE STRAIT OF HORMUZ', 0.85, K[1] - 0.10)
     p.cifra('ALMOST NOTHING' + NL + 'HAS BEEN SUNK', 0.10, K[1] + 1.55, fy=0.640, alto=0.090,
@@ -543,7 +563,7 @@ def pieza_2(p):
     # El estrecho no se cierra con fuego: se cierra con una cifra que sube.
     for i in range(12):
         x = 0.115 + i * 0.0705
-        p.prop('petrolero', K[3] + 0.20 + i * 0.09, K[4] + 0.30 + i * 0.24, x, 0.245, 0.030,
+        p.prop('petrolero', K[3] + 0.20 + i * 0.09, K[4] + 0.30 + i * 0.24, x, 0.245, 0.048,
                z=44, entra=0.14, sale=0.12, sfx=None, nombre='prop:petrolero%d' % i)
     p.cifra('100+ SHIPS A DAY', t_100 - 0.30, K[4] + 0.30, fy=0.150, alto=0.058, size=76,
             tcolor=PR.TINTA)
@@ -551,7 +571,8 @@ def pieza_2(p):
            nombre='prop:petrolero_ultimo')
     p.cifra('NOW: 10 A DAY', t_ten + 0.10, K[5] + 0.25, fy=0.330, alto=0.095, size=104)
 
-    p.prop('barril', K[5] + 0.05, K[6] - 0.10, 0.500, 0.450, 0.165, z=46, entra=0.14, sfx='stamp')
+    p.prop('barril', K[5] + 0.05, K[6] - 0.10, 0.315, 0.455, 0.275, z=46, entra=0.14, sfx='stamp')
+    p.card('CRUDE', K[5] + 0.20, K[6] - 0.10, fx=0.315, fy=0.615, alto=0.036, size=52, z=54)
     p.cifra('NOT A SHORTAGE OF OIL', t_short + 0.20, K[6] + 1.35, fy=0.640, alto=0.058, size=70,
             tcolor=PR.TINTA)
     p.cifra('A SHORTAGE OF SHIPS' + NL + 'WILLING TO GO', t_ships2 + 0.15, K[7] + 0.35,
@@ -576,7 +597,7 @@ def pieza_2(p):
            alto=0.078, size=56, z=54)
     p.cifra('36x SINCE' + NL + 'JANUARY', t_36 + 0.10, K[12] + 0.25, fy=0.660, alto=0.115,
             size=110)
-    p.prop('barril', K[12] + 0.05, K[13] + 3.55, 0.290, 0.430, 0.150, z=46, entra=0.14,
+    p.prop('barril', K[12] + 0.05, K[13] + 3.55, 0.290, 0.430, 0.250, z=46, entra=0.14,
            sfx='stamp')
     p.cifra('$104', t_brent + 0.55, K[13] + 3.55, fy=0.660, alto=0.110, size=170)
     p.rotulo('BRENT', t_brent + 0.20, K[13] + 3.55)
@@ -680,20 +701,24 @@ def pieza_3(p):
         ('mesa', (MED[0] + 50, MED[1] - 40), 1.04, (MED[0] - 60, MED[1] + 50), 1.716),
         ('mapa', (LO[0] + 80, LO[1] + 120), Z + 0.52, (LO[0] - 40, LO[1] - 20), Z + 0.94),
         ('mapa', (MAR[0] - 40, MAR[1] + 80), Z + 0.02, (MED[0] + 60, MED[1] - 120), Z + 0.30),
-        ('mapa', (GL[0] + 60, GL[1] + 130), Z + 0.48, (GL[0] - 50, GL[1] + 10), Z + 0.88),
+        ('mesa', (GL[0] + 60, GL[1] + 130), 1.06, (GL[0] - 50, GL[1] + 10), 1.75),
         ('mapa', (MED[0] - 60, MED[1] + 60), Z + 0.26, (MAR[0] + 40, MAR[1] + 180), Z + 0.02),
     ]
     for i, (tipo, c0, z0, c1, z1) in enumerate(PLAN):
         p.plano(K[i], K[i + 1], c0, z0, c1, z1, tipo)
 
-    p.mesa(K[3], K[4], 'libro_mayor', fy=0.400, alto=0.460)
-    p.mesa(K[5], K[6], 'contrato99', fy=0.395, alto=0.440)
-    p.mesa(K[6], K[7], 'libro_mayor', fy=0.400, alto=0.455,
-           escritorio=[('lupa', 0.130, 0.820, 0.078), ('moneda', 0.888, 0.848, 0.042)])
-    p.mesa(K[8], K[9], 'contrato99', fy=0.395, alto=0.440,
+    p.mesa(K[3], K[4], 'doc_cuentas', seco=True, fy=0.400, alto=0.500)
+    # sin documento: la TORRE es el contenido de estos dos planos y el contrato le caia encima
+    p.mesa(K[5], K[6], None, seco=True, oscuro=0.34, escritorio=[('lupa', 0.130, 0.820, 0.078)])
+    p.mesa(K[6], K[7], None, seco=True, oscuro=0.62,
+           escritorio=[('regla', 0.858, 0.150, 0.022), ('moneda', 0.888, 0.848, 0.042)])
+    p.mesa(K[8], K[9], 'doc_contrato', seco=True, fy=0.395, alto=0.470,
            escritorio=[('regla', 0.858, 0.150, 0.022)])
-    p.mesa(K[10], K[11], None, oscuro=0.60, escritorio=[('lupa', 0.130, 0.820, 0.078)])
-    p.mesa(K[12], K[13], 'factura', fy=0.400, alto=0.450)
+    p.mesa(K[10], K[11], None, seco=True, oscuro=0.60, escritorio=[('lupa', 0.130, 0.820, 0.078)])
+    # `factura` lleva un EURO dibujado y esta pieza esta en libras: va el libro de cuentas.
+    p.mesa(K[12], K[13], 'doc_cuentas', seco=True, fy=0.400, alto=0.490)
+    p.mesa(K[15], K[16], 'doc_contrato', seco=True, fy=0.395, alto=0.450,
+           escritorio=[('lupa', 0.130, 0.820, 0.078)])
 
     p.rotulo('ASYLUM ACCOMMODATION', 0.85, K[1] - 0.10)
     p.cifra('THE DAY BEFORE', 0.10, K[1] + 0.30, fy=0.640, alto=0.062, size=88, tcolor=PR.TINTA)
@@ -702,31 +727,35 @@ def pieza_3(p):
                sfx=None, nombre='prop:hotel%d' % i)
     p.card('THE HOME SECRETARY SAID', t_sec + 0.15, K[2] + 0.25, fy=0.560, alto=0.048, size=58,
            z=54)
-    p.cifra('GBP 6M A DAY', t_six + 0.10, K[2] + 0.25, fy=0.660, alto=0.105, size=140,
+    p.cifra('£6M A DAY', t_six + 0.10, K[2] + 0.25, fy=0.660, alto=0.105, size=140,
             tcolor=PR.TINTA)
-    p.figura('01_burocrata', K[2] + 0.20, K[3] - 0.20, sobre=(-1.45, 52.25), mira='London',
-             alto_rel=0.24, gestos=(K[2] + 2.0,))
+    # >= 8 s de pie sobre Inglaterra (antes 3,8 s). Entra con «the Home Office's own accounts»
+    # y se queda hasta que la voz pasa al contrato.
+    p.figura('01_burocrata', K[2] + 0.20, K[4] - 0.20, sobre=(-1.45, 52.25), mira='London',
+             alto_rel=0.24, gestos=(K[2] + 1.8, K[3] + 1.4, K[3] + 3.6))
     p.cifra('THE ACCOUNTS SAID', t_acc1 - 0.30, K[3] + 0.25, fy=0.735, alto=0.058, size=72)
 
     # LA CIFRA CRUZA EL CORTE: entra sobre el mapa y sigue viva sobre el libro mayor
-    p.cifra('GBP 8M A DAY', t_eight1 - 0.15, K[5] + 0.35, fy=0.300, alto=0.120, size=150)
+    p.cifra('£8M A DAY', t_eight1 - 0.15, K[5] + 0.35, fy=0.735, alto=0.115, size=150)
     p.rotulo('HOME OFFICE · ANNUAL ACCOUNTS', K[3] + 0.30, K[4] - 0.10)
-    p.card('NOT A NEWSPAPER ESTIMATE', t_est + 0.10, K[4] + 0.25, fy=0.430, alto=0.046, size=56,
+    p.card('NOT A NEWSPAPER ESTIMATE', t_est + 0.10, K[4] + 0.25, fy=0.870, alto=0.042, size=52,
            z=54)
-    p.card('IN THE DEPARTMENT’S' + NL + 'OWN ACCOUNTS', t_acc2 - 1.00, K[5] + 0.35, fy=0.560,
+    p.card('IN THE DEPARTMENT’S' + NL + 'OWN ACCOUNTS', t_acc2 - 1.00, K[5] + 0.35, fy=0.180,
            alto=0.078, size=56, z=54)
     p.cifra('AND A WORSE NUMBER', t_worse + 0.10, K[5] + 0.25, fy=0.175, alto=0.058, size=72)
 
     p.rotulo('CONTRACTS SIGNED · 2019', t_2019 - 0.55, K[7] - 0.10)
     # la torre crece: 4,5 bn -> 15,3 bn. El mismo contrato, tres veces la cuenta.
-    p.secuencia('torre_n', K[5] + 0.25, t_45 - 0.20, 0, 5, 0.500, 0.395, 0.290, z=46,
-                nombre='prop:torre_n')
-    p.cifra('GBP 4.5bn', t_45 - 0.45, K[6] + 0.25, fy=0.665, alto=0.105, size=155,
-            tcolor=PR.TINTA)
-    p.card('OVER TEN YEARS', t_tenyears + 0.10, K[6] + 0.25, fy=0.775, alto=0.042, size=54, z=60)
-    p.secuencia('torre_n', K[6] + 0.25, t_153 - 0.20, 5, 12, 0.500, 0.395, 0.290, z=46,
-                nombre='prop:torre_n')
-    p.cifra('GBP 15.3bn', t_153 + 0.10, K[7] + 0.25, fy=0.665, alto=0.110, size=155)
+    p.secuencia('torre_n', K[5] + 0.25, t_45 - 0.20, 0, 5, 0.330, 0.430, 0.470, z=46,
+                nombre='prop:torre_n', hold_final=(K[6] + 0.20) - (t_45 - 0.20))
+    p.cifra('2019' + NL + '£4.5bn', t_45 - 0.45, K[7] + 0.25, fx=0.755, fy=0.285, alto=0.130,
+            size=96, tcolor=PR.TINTA)
+    p.card('OVER TEN YEARS', t_tenyears + 0.10, K[7] + 0.25, fx=0.755, fy=0.400, alto=0.038,
+           size=50, z=60)
+    p.secuencia('torre_n', K[6] + 0.25, t_153 - 0.20, 5, 12, 0.330, 0.430, 0.470, z=46,
+                nombre='prop:torre_n', hold_final=(K[7] + 0.25) - (t_153 - 0.20))
+    p.cifra('NOW' + NL + '£15.3bn', t_153 + 0.10, K[7] + 0.25, fx=0.755, fy=0.580, alto=0.140,
+            size=96)
     p.card('THE SAME CONTRACTS' + NL + 'THE SAME TEN YEARS', t_same + 0.10, K[8] + 0.25,
            fy=0.790, alto=0.078, size=54, z=54)
     p.prop('sello_same', K[7] + 0.10, K[8] + 0.25, 0.500, 0.235, 0.105, z=52, sfx='stamp',
@@ -735,32 +764,34 @@ def pieza_3(p):
 
     p.rotulo('WHERE THE MONEY GOES', t_money - 0.20, K[10] - 0.10)
     # DOS BARRAS QUE NO COINCIDEN: la distancia entre las dos puntas es la pieza entera
-    p.secuencia('barra_d', K[9] + 0.20, t_76 - 0.15, 0, 12, 0.500, 0.330, 0.085, z=46,
-                nombre='prop:barra_dinero', hold_final=0.60)
-    p.cifra('76%', t_76 + 0.10, K[11] - 0.10, fy=0.445, alto=0.100, size=160)
-    p.card('OF THE MONEY', t_p76 + 0.10, K[11] - 0.10, fy=0.545, alto=0.040, size=54, z=60)
-    p.secuencia('barra_g', K[10] + 0.20, t_35 - 0.15, 0, 4, 0.500, 0.650, 0.085, z=46,
-                nombre='prop:barra_gente')
-    p.cifra('35%', t_35 + 0.10, K[12] + 0.35, fy=0.730, alto=0.100, size=160)
-    p.card('OF THE PEOPLE IN IT', t_p35 + 0.10, K[12] + 0.35, fy=0.830, alto=0.040, size=54,
+    # las barras son la animacion central: ocupan el ancho entero del cuadro y duran toda la
+    # frase. A 0,085 de alto se leian como dos rayas.
+    p.secuencia('barra_d', K[9] + 0.20, t_76 - 0.15, 0, 12, 0.500, 0.315, 0.145, z=46,
+                nombre='prop:barra_dinero', hold_final=(K[12] - 0.10) - (t_76 - 0.15))
+    p.cifra('76%', t_76 + 0.10, K[11] - 0.10, fy=0.455, alto=0.088, size=150)
+    p.card('OF THE MONEY', t_p76 + 0.10, K[11] - 0.10, fy=0.535, alto=0.038, size=52, z=60)
+    p.secuencia('barra_g', K[10] + 0.20, t_35 - 0.15, 0, 4, 0.500, 0.605, 0.145, z=46,
+                nombre='prop:barra_gente', hold_final=(K[12] - 0.10) - (t_35 - 0.15))
+    p.cifra('35%', t_35 + 0.10, K[12] + 0.35, fy=0.745, alto=0.088, size=150)
+    p.card('OF THE PEOPLE IN IT', t_p35 + 0.10, K[12] + 0.35, fy=0.825, alto=0.038, size=52,
            z=60)
     p.cifra('HOUSED CHEAPER', t_cheap - 0.45, K[12] + 0.25, fy=0.180, alto=0.058, size=76,
             tcolor=PR.TINTA)
 
     p.rotulo('YEAR TO MARCH', K[12] + 0.30, K[13] - 0.10)
-    p.cifra('GBP 4.2 BILLION', t_42 + 0.10, K[13] + 0.80, fy=0.700, alto=0.105, size=140)
-    p.cifra('GBP 107', t_107 + 0.10, K[14] + 0.05, fy=0.330, alto=0.115, size=185)
+    p.cifra('£4.2 BILLION', t_42 + 0.10, K[13] + 0.80, fy=0.700, alto=0.105, size=140)
+    p.cifra('£107', t_107 + 0.10, K[14] + 0.05, fy=0.330, alto=0.115, size=185)
     p.card('PER PERSON, PER NIGHT', t_person + 0.10, K[14] + 0.05, fy=0.440, alto=0.044, size=56,
            z=60)
 
-    p.card('YOU CAN ARGUE ABOUT' + NL + 'HOW MANY SHOULD COME', K[14] + 0.08, K[15] + 0.25,
+    p.card('YOU CAN ARGUE ABOUT' + NL + 'HOW MANY SHOULD COME', K[14] + 0.08, K[15] + 0.03,
            fy=0.180, alto=0.082, size=56, z=54)
-    p.cifra('THIS IS NOT' + NL + 'THAT ARGUMENT', t_notthat - 0.20, K[16] + 0.25, fy=0.330,
+    p.cifra('THIS IS NOT' + NL + 'THAT ARGUMENT', K[15] + 0.05, K[16] + 0.05, fy=0.330,
             alto=0.105, size=104, tcolor=PR.TINTA)
-    p.card('A PROCUREMENT FAILURE', t_proc + 0.10, K[16] + 1.40, fy=0.475, alto=0.048, size=60,
+    p.card('A PROCUREMENT FAILURE', t_proc + 0.10, K[16] + 0.05, fy=0.475, alto=0.048, size=60,
            z=58)
     p.cifra('A PRICE PER NIGHT', t_night - 0.35, D - 0.10, fy=0.330, alto=0.098, size=96)
-    p.card('WHO PAYS?', K[16] + 0.60, D - 0.10, fy=0.455, alto=0.058, size=76, tcolor=PR.TINTA,
+    p.card('WHO PAYS?', K[16] + 0.06, D - 0.10, fy=0.455, alto=0.058, size=76, tcolor=PR.TINTA,
            z=58)
     p.card('COMMENTS', t_com - 0.30, D - 0.10, fy=0.560, alto=0.046, size=60, tcolor=ROJO, z=58)
 

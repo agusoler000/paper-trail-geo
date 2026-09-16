@@ -62,7 +62,14 @@ def alineacion(payload):
         payload = json.loads(open(payload, encoding='utf-8').read()) if os.path.exists(payload) else json.loads(payload)
     if isinstance(payload, list):
         tr = [c for c in payload if _es_bloque(c)]
-        return _pegar(tr) if tr else None
+        if tr: return _pegar(tr)
+        # **La quinta forma** (ep. 09, 2026-09-15): una lista de RESPUESTAS ENTERAS de fal, que es
+        # lo que guarda `voz_ep.py` (un elemento por pedido; un beat largo se parte en dos). Cada
+        # elemento es `{'audio': ..., 'timestamps': [bloques]}`, no un bloque, asi que el filtro de
+        # arriba lo dejaba fuera, `hay()` daba False y `alinear` se caia a whisper sin decir nada:
+        # 35 minutos de CPU y las palabras de la transcripcion en vez de las del guion.
+        sub = [c for c in (alineacion(x) for x in payload) if c]
+        return _pegar(sub) if sub else None
     cand = [payload]
     for k in ('timestamps', 'alignment', 'normalized_alignment', 'audio', 'data', 'output'):
         v = payload.get(k) if isinstance(payload, dict) else None
